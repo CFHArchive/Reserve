@@ -1,2 +1,3 @@
 # Reserve
-An API plugin set at connecting all plugins that interact with economies.
+
+A common API to let plugin developers integrate with economy plugins. Permissions support coming soon.

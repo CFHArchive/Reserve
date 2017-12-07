@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Reserve">
+    <output-path>$USER_HOME$/Desktop/java build/reserve</output-path>
+    <root id="archive" name="Reserve.jar">
+      <element id="module-output" name="Reserve" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src/net/tnemc/resources" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/java build/TNELib/TNELib.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
