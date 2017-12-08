@@ -12,6 +12,8 @@ public class ReserveCommand extends TNECommand {
   public ReserveCommand(Reserve plugin) {
     super(plugin);
     subCommands.add(new ReserveEconomyCommand(plugin));
+    subCommands.add(new ReserveLoadedCommand(plugin));
+    subCommands.add(new ReserveSetCommand(plugin));
   }
 
   @Override

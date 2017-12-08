@@ -35,6 +35,10 @@ public class Reserve extends TNELib {
     registeredProviders.put(provider.name(), provider);
   }
 
+  public Map<String, EconomyAPI> getProviders() {
+    return registeredProviders;
+  }
+
   public Optional<EconomyAPI> economy() {
     return Optional.of(registeredProviders.get(ecoProvider));
   }
