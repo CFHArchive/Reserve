@@ -1,7 +1,7 @@
 package net.tnemc.core.command.reserve;
 
-import com.github.tnerevival.commands.TNECommand;
 import net.tnemc.core.Reserve;
+import net.tnemc.core.command.TNECommand;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
@@ -37,12 +37,13 @@ public class ReserveSetCommand extends TNECommand {
 
   @Override
   public String getHelp() {
-    return ChatColor.GOLD + "/reserve set <name> " + ChatColor.WHITE + "- Set the used economy provider to the one specified.";
+    return ChatColor.GOLD + "/reserve set <name> " + ChatColor.WHITE + "- Set the active economy provider to the one specified.";
   }
 
   @Override
   public boolean execute(CommandSender sender, String command, String[] arguments) {
     if(Reserve.instance().getProviders().containsKey(arguments[0])) {
+      Reserve.instance().setProvider(arguments[0]);
       sender.sendMessage(ChatColor.WHITE + "Successfully set economy provider to " + arguments[0] + ".");
       return true;
     }

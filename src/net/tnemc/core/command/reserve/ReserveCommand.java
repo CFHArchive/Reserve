@@ -1,7 +1,7 @@
 package net.tnemc.core.command.reserve;
 
-import com.github.tnerevival.commands.TNECommand;
 import net.tnemc.core.Reserve;
+import net.tnemc.core.command.TNECommand;
 
 /**
  * Created by creatorfromhell on 10/16/2017.
