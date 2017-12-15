@@ -1,7 +1,7 @@
 #General Data
 name: Reserve
 version: 0.1.0.0
-description: A set of common APIs for unison across Bukkit Plugins.
+description: An economy API for unison across Bukkit Plugins.
 author: creatorfromhell
 
 #Plugin Data

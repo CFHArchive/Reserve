@@ -183,6 +183,11 @@ public interface EconomyAPI {
   String format(BigDecimal amount, Currency currency, String world);
 
   /**
+   * Whether or not this API Implementation supports the Transaction System.
+   */
+  boolean supportTransactions();
+
+  /**
    * Performs a {@link Transaction}.
    * @param transaction The {@link Transaction} to perform.
    * @return The {@link TransactionResult} of the {@link Transaction}.

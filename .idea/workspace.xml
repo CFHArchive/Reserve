@@ -7,19 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1437e73a-ddf4-441a-aaca-dd5988a852a0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/tnemc/core/Message.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/tnemc/core/Metrics.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/tnemc/core/command/CommandManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/tnemc/core/command/TNECommand.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/TNELib.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Reserve.iml" afterPath="$PROJECT_DIR$/.idea/Reserve.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tnemc/core/Reserve.java" afterPath="$PROJECT_DIR$/src/net/tnemc/core/Reserve.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tnemc/core/command/reserve/ReserveCommand.java" afterPath="$PROJECT_DIR$/src/net/tnemc/core/command/reserve/ReserveCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tnemc/core/command/reserve/ReserveEconomyCommand.java" afterPath="$PROJECT_DIR$/src/net/tnemc/core/command/reserve/ReserveEconomyCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tnemc/core/command/reserve/ReserveLoadedCommand.java" afterPath="$PROJECT_DIR$/src/net/tnemc/core/command/reserve/ReserveLoadedCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tnemc/core/command/reserve/ReserveSetCommand.java" afterPath="$PROJECT_DIR$/src/net/tnemc/core/command/reserve/ReserveSetCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tnemc/resources/plugin.yml" afterPath="$PROJECT_DIR$/src/net/tnemc/resources/plugin.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tnemc/core/economy/EconomyAPI.java" afterPath="$PROJECT_DIR$/src/net/tnemc/core/economy/EconomyAPI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/plugin.yml" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,7 +40,7 @@
         <entry file="file://$PROJECT_DIR$/src/net/tnemc/core/command/reserve/ReserveLoadedCommand.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="896">
-              <caret line="39" column="70" lean-forward="true" selection-start-line="39" selection-start-column="70" selection-end-line="39" selection-end-column="127" />
+              <caret line="39" column="70" lean-forward="false" selection-start-line="39" selection-start-column="70" selection-end-line="39" selection-end-column="127" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -61,7 +52,7 @@
         <entry file="file://$PROJECT_DIR$/src/net/tnemc/core/command/reserve/ReserveSetCommand.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="960">
-              <caret line="39" column="74" lean-forward="true" selection-start-line="39" selection-start-column="74" selection-end-line="39" selection-end-column="127" />
+              <caret line="39" column="74" lean-forward="false" selection-start-line="39" selection-start-column="74" selection-end-line="39" selection-end-column="127" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#358#359#0" expanded="true" />
@@ -71,27 +62,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Reserve.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Reserve.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/tnemc/core/Reserve.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="35" column="10" lean-forward="false" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
+            <state relative-caret-position="640">
+              <caret line="42" column="22" lean-forward="false" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1222#1223#0" expanded="true" />
-                <element signature="e#1247#1248#0" expanded="true" />
-                <element signature="e#1521#1522#0" expanded="true" />
-                <element signature="e#1557#1558#0" expanded="true" />
-                <element signature="e#1599#1600#0" expanded="true" />
-                <element signature="e#1627#1628#0" expanded="true" />
-                <element signature="e#1670#1671#0" expanded="true" />
-                <element signature="e#1736#1737#0" expanded="true" />
-                <element signature="e#1774#1775#0" expanded="true" />
-                <element signature="e#1810#1811#0" expanded="true" />
-                <element signature="e#1858#1859#0" expanded="true" />
-                <element signature="e#1889#1890#0" expanded="true" />
-                <element signature="e#2269#2270#0" expanded="true" />
-                <element signature="e#2315#2316#0" expanded="true" />
+                <element signature="e#1246#1247#0" expanded="true" />
+                <element signature="e#1271#1272#0" expanded="true" />
+                <element signature="e#1545#1546#0" expanded="true" />
+                <element signature="e#1581#1582#0" expanded="true" />
+                <element signature="e#1623#1624#0" expanded="true" />
+                <element signature="e#1651#1652#0" expanded="true" />
+                <element signature="e#1694#1695#0" expanded="true" />
+                <element signature="e#1760#1761#0" expanded="true" />
+                <element signature="e#1798#1799#0" expanded="true" />
+                <element signature="e#1834#1835#0" expanded="true" />
+                <element signature="e#1882#1883#0" expanded="true" />
+                <element signature="e#1913#1914#0" expanded="true" />
+                <element signature="e#2293#2294#0" expanded="true" />
+                <element signature="e#2339#2340#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -122,18 +113,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="128">
               <caret line="115" column="26" lean-forward="false" selection-start-line="115" selection-start-column="26" selection-end-line="115" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Message.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/tnemc/core/Message.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="67" column="3" lean-forward="false" selection-start-line="67" selection-start-column="3" selection-end-line="67" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -190,14 +169,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReserveEconomyCommand.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ReserveEconomyCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/tnemc/core/command/reserve/ReserveEconomyCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="768">
-              <caret line="42" column="71" lean-forward="false" selection-start-line="42" selection-start-column="71" selection-end-line="42" selection-end-column="129" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EconomyAPI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tnemc/core/economy/EconomyAPI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="40">
+              <caret line="187" column="32" lean-forward="false" selection-start-line="187" selection-start-column="32" selection-end-line="187" selection-end-column="32" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -259,7 +248,6 @@
         <option value="$PROJECT_DIR$/src/net/tnemc/core/economy/response/EconomyResponse.java" />
         <option value="$PROJECT_DIR$/src/net/tnemc/core/economy/response/ResponseVerdict.java" />
         <option value="$PROJECT_DIR$/src/net/tnemc/core/economy/currency/CurrencyEntry.java" />
-        <option value="$PROJECT_DIR$/src/net/tnemc/core/economy/EconomyAPI.java" />
         <option value="$PROJECT_DIR$/src/net/tnemc/resources/config.yml" />
         <option value="$PROJECT_DIR$/src/net/tnemc/core/economy/transaction/type/TransactionType.java" />
         <option value="$PROJECT_DIR$/src/net/tnemc/core/economy/transaction/Transaction.java" />
@@ -269,11 +257,12 @@
         <option value="$PROJECT_DIR$/src/net/tnemc/core/command/reserve/ReserveEconomyCommand.java" />
         <option value="$PROJECT_DIR$/src/net/tnemc/core/command/reserve/ReserveLoadedCommand.java" />
         <option value="$PROJECT_DIR$/src/net/tnemc/core/Message.java" />
-        <option value="$PROJECT_DIR$/src/net/tnemc/core/Reserve.java" />
         <option value="$PROJECT_DIR$/src/net/tnemc/core/command/TNECommand.java" />
         <option value="$PROJECT_DIR$/src/net/tnemc/core/command/CommandManager.java" />
         <option value="$PROJECT_DIR$/src/net/tnemc/core/Metrics.java" />
         <option value="$PROJECT_DIR$/src/net/tnemc/resources/plugin.yml" />
+        <option value="$PROJECT_DIR$/src/net/tnemc/core/economy/EconomyAPI.java" />
+        <option value="$PROJECT_DIR$/src/net/tnemc/core/Reserve.java" />
       </list>
     </option>
   </component>
@@ -785,7 +774,7 @@
       <workItem from="1512453961458" duration="11393000" />
       <workItem from="1512680506570" duration="629000" />
       <workItem from="1512690478650" duration="5896000" />
-      <workItem from="1513262836534" duration="3613000" />
+      <workItem from="1513262836534" duration="4941000" />
     </task>
     <task id="LOCAL-00001" summary="Start working on Economy API.">
       <created>1502308417023</created>
@@ -934,11 +923,18 @@
       <option name="project" value="LOCAL" />
       <updated>1512698981602</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Beta 1.0">
+      <created>1513266940302</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1513266940302</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173745000" />
+    <option name="totallyTimeSpent" value="175073000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1033,7 +1029,8 @@
     <MESSAGE value="Start of the Reserve Command System" />
     <MESSAGE value="Reserve Account API." />
     <MESSAGE value="Loaded, and Set Commands." />
-    <option name="LAST_COMMIT_MESSAGE" value="Loaded, and Set Commands." />
+    <MESSAGE value="Beta 1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Beta 1.0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1254,16 +1251,6 @@
     </entry>
     <entry file="jar://$PROJECT_DIR$/../TNELib/out/artifacts/TNELib/TNELib.jar!/com/github/tnerevival/TNELib.class" />
     <entry file="file://$PROJECT_DIR$/src/net/tnemc/resources/config.yml" />
-    <entry file="file://$PROJECT_DIR$/src/net/tnemc/core/economy/EconomyAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6240">
-          <caret line="206" column="11" lean-forward="false" selection-start-line="206" selection-start-column="11" selection-end-line="206" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/tnemc/core/economy/transaction/Transaction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3872">
@@ -1293,7 +1280,7 @@
         <state relative-caret-position="9216">
           <caret line="294" column="48" lean-forward="false" selection-start-line="294" selection-start-column="48" selection-end-line="294" selection-end-column="48" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1303,7 +1290,7 @@
         <state relative-caret-position="512">
           <caret line="67" column="3" lean-forward="false" selection-start-line="67" selection-start-column="3" selection-end-line="67" selection-end-column="3" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1323,30 +1310,6 @@
         <state relative-caret-position="352">
           <caret line="64" column="66" lean-forward="false" selection-start-line="64" selection-start-column="66" selection-end-line="64" selection-end-column="66" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tnemc/core/Reserve.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="35" column="10" lean-forward="false" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1222#1223#0" expanded="true" />
-            <element signature="e#1247#1248#0" expanded="true" />
-            <element signature="e#1521#1522#0" expanded="true" />
-            <element signature="e#1557#1558#0" expanded="true" />
-            <element signature="e#1599#1600#0" expanded="true" />
-            <element signature="e#1627#1628#0" expanded="true" />
-            <element signature="e#1670#1671#0" expanded="true" />
-            <element signature="e#1736#1737#0" expanded="true" />
-            <element signature="e#1774#1775#0" expanded="true" />
-            <element signature="e#1810#1811#0" expanded="true" />
-            <element signature="e#1858#1859#0" expanded="true" />
-            <element signature="e#1889#1890#0" expanded="true" />
-            <element signature="e#2269#2270#0" expanded="true" />
-            <element signature="e#2315#2316#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1406,7 +1369,7 @@
     <entry file="file://$PROJECT_DIR$/src/net/tnemc/core/command/reserve/ReserveSetCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="960">
-          <caret line="39" column="74" lean-forward="true" selection-start-line="39" selection-start-column="74" selection-end-line="39" selection-end-column="127" />
+          <caret line="39" column="74" lean-forward="false" selection-start-line="39" selection-start-column="74" selection-end-line="39" selection-end-column="127" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#358#359#0" expanded="true" />
@@ -1418,7 +1381,7 @@
     <entry file="file://$PROJECT_DIR$/src/net/tnemc/core/command/reserve/ReserveLoadedCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="896">
-          <caret line="39" column="70" lean-forward="true" selection-start-line="39" selection-start-column="70" selection-end-line="39" selection-end-column="127" />
+          <caret line="39" column="70" lean-forward="false" selection-start-line="39" selection-start-column="70" selection-end-line="39" selection-end-column="127" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1427,10 +1390,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/tnemc/core/command/reserve/ReserveEconomyCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
-          <caret line="42" column="71" lean-forward="false" selection-start-line="42" selection-start-column="71" selection-end-line="42" selection-end-column="129" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/tnemc/core/economy/EconomyAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="187" column="32" lean-forward="false" selection-start-line="187" selection-start-column="32" selection-end-line="187" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/tnemc/core/Reserve.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="42" column="22" lean-forward="false" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1246#1247#0" expanded="true" />
+            <element signature="e#1271#1272#0" expanded="true" />
+            <element signature="e#1545#1546#0" expanded="true" />
+            <element signature="e#1581#1582#0" expanded="true" />
+            <element signature="e#1623#1624#0" expanded="true" />
+            <element signature="e#1651#1652#0" expanded="true" />
+            <element signature="e#1694#1695#0" expanded="true" />
+            <element signature="e#1760#1761#0" expanded="true" />
+            <element signature="e#1798#1799#0" expanded="true" />
+            <element signature="e#1834#1835#0" expanded="true" />
+            <element signature="e#1882#1883#0" expanded="true" />
+            <element signature="e#1913#1914#0" expanded="true" />
+            <element signature="e#2293#2294#0" expanded="true" />
+            <element signature="e#2339#2340#0" expanded="true" />
           </folding>
         </state>
       </provider>

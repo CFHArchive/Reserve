@@ -39,6 +39,8 @@ public class Reserve extends JavaPlugin {
       defaultWorld = "world";
     }
     registerCommand(new String[] { "reserve", "rsv" }, new ReserveCommand(this));
+
+    new Metrics(this);
   }
 
   public static Reserve instance() {
