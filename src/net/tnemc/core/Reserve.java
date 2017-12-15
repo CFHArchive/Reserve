@@ -22,7 +22,6 @@ public class Reserve extends JavaPlugin {
 
   private static Reserve instance;
   protected CommandManager commandManager;
-  private EconomyAPI economy = null;
 
   private Map<String, EconomyAPI> registeredProviders = new HashMap<>();
   private String ecoProvider = null;

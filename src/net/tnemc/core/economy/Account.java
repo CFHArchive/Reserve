@@ -32,73 +32,38 @@ public interface Account {
 
   /**
    * Determines whether or not a player is able to access this account.
-   * @param identifier The identifier associated with the player .
+   * @param account The {@link Account} that we're using in this check.
    * @return Whether or not the player is able to access this account.
    */
-  boolean isAccessor(String identifier);
-
-  /**
-   * Determines whether or not a player is able to access this account.
-   * @param identifier The {@link UUID} identifier associated with the player .
-   * @return Whether or not the player is able to access this account.
-   */
-  boolean isAccessor(UUID identifier);
+  boolean isAccessor(Account account);
 
   /**
    * Determines whether or not a player is able to withdraw holdings from this account.
-   * @param identifier The identifier associated with the player .
+   * @param account The {@link Account} that we're using in this check.
    * @return Whether or not the player is able to withdraw holdings from this account.
    */
-  boolean canWithdraw(String identifier);
-
-  /**
-   * Determines whether or not a player is able to withdraw holdings from this account.
-   * @param identifier The {@link UUID} identifier associated with the player .
-   * @return Whether or not the player is able to withdraw holdings from this account.
-   */
-  boolean canWithdraw(UUID identifier);
+  boolean canWithdraw(Account account);
 
   /**
    * Determines whether or not a player is able to deposit holdings into this account.
-   * @param identifier The identifier associated with the player .
+   * @param account The {@link Account} that we're using in this check.
    * @return Whether or not the player is able to deposit holdings into this account.
    */
-  boolean canDeposit(String identifier);
-
-  /**
-   * Determines whether or not a player is able to deposit holdings into this account.
-   * @param identifier The {@link UUID} identifier associated with the player .
-   * @return Whether or not the player is able to deposit holdings into this account.
-   */
-  boolean canDeposit(UUID identifier);
+  boolean canDeposit(Account account);
 
   /**
    * Determines whether or not a player is able to revoke another player from accessing this account.
-   * @param identifier The identifier associated with the player .
+   * @param account The {@link Account} that we're using in this check.
    * @return Whether or not the player is able to revoke access this account.
    */
-  boolean canRemoveAccessor(String identifier);
-
-  /**
-   * Determines whether or not a player is able to revoke another player from accessing this account.
-   * @param identifier The {@link UUID} identifier associated with the player .
-   * @return Whether or not the player is able to revoke access this account.
-   */
-  boolean canRemoveAccessor(UUID identifier);
+  boolean canRemoveAccessor(Account account);
 
   /**
    * Determines whether or not a player is able to grant other players access this account.
-   * @param identifier The identifier associated with the player .
+   * @param account The {@link Account} that we're using in this check.
    * @return Whether or not the player is able to grant access this account.
    */
-  boolean canAddAccessor(String identifier);
-
-  /**
-   * Determines whether or not a player is able to grant other players access this account.
-   * @param identifier The {@link UUID} identifier associated with the player .
-   * @return Whether or not the player is able to grant access this account.
-   */
-  boolean canAddAccessor(UUID identifier);
+  boolean canAddAccessor(Account account);
 
   /**
    * Used to get the balance of an account.
