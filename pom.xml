@@ -38,6 +38,13 @@
         </plugins>
     </build>
 
+    <distributionManagement>
+        <repository>
+            <id>Reserve</id>
+            <url>https://api.bintray.com/maven/theneweconomy/Reserve/Reserve/;publish=1</url>
+        </repository>
+    </distributionManagement>
+
     <repositories>
         <repository>
             <id>spigot-repo</id>
