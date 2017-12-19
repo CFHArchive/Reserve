@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.tnemc</groupId>
     <artifactId>Reserve</artifactId>
-    <version>0.1.0.1-SNAPSHOT</version>
+    <version>0.1.0.1</version>
     <packaging>jar</packaging>
     <name>Reserve</name>
     <properties>
@@ -47,9 +47,9 @@
 
     <distributionManagement>
         <repository>
-            <id>bintray-theneweconomy-Reserve</id>
-            <name>theneweconomy-Reserve</name>
-            <url>https://api.bintray.com/maven/theneweconomy/Reserve/Reserve/;publish=1</url>
+            <id>bintray-theneweconomy-java</id>
+            <name>theneweconomy-java</name>
+            <url>https://api.bintray.com/maven/theneweconomy/java/Reserve/;publish=1</url>
         </repository>
     </distributionManagement>
 
