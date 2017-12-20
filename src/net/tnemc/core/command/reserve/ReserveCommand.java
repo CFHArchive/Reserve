@@ -29,6 +29,7 @@ public class ReserveCommand extends TNECommand {
     super(plugin);
     subCommands.add(new ReserveEconomyCommand(plugin));
     subCommands.add(new ReserveLoadedCommand(plugin));
+    subCommands.add(new ReservePermissionsCommand(plugin));
     subCommands.add(new ReserveSetCommand(plugin));
   }
 

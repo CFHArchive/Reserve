@@ -58,12 +58,19 @@ public class ReserveLoadedCommand extends TNECommand {
 
   @Override
   public boolean execute(CommandSender sender, String command, String[] arguments) {
-    String joined = "";
-    for(String name : Reserve.instance().getProviders().keySet()) {
-      if(!joined.equalsIgnoreCase("")) joined += ", ";
-      joined += name;
+    String economies = "";
+    for(String name : Reserve.instance().getRegisteredEconomies().keySet()) {
+      if(!economies.equalsIgnoreCase("")) economies += ", ";
+      economies += name;
     }
-    sender.sendMessage("Economy Providers: " + joined);
+
+    String permissions = "";
+    for(String name : Reserve.instance().getRegisteredPermissions().keySet()) {
+      if(!permissions.equalsIgnoreCase("")) permissions += ", ";
+      permissions += name;
+    }
+    sender.sendMessage("Economy Providers: " + economies);
+    sender.sendMessage("Permissions Providers: " + permissions);
     return true;
   }
 }

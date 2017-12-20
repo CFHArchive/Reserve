@@ -2,11 +2,12 @@ package net.tnemc.core.command.reserve;
 
 import net.tnemc.core.Reserve;
 import net.tnemc.core.command.TNECommand;
+import net.tnemc.core.permissions.PermissionsAPI;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 /**
- * Created by creatorfromhell on 12/7/2017.
+ * Created by creatorfromhell on 10/16/2017.
  *
  * Reserve API
  *
@@ -25,25 +26,27 @@ import org.bukkit.command.CommandSender;
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  **/
-public class ReserveSetCommand extends TNECommand {
+public class ReservePermissionsCommand extends TNECommand {
 
-  public ReserveSetCommand(Reserve plugin) {
+  public ReservePermissionsCommand(Reserve plugin) {
     super(plugin);
   }
 
   @Override
   public String getName() {
-    return "set";
+    return "permissions";
   }
 
   @Override
   public String[] getAliases() {
-    return new String[0];
+    return new String[]{
+        "perm"
+    };
   }
 
   @Override
   public String getNode() {
-    return "reserve.admin.set";
+    return "reserve.admin.permission";
   }
 
   @Override
@@ -53,17 +56,18 @@ public class ReserveSetCommand extends TNECommand {
 
   @Override
   public String getHelp() {
-    return ChatColor.GOLD + "/reserve set <name> " + ChatColor.WHITE + "- Set the active economy provider to the one specified.";
+    return ChatColor.GOLD + "/reserve permissions " + ChatColor.WHITE + "- Displays the permissions service that is currently being used.";
   }
 
   @Override
   public boolean execute(CommandSender sender, String command, String[] arguments) {
-    if(Reserve.instance().getRegisteredEconomies().containsKey(arguments[0])) {
-      Reserve.instance().setEconomy(arguments[0]);
-      sender.sendMessage(ChatColor.WHITE + "Successfully set economy provider to " + arguments[0] + ".");
+    if(Reserve.instance().permissionsProvided()) {
+      PermissionsAPI api = Reserve.instance().permissions().get();
+      sender.sendMessage(ChatColor.WHITE + "Permissions Service: " + ChatColor.GREEN + api.name());
+      sender.sendMessage(ChatColor.WHITE + " Supported Reserve Version: " + ChatColor.GREEN + api.version());
       return true;
     }
-    sender.sendMessage(ChatColor.RED + "No economy provider found with the name of " + arguments[0] + ".");
+    sender.sendMessage(ChatColor.WHITE + "There is currently no permissions service running.");
     return false;
   }
 }

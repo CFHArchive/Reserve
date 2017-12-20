@@ -4,6 +4,7 @@ import net.tnemc.core.command.CommandManager;
 import net.tnemc.core.command.TNECommand;
 import net.tnemc.core.command.reserve.ReserveCommand;
 import net.tnemc.core.economy.EconomyAPI;
+import net.tnemc.core.permissions.PermissionsAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -39,8 +40,10 @@ public class Reserve extends JavaPlugin {
   private static Reserve instance;
   protected CommandManager commandManager;
 
-  private Map<String, EconomyAPI> registeredProviders = new HashMap<>();
+  private Map<String, EconomyAPI> registeredEconomies = new HashMap<>();
+  private Map<String, PermissionsAPI> registeredPermissions = new HashMap<>();
   private String ecoProvider = null;
+  private String permissionsProvider = null;
 
   public String defaultWorld = "Default";
 
@@ -64,24 +67,49 @@ public class Reserve extends JavaPlugin {
 
   public void registerProvider(EconomyAPI provider) {
     getLogger().info("Economy Provider registered: " + provider.name());
-    ecoProvider = provider.name();
-    registeredProviders.put(provider.name(), provider);
+    if(provider.enabled()) {
+      ecoProvider = provider.name();
+    }
+    registeredEconomies.put(provider.name(), provider);
   }
 
-  public Map<String, EconomyAPI> getProviders() {
-    return registeredProviders;
+  public void registerProvider(PermissionsAPI provider) {
+    getLogger().info("Permissions Provider registered: " + provider.name());
+    if(provider.enabled()) {
+      permissionsProvider = provider.name();
+    }
+    registeredPermissions.put(provider.name(), provider);
   }
 
-  public void setProvider(String name) {
+  public Map<String, EconomyAPI> getRegisteredEconomies() {
+    return registeredEconomies;
+  }
+
+  public Map<String, PermissionsAPI> getRegisteredPermissions() {
+    return registeredPermissions;
+  }
+
+  public void setEconomy(String name) {
     ecoProvider = name;
   }
 
+  public void setPermissions(String name) {
+    permissionsProvider = name;
+  }
+
   public Optional<EconomyAPI> economy() {
-    return Optional.of(registeredProviders.get(ecoProvider));
+    return Optional.of(registeredEconomies.get(ecoProvider));
+  }
+  public Optional<PermissionsAPI> permissions() {
+    return Optional.of(registeredPermissions.get(permissionsProvider));
   }
 
   public boolean economyProvided() {
     return ecoProvider != null;
+  }
+
+  public boolean permissionsProvided() {
+    return permissionsProvider != null;
   }
 
   private CommandManager getCommandManager() {
