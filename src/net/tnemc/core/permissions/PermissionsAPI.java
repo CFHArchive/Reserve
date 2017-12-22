@@ -2,6 +2,9 @@ package net.tnemc.core.permissions;
 
 import net.tnemc.core.permissions.holder.HolderGroup;
 import net.tnemc.core.permissions.holder.NodeHolder;
+import net.tnemc.core.permissions.node.Node;
+import net.tnemc.core.permissions.node.NodeData;
+import net.tnemc.core.permissions.node.NodePath;
 import org.bukkit.plugin.Plugin;
 
 import java.util.Collection;
@@ -69,16 +72,30 @@ public interface PermissionsAPI {
   Collection<NodeHolder> getLoadedHolders(Plugin owner);
 
   /**
+   * @param identifier The string identifier for a {@link Node} object.
+   * @return An empty {@link Optional} if there is no {@link Node} for the specified identifier, otherwise an optional
+   * with the Node object.
+   */
+  Optional<Node> getNode(String identifier);
+
+  /**
+   * @param identifier The string identifier for a {@link NodeData} object.
+   * @return An empty {@link Optional} if there is no {@link NodeData} for the specified identifier, otherwise an optional
+   * with the NodeData object.
+   */
+  Optional<NodeData> getNodeData(String identifier);
+
+  /**
+   * @param identifier The String representation of the {@link NodePath} that's being requested.
+   * @return An empty {@link Optional} if there is no {@link NodePath} for the specified identifier, otherwise an optional
+   * with the NodePath object.
+   */
+  Optional<NodePath> getPath(String identifier);
+
+  /**
    * @return A {@link Collection} of every {@link Node} that currently exists.
    */
   Collection<Node> getNodes();
-
-  /**
-   * @param owner The {@link Plugin} instance to be used in this check.
-   * @return A {@link Collection} of every {@link Node} that currently exists, which has the specified {@link Plugin} as
-   * its owner.
-   */
-  Collection<Node> getNodes(Plugin owner);
 
   /**
    * @param identifier The identifier of the {@link HolderGroup} used in this check.

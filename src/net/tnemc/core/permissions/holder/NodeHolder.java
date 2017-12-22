@@ -1,9 +1,9 @@
 package net.tnemc.core.permissions.holder;
 
-import net.tnemc.core.permissions.Node;
-import org.bukkit.plugin.Plugin;
+import net.tnemc.core.permissions.node.Node;
 
 import java.util.Collection;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -29,19 +29,9 @@ import java.util.Optional;
 public interface NodeHolder {
 
   /**
-   * @return The plugin that this {@link NodeHolder} was created by.
+   * @return An instance of the {@link NodeHolderData} that belongs to this {@link NodeHolder}.
    */
-  Plugin owner();
-
-  /**
-   * @return The identifier of this {@link NodeHolder}.
-   */
-  String identifier();
-
-  /**
-   * @return True if this {@link NodeHolder} is currently loaded, else false.
-   */
-  boolean loaded();
+  NodeHolderData getData();
 
   /**
    * @return Empty optional if this holder has no parent, otherwise return Optional containing the {@link NodeHolder}
@@ -64,10 +54,11 @@ public interface NodeHolder {
    * @param node The identifier of the {@link Node} involved in this check.
    * @return True if this {@link NodeHolder} has the specified {@link Node} for the identifier.
    */
-  boolean hasNode(String node);
+  boolean hasPermission(String node);
 
   /**
-   * @return A {@link Collection} of every {@link Node} this holder has.
+   * @return A {@link Map} of every permission this holder has, and a boolean value of whether this {@link NodeHolder}
+   * has the permission, or not.
    */
-  Collection<Node> getNodes();
+  Map<String, Boolean> getPermissions();
 }

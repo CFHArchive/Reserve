@@ -1,9 +1,9 @@
-package net.tnemc.core.permissions;
+package net.tnemc.core.permissions.holder;
 
 import org.bukkit.plugin.Plugin;
 
 /**
- * Created by creatorfromhell on 12/19/2017.
+ * Created by creatorfromhell on 12/21/2017.
  * <p>
  * Reserve API
  * <p>
@@ -22,20 +22,20 @@ import org.bukkit.plugin.Plugin;
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  **/
-public interface Node {
+public interface NodeHolderData {
 
   /**
-   * @return The plugin that this {@link Node} belongs to.
+   * @return The plugin that this {@link NodeHolder} was created by.
    */
   Plugin owner();
 
   /**
-   * @return The identifier of this {@link Node}.
+   * @return The identifier of this {@link NodeHolder}.
    */
   String identifier();
 
   /**
-   * @return The description of this {@link Node}.
+   * @return True if this {@link NodeHolder} is currently loaded, else false.
    */
-  String description();
+  boolean loaded();
 }

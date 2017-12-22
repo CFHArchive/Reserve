@@ -1,6 +1,6 @@
 package net.tnemc.core.permissions.holder;
 
-import net.tnemc.core.permissions.Node;
+import net.tnemc.core.permissions.node.Node;
 
 import java.util.Collection;
 
