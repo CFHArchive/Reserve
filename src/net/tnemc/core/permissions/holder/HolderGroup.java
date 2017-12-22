@@ -3,6 +3,7 @@ package net.tnemc.core.permissions.holder;
 import net.tnemc.core.permissions.node.Node;
 
 import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Created by creatorfromhell on 12/20/2017.
@@ -34,17 +35,24 @@ public interface HolderGroup {
   /**
    * @return A {@link Collection} with the {@link NodeHolder holders} that this holder contains.
    */
-  Collection<NodeHolder> getHolders();
+  CompletableFuture<Collection<NodeHolder>> getHolders();
 
   /**
-   * @param node The identifier of the {@link Node} used in this check.
-   * @return A {@link Collection} with every {@link NodeHolder} that contains the {@link Node} with the specified identifier.
+   * @return A {@link Collection} with the {@link NodeHolder holders} that this holder contains, which are currently
+   * loaded.
    */
-  Collection<NodeHolder> getByNode(String node);
+  CompletableFuture<Collection<NodeHolder>> getLoadedHolders();
+
+  /**
+   * @param permission The identifier of the {@link Node} used in this check.
+   * @return A {@link Collection} with every {@link NodeHolder} that would return TRUE in a hasPermission call with the
+   * specified permission.
+   */
+  CompletableFuture<Collection<NodeHolder>> getByPermission(String permission);
 
   /**
    * @param identifier The identifier of the {@link NodeHolder} used in this check.
    * @return True if this {@link HolderGroup} contains the {@link NodeHolder} with the specified identifier.
    */
-  boolean hasHolder(String identifier);
+  CompletableFuture<Boolean> hasHolder(String identifier);
 }

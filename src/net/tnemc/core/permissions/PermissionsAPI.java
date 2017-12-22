@@ -9,6 +9,7 @@ import org.bukkit.plugin.Plugin;
 
 import java.util.Collection;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Created by creatorfromhell on 12/19/2017.
@@ -50,14 +51,14 @@ public interface PermissionsAPI {
   /**
    * @return A {@link Collection} of every {@link NodeHolder} that currently exists.
    */
-  Collection<NodeHolder> getHolders();
+  CompletableFuture<Collection<NodeHolder>> getHolders();
 
   /**
    * @param owner The {@link Plugin} instance to be used in this check.
    * @return A {@link Collection} of every {@link NodeHolder} that currently exists, which also has the specified
    * {@link Plugin} as its owner.
    */
-  Collection<NodeHolder> getHolders(Plugin owner);
+  CompletableFuture<Collection<NodeHolder>> getHolders(Plugin owner);
 
   /**
    * @return A {@link Collection} of every {@link NodeHolder} that is currently loaded.
@@ -69,7 +70,7 @@ public interface PermissionsAPI {
    * @return A {@link Collection} of every {@link NodeHolder} that is currently loaded, which also has the specified
    * {@link Plugin} as its owner.
    */
-  Collection<NodeHolder> getLoadedHolders(Plugin owner);
+  CompletableFuture<Collection<NodeHolder>> getLoadedHolders(Plugin owner);
 
   /**
    * @param identifier The string identifier for a {@link Node} object.
@@ -95,13 +96,13 @@ public interface PermissionsAPI {
   /**
    * @return A {@link Collection} of every {@link Node} that currently exists.
    */
-  Collection<Node> getNodes();
+  CompletableFuture<Collection<Node>> getNodes();
 
   /**
    * @param identifier The identifier of the {@link HolderGroup} used in this check.
    * @return True if a {@link HolderGroup} with the specified identifier exists.
    */
-  boolean hasGroup(String identifier);
+  CompletableFuture<Boolean> hasGroup(String identifier);
 
   /**
    * @param identifier The identifier of the {@link HolderGroup} used in this check.
@@ -114,12 +115,12 @@ public interface PermissionsAPI {
    * @param identifier The identifier of the {@link NodeHolder} used in this check.
    * @return True if a {@link NodeHolder} with the specified identifier exists.
    */
-  boolean hasHolder(String identifier);
+  CompletableFuture<Boolean> hasHolder(String identifier);
 
   /**
    * @param identifier The identifier of the {@link NodeHolder} used in this check.
    * @return An empty Optional if no {@link NodeHolder} exists with the specified identifier, otherwise an Optional with
    * the holder.
    */
-  Optional<NodeHolder> getHolder(String identifier);
+  CompletableFuture<Optional<NodeHolder>> getHolder(String identifier);
 }
