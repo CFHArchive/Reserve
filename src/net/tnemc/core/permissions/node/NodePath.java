@@ -1,7 +1,5 @@
 package net.tnemc.core.permissions.node;
 
-import net.tnemc.core.utils.SplitHelper;
-
 /**
  * Created by creatorfromhell on 12/21/2017.
  * <p>
@@ -23,8 +21,6 @@ import net.tnemc.core.utils.SplitHelper;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  **/
 public class NodePath {
-
-  public static final SplitHelper helper = new SplitHelper(".");
   private Node root;
 
   public NodePath(Node root) {
