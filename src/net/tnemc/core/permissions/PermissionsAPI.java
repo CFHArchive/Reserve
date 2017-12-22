@@ -4,7 +4,6 @@ import net.tnemc.core.permissions.holder.HolderGroup;
 import net.tnemc.core.permissions.holder.NodeHolder;
 import net.tnemc.core.permissions.node.Node;
 import net.tnemc.core.permissions.node.NodeData;
-import net.tnemc.core.permissions.node.NodePath;
 import org.bukkit.plugin.Plugin;
 
 import java.util.Collection;
@@ -85,13 +84,6 @@ public interface PermissionsAPI {
    * with the NodeData object.
    */
   Optional<NodeData> getNodeData(String identifier);
-
-  /**
-   * @param identifier The String representation of the {@link NodePath} that's being requested.
-   * @return An empty {@link Optional} if there is no {@link NodePath} for the specified identifier, otherwise an optional
-   * with the NodePath object.
-   */
-  Optional<NodePath> getPath(String identifier);
 
   /**
    * @return A {@link Collection} of every {@link Node} that currently exists.
