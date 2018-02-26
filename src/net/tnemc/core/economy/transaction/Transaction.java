@@ -1,7 +1,7 @@
 package net.tnemc.core.economy.transaction;
 
 import net.tnemc.core.Reserve;
-import net.tnemc.core.economy.EconomyAPI;
+import net.tnemc.core.economy.ExtendedEconomyAPI;
 import net.tnemc.core.economy.currency.CurrencyEntry;
 import net.tnemc.core.economy.transaction.charge.TransactionCharge;
 import net.tnemc.core.economy.transaction.result.TransactionResult;
@@ -119,8 +119,8 @@ public interface Transaction {
    * @return The {@link TransactionResult} of the transaction.
    */
   default TransactionResult perform() {
-    if(Reserve.instance().economyProvided()) {
-      EconomyAPI api = Reserve.instance().economy().get();
+    if(Reserve.instance().economyProvided() && Reserve.instance().economy().supportTransactions()) {
+      ExtendedEconomyAPI api = (ExtendedEconomyAPI)Reserve.instance().economy();
       CurrencyEntry recipientInitial = recipientCharge().getEntry();
       recipientInitial.setAmount(api.getAccount(recipient()).getHoldings(recipientInitial.getWorld(), recipientInitial.getCurrency()));
       setRecipientBalance(recipientInitial);

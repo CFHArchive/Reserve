@@ -4,6 +4,7 @@ import net.tnemc.core.command.CommandManager;
 import net.tnemc.core.command.TNECommand;
 import net.tnemc.core.command.reserve.ReserveCommand;
 import net.tnemc.core.economy.EconomyAPI;
+import net.tnemc.core.economy.ExtendedEconomyAPI;
 import net.tnemc.core.permissions.PermissionsAPI;
 import net.tnemc.core.utils.Metrics;
 import org.bukkit.Bukkit;
@@ -14,7 +15,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 /**
  * Created by creatorfromhell on 8/9/2017.
@@ -48,8 +48,11 @@ public class Reserve extends JavaPlugin {
 
   public String defaultWorld = "Default";
 
-  public void onEnable() {
+  public void onLoad() {
     instance = this;
+  }
+
+  public void onEnable() {
     commandManager = new CommandManager();
 
     if(Bukkit.getWorlds().size() >= 1) {
@@ -98,11 +101,11 @@ public class Reserve extends JavaPlugin {
     permissionsProvider = name;
   }
 
-  public Optional<EconomyAPI> economy() {
-    return Optional.of(registeredEconomies.get(ecoProvider));
+  public EconomyAPI economy() {
+    return registeredEconomies.get(ecoProvider);
   }
-  public Optional<PermissionsAPI> permissions() {
-    return Optional.of(registeredPermissions.get(permissionsProvider));
+  public PermissionsAPI permissions() {
+    return registeredPermissions.get(permissionsProvider);
   }
 
   public boolean economyProvided() {

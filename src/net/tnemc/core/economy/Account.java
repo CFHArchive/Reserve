@@ -142,6 +142,38 @@ public interface Account {
   boolean hasHoldings(BigDecimal amount, Currency currency, String world);
 
   /**
+   * Used to set the funds to an account.
+   * @param amount The amount you wish to set this accounts's funds to.
+   * @return True if the funds were set for the account, otherwise false.
+   */
+  boolean setHoldings(BigDecimal amount);
+
+  /**
+   * Used to set the funds to an account.
+   * @param amount The amount you wish to set this accounts's funds to.
+   * @param world The name of the {@link World} associated with the amount.
+   * @return True if the funds were set for the account, otherwise false.
+   */
+  boolean setHoldings(BigDecimal amount, String world);
+
+  /**
+   * Used to set the funds to an account.
+   * @param amount The amount you wish to set this accounts's funds to.
+   * @param currency The {@link Currency} object associated with the amount.
+   * @return True if the funds were set for the account, otherwise false.
+   */
+  boolean setHoldings(BigDecimal amount, Currency currency);
+
+  /**
+   * Used to set the funds to an account.
+   * @param amount The amount you wish to set this accounts's funds to.
+   * @param currency The {@link Currency} object associated with the amount.
+   * @param world The name of the {@link World} associated with the amount.
+   * @return True if the funds were set for the account, otherwise false.
+   */
+  boolean setHoldings(BigDecimal amount, Currency currency, String world);
+
+  /**
    * Used to add funds to an account.
    * @param amount The amount you wish to add to this account.
    * @return True if the funds were added to the account, otherwise false.

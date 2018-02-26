@@ -62,7 +62,7 @@ public class ReserveEconomyCommand extends TNECommand {
   @Override
   public boolean execute(CommandSender sender, String command, String[] arguments) {
     if(Reserve.instance().economyProvided()) {
-      EconomyAPI api = Reserve.instance().economy().get();
+      EconomyAPI api = Reserve.instance().economy();
       sender.sendMessage(ChatColor.WHITE + "Economy Service: " + ChatColor.GREEN + api.name());
       sender.sendMessage(ChatColor.WHITE + " Supported Reserve Version: " + ChatColor.GREEN + api.version());
       return true;

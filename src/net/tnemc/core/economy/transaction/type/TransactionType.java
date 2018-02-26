@@ -1,6 +1,7 @@
 package net.tnemc.core.economy.transaction.type;
 
 import net.tnemc.core.Reserve;
+import net.tnemc.core.economy.ExtendedEconomyAPI;
 import net.tnemc.core.economy.transaction.Transaction;
 import net.tnemc.core.economy.transaction.TransactionAffected;
 import net.tnemc.core.economy.transaction.result.TransactionResult;
@@ -42,26 +43,29 @@ public interface TransactionType {
    * @return True if this transaction was voided successfully.
    */
   default boolean voidTransaction(Transaction transaction) {
-    boolean proceed = false;
+    if(Reserve.instance().economyProvided() && Reserve.instance().economy().supportTransactions()) {
+      ExtendedEconomyAPI api = (ExtendedEconomyAPI)Reserve.instance().economy();
+      boolean proceed = false;
 
-    if(affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.INITIATOR)) {
-      proceed = Reserve.instance().economy().get().getAccount(transaction.initiator()).canCharge(transaction.initiatorCharge().copy(true));
-    }
-    if(affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.RECIPIENT)) {
-      if(affected().equals(TransactionAffected.BOTH) && proceed || affected().equals(TransactionAffected.RECIPIENT)) {
-        proceed = Reserve.instance().economy().get().getAccount(transaction.recipient()).canCharge(transaction.recipientCharge().copy(true));
+      if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.INITIATOR)) {
+        proceed = api.getAccount(transaction.initiator()).canCharge(transaction.initiatorCharge().copy(true));
       }
-    }
+      if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.RECIPIENT)) {
+        if (affected().equals(TransactionAffected.BOTH) && proceed || affected().equals(TransactionAffected.RECIPIENT)) {
+          proceed = api.getAccount(transaction.recipient()).canCharge(transaction.recipientCharge().copy(true));
+        }
+      }
 
 
-    if(proceed) {
-      if(affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.INITIATOR)) {
-        Reserve.instance().economy().get().getAccount(transaction.initiator()).handleCharge(transaction.initiatorCharge().copy(true));
+      if (proceed) {
+        if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.INITIATOR)) {
+          api.getAccount(transaction.initiator()).handleCharge(transaction.initiatorCharge().copy(true));
+        }
+        if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.RECIPIENT)) {
+          api.getAccount(transaction.recipient()).handleCharge(transaction.recipientCharge().copy(true));
+        }
+        return true;
       }
-      if(affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.RECIPIENT)) {
-        Reserve.instance().economy().get().getAccount(transaction.recipient()).handleCharge(transaction.recipientCharge().copy(true));
-      }
-      return true;
     }
     return false;
   }
@@ -73,27 +77,30 @@ public interface TransactionType {
    * @return The {@link TransactionResult} of this {@link Transaction}.
    */
   default TransactionResult perform(Transaction transaction) {
-    boolean proceed = false;
+    if(Reserve.instance().economyProvided() && Reserve.instance().economy().supportTransactions()) {
+      ExtendedEconomyAPI api = (ExtendedEconomyAPI)Reserve.instance().economy();
+      boolean proceed = false;
 
-    if(affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.INITIATOR)) {
-      proceed = Reserve.instance().economy().get().getAccount(transaction.initiator()).canCharge(transaction.initiatorCharge());
-    }
-    if(affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.RECIPIENT)) {
-      if(affected().equals(TransactionAffected.BOTH) && proceed || affected().equals(TransactionAffected.RECIPIENT)) {
-        proceed = Reserve.instance().economy().get().getAccount(transaction.recipient()).canCharge(transaction.recipientCharge());
+      if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.INITIATOR)) {
+        proceed = api.getAccount(transaction.initiator()).canCharge(transaction.initiatorCharge());
       }
-    }
-
-
-    if(proceed) {
-      if(affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.INITIATOR)) {
-        Reserve.instance().economy().get().getAccount(transaction.initiator()).handleCharge(transaction.initiatorCharge());
+      if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.RECIPIENT)) {
+        if (affected().equals(TransactionAffected.BOTH) && proceed || affected().equals(TransactionAffected.RECIPIENT)) {
+          proceed = api.getAccount(transaction.recipient()).canCharge(transaction.recipientCharge());
+        }
       }
 
-      if(affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.RECIPIENT)) {
-        Reserve.instance().economy().get().getAccount(transaction.recipient()).handleCharge(transaction.recipientCharge());
+
+      if (proceed) {
+        if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.INITIATOR)) {
+          api.getAccount(transaction.initiator()).handleCharge(transaction.initiatorCharge());
+        }
+
+        if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.RECIPIENT)) {
+          api.getAccount(transaction.recipient()).handleCharge(transaction.recipientCharge());
+        }
+        return success();
       }
-      return success();
     }
     return fail();
   }

@@ -62,7 +62,7 @@ public class ReservePermissionsCommand extends TNECommand {
   @Override
   public boolean execute(CommandSender sender, String command, String[] arguments) {
     if(Reserve.instance().permissionsProvided()) {
-      PermissionsAPI api = Reserve.instance().permissions().get();
+      PermissionsAPI api = Reserve.instance().permissions();
       sender.sendMessage(ChatColor.WHITE + "Permissions Service: " + ChatColor.GREEN + api.name());
       sender.sendMessage(ChatColor.WHITE + " Supported Reserve Version: " + ChatColor.GREEN + api.version());
       return true;
