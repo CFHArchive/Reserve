@@ -1,4 +1,4 @@
-package net.tnemc.core;
+package net.tnemc.core.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;

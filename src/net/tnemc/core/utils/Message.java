@@ -1,4 +1,4 @@
-package net.tnemc.core;
+package net.tnemc.core.utils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;

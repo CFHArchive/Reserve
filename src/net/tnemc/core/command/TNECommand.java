@@ -1,6 +1,6 @@
 package net.tnemc.core.command;
 
-import net.tnemc.core.Message;
+import net.tnemc.core.utils.Message;
 import net.tnemc.core.Reserve;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
