@@ -631,6 +631,19 @@ public interface EconomyAPI {
   String format(BigDecimal amount, String world, String currency);
 
   /**
+   * Purges the database of accounts with the default balance.
+   * @return True if the purge was completed successfully.
+   */
+  boolean purgeAccounts();
+
+  /**
+   * Purges the database of accounts with a balance under the specified one.
+   * @param amount The amount that an account's balance has to be under in order to be removed.
+   * @return True if the purge was completed successfully.
+   */
+  boolean purgeAccountsUnder(BigDecimal amount);
+
+  /**
    * Whether or not this API Implementation supports the Transaction System.
    */
   default boolean supportTransactions() {
