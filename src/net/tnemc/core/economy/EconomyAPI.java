@@ -44,6 +44,32 @@ public interface EconomyAPI {
   boolean enabled();
 
   /**
+   * Used to get the plural name of the default currency.
+   * @return The plural name of the default currency.
+   */
+  String currencyDefaultPlural();
+
+  /**
+   * Used to get the singular name of the default currency.
+   * @return The plural name of the default currency.
+   */
+  String currencyDefaultSingular();
+
+  /**
+   * Used to get the plural name of the default currency for a world.
+   * @param world The world to be used in this check.
+   * @return The plural name of the default currency.
+   */
+  String currencyDefaultPlural(String world);
+
+  /**
+   * Used to get the singular name of the default currency for a world.
+   * @param world The world to be used in this check.
+   * @return The plural name of the default currency.
+   */
+  String currencyDefaultSingular(String world);
+
+  /**
    * Checks to see if a {@link Currency} exists with this name.
    * @param name The name of the {@link Currency} to search for.
    * @return True if the currency exists, else false.
