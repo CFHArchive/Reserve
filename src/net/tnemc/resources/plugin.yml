@@ -7,3 +7,4 @@ author: creatorfromhell
 #Plugin Data
 main: net.tnemc.core.Reserve
 load: startup
+softdepend: [Vault]

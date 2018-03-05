@@ -1,16 +1,18 @@
 package net.tnemc.core;
 
+import net.milkbowl.vault.economy.Economy;
 import net.tnemc.core.command.CommandManager;
 import net.tnemc.core.command.TNECommand;
 import net.tnemc.core.command.reserve.ReserveCommand;
 import net.tnemc.core.economy.EconomyAPI;
-import net.tnemc.core.economy.ExtendedEconomyAPI;
+import net.tnemc.core.economy.Economy_Vault;
 import net.tnemc.core.permissions.PermissionsAPI;
 import net.tnemc.core.utils.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
@@ -39,6 +41,9 @@ import java.util.Map;
 public class Reserve extends JavaPlugin {
 
   private static Reserve instance;
+
+  private Economy_Vault vaultEconomy;
+
   protected CommandManager commandManager;
 
   private Map<String, EconomyAPI> registeredEconomies = new HashMap<>();
@@ -50,6 +55,12 @@ public class Reserve extends JavaPlugin {
 
   public void onLoad() {
     instance = this;
+
+    //Initialize Economy Classes
+    if(getServer().getPluginManager().getPlugin("Vault") != null) {
+      vaultEconomy = new Economy_Vault(this);
+      setupVault();
+    }
   }
 
   public void onEnable() {
@@ -145,5 +156,10 @@ public class Reserve extends JavaPlugin {
       return ecoCommand.execute(sender, label, arguments);
     }
     return false;
+  }
+
+  private void setupVault() {
+    getServer().getServicesManager().register(Economy.class, vaultEconomy, this, ServicePriority.Highest);
+    getLogger().info("Hooked into Vault");
   }
 }
