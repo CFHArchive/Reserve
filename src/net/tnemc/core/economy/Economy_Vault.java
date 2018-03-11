@@ -46,7 +46,7 @@ public class Economy_Vault implements Economy {
 
   @Override
   public String getName() {
-    return "TheNewEconomy";
+    return "Reserve";
   }
 
   @Override
