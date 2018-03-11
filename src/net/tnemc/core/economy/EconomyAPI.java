@@ -44,6 +44,13 @@ public interface EconomyAPI {
   boolean enabled();
 
   /**
+   * @return Whether or not this implementation should have a default Vault implementation.
+   */
+  default boolean vault() {
+    return true;
+  }
+
+  /**
    * Used to get the plural name of the default currency.
    * @return The plural name of the default currency.
    */

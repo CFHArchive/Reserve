@@ -83,7 +83,7 @@ public class Reserve extends JavaPlugin {
     getLogger().info("Economy Provider registered: " + provider.name());
     if(provider.enabled()) {
       ecoProvider = provider.name();
-      if(getServer().getPluginManager().getPlugin("Vault") != null) {
+      if(provider.vault() && getServer().getPluginManager().getPlugin("Vault") != null) {
         vaultEconomy = new Economy_Vault(this);
         setupVault();
       }
