@@ -162,9 +162,7 @@ public class Reserve extends JavaPlugin {
   }
 
   private void setupVault() {
-    if(!getServer().getServicesManager().isProvidedFor(Economy.class)) {
-      getServer().getServicesManager().register(Economy.class, vaultEconomy, this, ServicePriority.Highest);
-      getLogger().info("Hooked into Vault");
-    }
+    getServer().getServicesManager().register(Economy.class, vaultEconomy, this, ServicePriority.Highest);
+    getLogger().info("Hooked into Vault");
   }
 }

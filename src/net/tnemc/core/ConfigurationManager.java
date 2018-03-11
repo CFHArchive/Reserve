@@ -3,6 +3,7 @@ package net.tnemc.core;
 import net.tnemc.core.configuration.CommentedConfiguration;
 import net.tnemc.core.configuration.ConfigNodes;
 import net.tnemc.core.utils.FileMgmt;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 
@@ -10,9 +11,9 @@ import static java.util.logging.Level.SEVERE;
 
 public class ConfigurationManager {
 	private static CommentedConfiguration config, newConfig;
-	private static Reserve plugin;
+	private static JavaPlugin plugin;
 
-	public static void initialize(Reserve plugin) {
+	public static void initialize(JavaPlugin plugin) {
 		ConfigurationManager.plugin = plugin;
 	}
 
