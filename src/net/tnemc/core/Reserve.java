@@ -57,11 +57,6 @@ public class Reserve extends JavaPlugin {
     instance = this;
 
     ConfigurationManager.initialize(this);
-    //Initialize Economy Classes
-    if(getServer().getPluginManager().getPlugin("Vault") != null) {
-      vaultEconomy = new Economy_Vault(this);
-      setupVault();
-    }
   }
 
   public void onEnable() {
@@ -88,6 +83,10 @@ public class Reserve extends JavaPlugin {
     getLogger().info("Economy Provider registered: " + provider.name());
     if(provider.enabled()) {
       ecoProvider = provider.name();
+      if(getServer().getPluginManager().getPlugin("Vault") != null) {
+        vaultEconomy = new Economy_Vault(this);
+        setupVault();
+      }
     }
     registeredEconomies.put(provider.name(), provider);
   }
@@ -98,10 +97,6 @@ public class Reserve extends JavaPlugin {
       permissionsProvider = provider.name();
     }
     registeredPermissions.put(provider.name(), provider);
-    if(getServer().getPluginManager().getPlugin("Vault") != null) {
-      vaultEconomy = new Economy_Vault(this);
-      setupVault();
-    }
   }
 
   public Map<String, EconomyAPI> getRegisteredEconomies() {
