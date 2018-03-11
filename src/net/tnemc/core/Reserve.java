@@ -55,11 +55,21 @@ public class Reserve extends JavaPlugin {
 
   public void onLoad() {
     instance = this;
+
+    ConfigurationManager.initialize(this);
+    //Initialize Economy Classes
+    if(getServer().getPluginManager().getPlugin("Vault") != null) {
+      vaultEconomy = new Economy_Vault(this);
+      setupVault();
+    }
   }
 
   public void onEnable() {
     commandManager = new CommandManager();
 
+    if (!ConfigurationManager.loadSettings()){
+      // Failed to load configuration. You decide what to do.
+    }
     if(Bukkit.getWorlds().size() >= 1) {
       defaultWorld = Bukkit.getServer().getWorlds().get(0).getName();
     } else {
