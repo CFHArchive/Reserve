@@ -81,6 +81,7 @@ public class Reserve extends JavaPlugin {
 
   public void registerProvider(EconomyAPI provider) {
     getLogger().info("Economy Provider registered: " + provider.name());
+    registeredEconomies.put(provider.name(), provider);
     if(provider.enabled()) {
       ecoProvider = provider.name();
       if(provider.vault() && getServer().getPluginManager().getPlugin("Vault") != null) {
@@ -88,7 +89,6 @@ public class Reserve extends JavaPlugin {
         setupVault();
       }
     }
-    registeredEconomies.put(provider.name(), provider);
   }
 
   public void registerProvider(PermissionsAPI provider) {
