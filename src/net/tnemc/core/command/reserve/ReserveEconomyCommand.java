@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
  *
  * Reserve API
  *
- * Copyright (C) 2017 creatorfromhell
+ * Copyright (C) 2018 creatorfromhell
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published

@@ -1,5 +1,7 @@
 package net.tnemc.core.chat;
 
+import net.tnemc.core.chat.language.LanguageAPI;
+
 import java.util.Optional;
 
 /**
@@ -7,7 +9,7 @@ import java.util.Optional;
  * <p>
  * Reserve API
  * <p>
- * Copyright (C) 2017 creatorfromhell
+ * Copyright (C) 2018 creatorfromhell
  * <p>
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published
@@ -48,4 +50,14 @@ public interface ChatAPI {
    * @return The instance of this implementation's {@link ChatRoomAPI} if applicable.
    */
   Optional<ChatRoomAPI> chatRoomAPI();
+
+  /**
+   * @return Whether or not this implementation supports the {@link LanguageAPI}.
+   */
+  boolean supportsLanguage();
+
+  /**
+   * @return The instance of this implementation's {@link LanguageAPI} if applicable.
+   */
+  Optional<LanguageAPI> languageAPI();
 }
