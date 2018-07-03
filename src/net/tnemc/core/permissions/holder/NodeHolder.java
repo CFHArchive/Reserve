@@ -1,6 +1,7 @@
 package net.tnemc.core.permissions.holder;
 
 import net.tnemc.core.permissions.node.Node;
+import net.tnemc.core.utils.CostObject;
 
 import java.util.Collection;
 import java.util.Map;
@@ -11,7 +12,7 @@ import java.util.Optional;
  * <p>
  * Reserve API
  * <p>
- * Copyright (C) 2017 creatorfromhell
+ * Copyright (C) 2018 creatorfromhell
  * <p>
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published
@@ -49,6 +50,62 @@ public interface NodeHolder {
    * @return True if this holder contains a child {@link NodeHolder} with the specified identifier, otherwise false.
    */
   boolean hasChild(String identifier);
+
+  /**
+   * @param node The identifier of the {@link Node} involved in this check.
+   * @return True if the node was added to this {@link NodeHolder}.
+   */
+  boolean addPermission(String node);
+
+  /**
+   * @param node The identifier of the {@link Node} involved in this check.
+   * @param expiration The time at which the {@link Node} should be removed from this {@link NodeHolder}.
+   * @return True if the node was added to this {@link NodeHolder}.
+   */
+  boolean addPermission(String node, long expiration);
+
+  /**
+   * @param node The identifier of the {@link Node} involved in this check.
+   * @param cost The {@link CostObject} associated with the addition of the {@link Node}.
+   * @return True if the node was added to this {@link NodeHolder}.
+   */
+  boolean addPermission(String node, CostObject cost);
+
+  /**
+   * @param node The identifier of the {@link Node} involved in this check.
+   * @param expiration The time at which the {@link Node} should be removed from this {@link NodeHolder}.
+   * @param cost The {@link CostObject} associated with the addition of the {@link Node}.
+   * @return True if the node was added to this {@link NodeHolder}.
+   */
+  boolean addPermission(String node, long expiration, CostObject cost);
+
+  /**
+   * @param node The identifier of the {@link Node} involved in this check.
+   * @return True if the node was removed from this {@link NodeHolder}.
+   */
+  boolean removePermission(String node);
+
+  /**
+   * @param node The identifier of the {@link Node} involved in this check.
+   * @param expiration The time at which the {@link Node} should be added back to this {@link NodeHolder}.
+   * @return True if the node was removed from this {@link NodeHolder}.
+   */
+  boolean removePermission(String node, long expiration);
+
+  /**
+   * @param node The identifier of the {@link Node} involved in this check.
+   * @param cost The {@link CostObject} associated with the removal of the {@link Node}.
+   * @return True if the node was removed from this {@link NodeHolder}.
+   */
+  boolean removePermission(String node, CostObject cost);
+
+  /**
+   * @param node The identifier of the {@link Node} involved in this check.
+   * @param expiration The time at which the {@link Node} should be removed from this {@link NodeHolder}.
+   * @param cost The {@link CostObject} associated with the removal of the {@link Node}.
+   * @return True if the node was removed from this {@link NodeHolder}.
+   */
+  boolean removePermission(String node, long expiration, CostObject cost);
 
   /**
    * @param node The identifier of the {@link Node} involved in this check.

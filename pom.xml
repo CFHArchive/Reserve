@@ -46,6 +46,26 @@
         </license>
     </licenses>
 
+    <organization>
+        <name>The New Economy</name>
+        <url>https://tnemc.net</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>creatorfromhell</id>
+            <name>Daniel "creatorfromhell" Vidmar</name>
+            <email>daniel.viddy@gmail.com</email>
+            <url>https://creatorfromhell.com</url>
+            <organization>The New Economy</organization>
+            <organizationUrl>https://tnemc.net</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>America/New_York</timezone>
+        </developer>
+    </developers>
+
     <distributionManagement>
         <repository>
             <id>bintray-theneweconomy-java</id>

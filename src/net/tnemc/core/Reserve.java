@@ -1,6 +1,7 @@
 package net.tnemc.core;
 
 import net.milkbowl.vault.economy.Economy;
+import net.tnemc.core.chat.ChatAPI;
 import net.tnemc.core.command.CommandManager;
 import net.tnemc.core.command.TNECommand;
 import net.tnemc.core.command.reserve.ReserveCommand;
@@ -15,7 +16,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -23,7 +24,7 @@ import java.util.Map;
  *
  * Reserve API
  *
- * Copyright (C) 2017 creatorfromhell
+ * Copyright (C) 2018 creatorfromhell
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published
@@ -46,10 +47,12 @@ public class Reserve extends JavaPlugin {
 
   protected CommandManager commandManager;
 
-  private Map<String, EconomyAPI> registeredEconomies = new HashMap<>();
-  private Map<String, PermissionsAPI> registeredPermissions = new HashMap<>();
+  private LinkedHashMap<String, EconomyAPI> registeredEconomies = new LinkedHashMap<>();
+  private LinkedHashMap<String, PermissionsAPI> registeredPermissions = new LinkedHashMap<>();
+  private LinkedHashMap<String, ChatAPI> registeredChats = new LinkedHashMap<>();
   private String ecoProvider = null;
   private String permissionsProvider = null;
+  private String chatProvider = null;
 
   public String defaultWorld = "Default";
 
@@ -99,12 +102,24 @@ public class Reserve extends JavaPlugin {
     registeredPermissions.put(provider.name(), provider);
   }
 
-  public Map<String, EconomyAPI> getRegisteredEconomies() {
+  public void registerProvider(ChatAPI provider) {
+    getLogger().info("Chat Provider registered: " + provider.name());
+    if(provider.enabled()) {
+      chatProvider = provider.name();
+    }
+    registeredChats.put(provider.name(), provider);
+  }
+
+  public LinkedHashMap<String, EconomyAPI> getRegisteredEconomies() {
     return registeredEconomies;
   }
 
-  public Map<String, PermissionsAPI> getRegisteredPermissions() {
+  public LinkedHashMap<String, PermissionsAPI> getRegisteredPermissions() {
     return registeredPermissions;
+  }
+
+  public LinkedHashMap<String, ChatAPI> getRegisteredChats() {
+    return registeredChats;
   }
 
   public void setEconomy(String name) {
@@ -115,9 +130,14 @@ public class Reserve extends JavaPlugin {
     permissionsProvider = name;
   }
 
+  public void setChat(String name) {
+    chatProvider = name;
+  }
+
   public EconomyAPI economy() {
     return registeredEconomies.get(ecoProvider);
   }
+
   public PermissionsAPI permissions() {
     return registeredPermissions.get(permissionsProvider);
   }
@@ -128,6 +148,10 @@ public class Reserve extends JavaPlugin {
 
   public boolean permissionsProvided() {
     return permissionsProvider != null;
+  }
+
+  public boolean chatProvided() {
+    return chatProvider != null;
   }
 
   private CommandManager getCommandManager() {
