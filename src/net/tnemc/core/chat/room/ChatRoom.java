@@ -1,6 +1,6 @@
 package net.tnemc.core.chat.room;
 
-import net.tnemc.core.chat.CostObject;
+import net.tnemc.core.utils.CostObject;
 import org.bukkit.command.CommandSender;
 
 import java.util.List;
@@ -57,12 +57,12 @@ public interface ChatRoom {
   UUID owner();
 
   /**
-   * @return The {@link net.tnemc.core.chat.CostObject} for joining this room.
+   * @return The {@link CostObject} for joining this room.
    */
   CostObject joinCost();
 
   /**
-   * @return The {@link net.tnemc.core.chat.CostObject} for sending a message in this room.
+   * @return The {@link CostObject} for sending a message in this room.
    */
   CostObject messageCost();
 

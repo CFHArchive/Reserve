@@ -1,4 +1,4 @@
-package net.tnemc.core.chat;
+package net.tnemc.core.utils;
 
 import java.math.BigDecimal;
 
