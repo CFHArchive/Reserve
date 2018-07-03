@@ -58,11 +58,12 @@ public interface LanguageAPI {
    * Attempts to add a message to a language for a specified node identifier.
    * @param language The name of the language.
    * @param owner The owner of the message, usually plugin name.
+   * @param description An array containing lines to be used as a description for this message.
    * @param node The node used to identify the message.
    * @param translation The translation to be used for the language.
    * @return True if the message was added.
    */
-  boolean addMessage(String language, String owner, String node, String translation);
+  boolean addMessage(String language, String owner, String[] description, String node, String translation);
 
   /**
    * Attempts to remove a message from a language for a specified node identifier.

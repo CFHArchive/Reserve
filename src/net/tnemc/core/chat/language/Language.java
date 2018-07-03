@@ -46,11 +46,12 @@ public interface Language {
   /**
    * Attempts to add a message to this language for a specified node identifier.
    * @param owner The owner of the message, usually plugin name.
+   * @param description An array containing lines to be used as a description for this message.
    * @param node The node used to identify the message.
    * @param translation The translation to be used for this language.
    * @return True if the message was added.
    */
-  boolean addMessage(String owner, String node, String translation);
+  boolean addMessage(String owner, String[] description, String node, String translation);
 
   /**
    * Attempts to remove a message from this language for a specified node identifier.
