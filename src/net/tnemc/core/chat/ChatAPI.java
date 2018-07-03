@@ -1,7 +1,5 @@
 package net.tnemc.core.chat;
 
-import net.tnemc.core.chat.language.LanguageAPI;
-
 import java.util.Optional;
 
 /**
@@ -50,14 +48,4 @@ public interface ChatAPI {
    * @return The instance of this implementation's {@link ChatRoomAPI} if applicable.
    */
   Optional<ChatRoomAPI> chatRoomAPI();
-
-  /**
-   * @return Whether or not this implementation supports the {@link LanguageAPI}.
-   */
-  boolean supportsLanguage();
-
-  /**
-   * @return The instance of this implementation's {@link LanguageAPI} if applicable.
-   */
-  Optional<LanguageAPI> languageAPI();
 }

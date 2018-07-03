@@ -1,4 +1,4 @@
-package net.tnemc.core.chat.language;
+package net.tnemc.core.language;
 
 import java.util.Optional;
 
@@ -21,6 +21,21 @@ import java.util.Optional;
  * If not, see <http://www.gnu.org/licenses/>.
  **/
 public interface LanguageAPI {
+
+  /**
+   * @return The name of the LanguageAPI implementation.
+   */
+  String name();
+
+  /**
+   * @return The version of Reserve the LanguageAPI implementation supports.
+   */
+  String version();
+
+  /**
+   * @return Whether or not this implementation is enabled.
+   */
+  boolean enabled();
 
   /**
    * Determines if a specific language exists.

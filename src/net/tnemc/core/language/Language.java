@@ -1,4 +1,4 @@
-package net.tnemc.core.chat.language;
+package net.tnemc.core.language;
 
 import java.util.Optional;
 
