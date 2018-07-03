@@ -2,6 +2,8 @@ package net.tnemc.core.chat;
 
 import net.tnemc.core.chat.translate.TranslationAPI;
 
+import java.util.UUID;
+
 /**
  * Created by Daniel.
  * <p>
@@ -38,6 +40,62 @@ public interface ChatAPI {
    * @return Whether or not this implementation is enabled.
    */
   boolean enabled();
+
+  /**
+   * @param player The player to use for the check.
+   * @return The prefix of the player.
+   */
+  String getPrefix(UUID player);
+
+  /**
+   * @param player The player to use for the check.
+   * @param world The world to use for the check.
+   * @return The prefix of the player in the world.
+   */
+  String getPrefix(UUID player, String world);
+
+  /**
+   * @param player The player to use for the check.
+   * @param prefix The prefix to set for the player.
+   * @return True if the player's prefix was set.
+   */
+  boolean setPrefix(UUID player, String prefix);
+
+  /**
+   * @param player The player to use for the check.
+   * @param prefix The prefix to set for the player.
+   * @param world The world to use for the check.
+   * @return True if the player's prefix was set.
+   */
+  boolean setPrefix(UUID player, String prefix, String world);
+
+  /**
+   * @param player The player to use for the check.
+   * @return The suffix of the player.
+   */
+  String getSuffix(UUID player);
+
+  /**
+   * @param player The player to use for the check.
+   * @param world The world to use for the check.
+   * @return The suffix of the player in the world.
+   */
+  String getSuffix(UUID player, String world);
+
+  /**
+   * @param player The player to use for the check.
+   * @param suffix The suffix to set for the player.
+   * @return True if the player's suffix was set.
+   */
+  boolean setSuffix(UUID player, String suffix);
+
+  /**
+   * @param player The player to use for the check.
+   * @param suffix The suffix to set for the player.
+   * @param world The world to use for the check.
+   * @return True if the player's suffix was set.
+   */
+  boolean setSuffix(UUID player, String suffix, String world);
 
   /**
    * @return Whether or not this implementation supports the {@link TranslationAPI}.
