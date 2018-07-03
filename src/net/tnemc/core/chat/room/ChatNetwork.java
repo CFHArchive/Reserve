@@ -1,5 +1,7 @@
 package net.tnemc.core.chat.room;
 
+import org.bukkit.command.CommandSender;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -47,4 +49,32 @@ public interface ChatNetwork {
    * @return A list of the {@link ChatRoom rooms} in this network.
    */
   List<ChatRoom> getRooms();
+
+  /**
+   * @return The list of members in this chat network that are currently in network chat. This means
+   * that they are sending messages to all active participants in every room of the network.
+   */
+  List<UUID> networkChatParticipants();
+
+  /**
+   * @return The list of members in this chat network.
+   */
+  List<UUID> participants();
+
+  /**
+   * Used to send a message to all active participants in every chat room in this network.
+   * @param sender The sender of the message.
+   * @param message The message being sent.
+   * @return True if the message was sent.
+   */
+  boolean broadcast(CommandSender sender, String message);
+
+  /**
+   * Used to send a message to all active participants in every chat room in this network.
+   * @param sender The sender of the message.
+   * @param message The message being sent.
+   * @param node The permission node required to see this message.
+   * @return True if the message was sent.
+   */
+  boolean broadcast(CommandSender sender, String message, String node);
 }

@@ -57,6 +57,21 @@ public interface ChatRoomAPI {
   ChatNetwork getNetwork(String name, String world);
 
   /**
+   * Used to determine if a player is in network chat.
+   * @param player The player to use for the check.
+   * @return True if the player is in network chat, which means their messages are sent to everyone
+   * in the network, otherwise false.
+   */
+  boolean inNetworkChat(UUID player);
+
+  /**
+   * Returns the network that the specified player is currently talking in, otherwise null;
+   * @param player The player to use for the check.
+   * @return The {@link ChatNetwork} that the player is currently talking in.
+   */
+  ChatNetwork getActiveNetwork(UUID player);
+
+  /**
    * Returns whether a chat room exists or not.
    * @param name The name of the chat room.
    * @return True if it exists, otherwise false.

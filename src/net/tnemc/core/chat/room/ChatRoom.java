@@ -1,6 +1,7 @@
 package net.tnemc.core.chat.room;
 
 import net.tnemc.core.chat.CostObject;
+import org.bukkit.command.CommandSender;
 
 import java.util.List;
 import java.util.UUID;
@@ -66,7 +67,12 @@ public interface ChatRoom {
   CostObject messageCost();
 
   /**
-   * @return The list of members in this chat room.
+   * @return The list of members in this chat room that are currently receiving hat messages from this room.
+   */
+  List<UUID> activeParticipants();
+
+  /**
+   * @return The list of members in this chat room, which may or may not be receiving messages from this room.
    */
   List<UUID> participants();
 
@@ -127,4 +133,21 @@ public interface ChatRoom {
   default boolean hasReadPermission() {
     return !readPermission().equalsIgnoreCase("");
   }
+
+  /**
+   * Used to send a message to all active participants in this room.
+   * @param sender The sender of the message.
+   * @param message The message being sent.
+   * @return True if the message was sent.
+   */
+  boolean broadcast(CommandSender sender, String message);
+
+  /**
+   * Used to send a message to all active participants in this room.
+   * @param sender The sender of the message.
+   * @param message The message being sent.
+   * @param node The permission node required to see this message.
+   * @return True if the message was sent.
+   */
+  boolean broadcast(CommandSender sender, String message, String node);
 }

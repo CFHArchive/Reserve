@@ -1,6 +1,6 @@
 package net.tnemc.core.chat;
 
-import java.util.Optional;
+import net.tnemc.core.chat.translate.TranslationAPI;
 
 /**
  * Created by Daniel.
@@ -40,6 +40,16 @@ public interface ChatAPI {
   boolean enabled();
 
   /**
+   * @return Whether or not this implementation supports the {@link TranslationAPI}.
+   */
+  boolean supportsTranslation();
+
+  /**
+   * @return The instance of this implementation's {@link TranslationAPI} if applicable.
+   */
+  TranslationAPI translationAPI();
+
+  /**
    * @return Whether or not this implementation supports the {@link ChatRoomAPI}.
    */
   boolean supportsChatRooms();
@@ -47,5 +57,5 @@ public interface ChatAPI {
   /**
    * @return The instance of this implementation's {@link ChatRoomAPI} if applicable.
    */
-  Optional<ChatRoomAPI> chatRoomAPI();
+  ChatRoomAPI chatRoomAPI();
 }
