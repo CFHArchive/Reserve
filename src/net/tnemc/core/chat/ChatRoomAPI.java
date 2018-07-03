@@ -1,5 +1,7 @@
 package net.tnemc.core.chat;
 
+import net.tnemc.core.chat.room.ChatNetwork;
+import net.tnemc.core.chat.room.ChatRoom;
 import net.tnemc.core.chat.room.RoomType;
 
 import java.util.UUID;
@@ -25,6 +27,36 @@ import java.util.UUID;
 public interface ChatRoomAPI {
 
   /**
+   * Returns whether a chat network exists or not.
+   * @param name The name of the chat network.
+   * @return True if it exists, otherwise false.
+   */
+  boolean hasNetwork(String name);
+
+  /**
+   * Returns whether a chat network exists or not.
+   * @param name The name of the chat network.
+   * @param world The name of the world.
+   * @return True if it exists, otherwise false.
+   */
+  boolean hasNetwork(String name, String world);
+
+  /**
+   * Returns the ChatNetwork object if it exists.
+   * @param name The name of the chat network.
+   * @return The chat network with the specified name if it exists, otherwise false.
+   */
+  ChatNetwork getNetwork(String name);
+
+  /**
+   * Returns the ChatNetwork object if it exists.
+   * @param name The name of the chat network.
+   * @param world The name of the world.
+   * @return The chat network with the specified name if it exists, otherwise false.
+   */
+  ChatNetwork getNetwork(String name, String world);
+
+  /**
    * Returns whether a chat room exists or not.
    * @param name The name of the chat room.
    * @return True if it exists, otherwise false.
@@ -38,6 +70,21 @@ public interface ChatRoomAPI {
    * @return True if it exists, otherwise false.
    */
   boolean hasRoom(String name, String world);
+
+  /**
+   * Returns the ChatRoom object if it exists.
+   * @param name The name of the chat room.
+   * @return The chat room with the specified name if it exists, otherwise false.
+   */
+  ChatRoom getRoom(String name);
+
+  /**
+   * Returns the ChatRoom object if it exists.
+   * @param name The name of the chat room.
+   * @param world The name of the world.
+   * @return The chat room with the specified name if it exists, otherwise false.
+   */
+  ChatRoom getRoom(String name, String world);
 
   /**
    * Returns whether a player is a member of a chat room or not.

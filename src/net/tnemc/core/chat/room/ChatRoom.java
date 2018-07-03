@@ -31,6 +31,16 @@ public interface ChatRoom {
   String name();
 
   /**
+   * @return True if this room has a {@link ChatNetwork}.
+   */
+  boolean hasNetwork();
+
+  /**
+   * @return The ChatNetwork this room is associated with, otherwise null if it has no network.
+   */
+  ChatNetwork getNetwork();
+
+  /**
    * @return The {@link RoomType} associated with this room.
    */
   RoomType type();
