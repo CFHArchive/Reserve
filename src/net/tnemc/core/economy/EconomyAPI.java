@@ -615,12 +615,16 @@ public interface EconomyAPI {
 
   /**
    * Used to transfer funds from one account to another.
+   *
    * @param fromIdentifier The identifier of the account that the holdings will be coming from.
    * @param toIdentifier The identifier of the account that the holdings will be going to.
    * @param amount The amount you wish to remove from this account.
+   *
    * @return True if the funds were transferred.
    */
-  boolean transferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount);
+  default boolean transferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount) {
+    return removeHoldings(fromIdentifier, amount) && addHoldings(toIdentifier, amount);
+  }
 
   /**
    * Used to transfer funds from one account to another.
@@ -630,37 +634,9 @@ public interface EconomyAPI {
    * @param world The name of the {@link World} associated with the amount.
    * @return True if the funds were transferred.
    */
-  boolean transferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount, String world);
-
-  /**
-   * Used to transfer funds from one account to another.
-   * @param fromIdentifier The identifier of the account that the holdings will be coming from.
-   * @param toIdentifier The identifier of the account that the holdings will be going to.
-   * @param amount The amount you wish to remove from this account.
-   * @param world The name of the {@link World} associated with the amount.
-   * @param currency The {@link Currency} associated with the balance.
-   * @return True if the funds were transferred.
-   */
-  boolean transferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount, String world, String currency);
-
-  /**
-   * Used to transfer funds from one account to another.
-   * @param fromIdentifier The identifier of the account that the holdings will be coming from.
-   * @param toIdentifier The identifier of the account that the holdings will be going to.
-   * @param amount The amount you wish to remove from this account.
-   * @return True if the funds were transferred.
-   */
-  boolean transferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount);
-
-  /**
-   * Used to transfer funds from one account to another.
-   * @param fromIdentifier The identifier of the account that the holdings will be coming from.
-   * @param toIdentifier The identifier of the account that the holdings will be going to.
-   * @param amount The amount you wish to remove from this account.
-   * @param world The name of the {@link World} associated with the amount.
-   * @return True if the funds were transferred.
-   */
-  boolean transferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount, String world);
+  default boolean transferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount, String world) {
+    return removeHoldings(fromIdentifier, amount, world) && addHoldings(toIdentifier, amount, world);
+  }
 
   /**
    * Used to transfer funds from one account to another.
@@ -671,40 +647,45 @@ public interface EconomyAPI {
    * @param currency The {@link Currency} associated with the balance.
    * @return True if the funds were transferred.
    */
-  boolean transferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount, String world, String currency);
+  default boolean transferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount, String world, String currency) {
+    return removeHoldings(fromIdentifier, amount, world, currency) && addHoldings(toIdentifier, amount, world, currency);
+  }
 
   /**
-   * Used to determine if a call to the corresponding transferHoldings method would be successful. This method does not
-   * affect an account's funds.
+   * Used to transfer funds from one account to another.
    * @param fromIdentifier The identifier of the account that the holdings will be coming from.
    * @param toIdentifier The identifier of the account that the holdings will be going to.
    * @param amount The amount you wish to remove from this account.
-   * @return True if a call to the corresponding transferHoldings method would return true, otherwise false.
+   * @return True if the funds were transferred.
    */
-  boolean canTransferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount);
+  default boolean transferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount) {
+    return removeHoldings(fromIdentifier, amount) && addHoldings(toIdentifier, amount);
+  }
 
   /**
-   * Used to determine if a call to the corresponding transferHoldings method would be successful. This method does not
-   * affect an account's funds.
+   * Used to transfer funds from one account to another.
    * @param fromIdentifier The identifier of the account that the holdings will be coming from.
    * @param toIdentifier The identifier of the account that the holdings will be going to.
    * @param amount The amount you wish to remove from this account.
    * @param world The name of the {@link World} associated with the amount.
-   * @return True if a call to the corresponding transferHoldings method would return true, otherwise false.
+   * @return True if the funds were transferred.
    */
-  boolean canTransferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount, String world);
+  default boolean transferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount, String world) {
+    return removeHoldings(fromIdentifier, amount, world) && addHoldings(toIdentifier, amount, world);
+  }
 
   /**
-   * Used to determine if a call to the corresponding transferHoldings method would be successful. This method does not
-   * affect an account's funds.
+   * Used to transfer funds from one account to another.
    * @param fromIdentifier The identifier of the account that the holdings will be coming from.
    * @param toIdentifier The identifier of the account that the holdings will be going to.
    * @param amount The amount you wish to remove from this account.
    * @param world The name of the {@link World} associated with the amount.
    * @param currency The {@link Currency} associated with the balance.
-   * @return True if a call to the corresponding transferHoldings method would return true, otherwise false.
+   * @return True if the funds were transferred.
    */
-  boolean canTransferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount, String world, String currency);
+  default boolean transferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount, String world, String currency) {
+    return removeHoldings(fromIdentifier, amount, world, currency) && addHoldings(toIdentifier, amount, world, currency);
+  }
 
   /**
    * Used to determine if a call to the corresponding transferHoldings method would be successful. This method does not
@@ -714,7 +695,9 @@ public interface EconomyAPI {
    * @param amount The amount you wish to remove from this account.
    * @return True if a call to the corresponding transferHoldings method would return true, otherwise false.
    */
-  boolean canTransferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount);
+  default boolean canTransferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount) {
+    return canRemoveHoldings(fromIdentifier, amount) && canAddHoldings(toIdentifier, amount);
+  }
 
   /**
    * Used to determine if a call to the corresponding transferHoldings method would be successful. This method does not
@@ -725,7 +708,9 @@ public interface EconomyAPI {
    * @param world The name of the {@link World} associated with the amount.
    * @return True if a call to the corresponding transferHoldings method would return true, otherwise false.
    */
-  boolean canTransferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount, String world);
+  default boolean canTransferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount, String world) {
+    return canRemoveHoldings(fromIdentifier, amount, world) && canAddHoldings(toIdentifier, amount, world);
+  }
 
   /**
    * Used to determine if a call to the corresponding transferHoldings method would be successful. This method does not
@@ -737,7 +722,54 @@ public interface EconomyAPI {
    * @param currency The {@link Currency} associated with the balance.
    * @return True if a call to the corresponding transferHoldings method would return true, otherwise false.
    */
-  boolean canTransferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount, String world, String currency);
+  default boolean canTransferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount, String world, String currency) {
+    return canRemoveHoldings(fromIdentifier, amount, world, currency) && canAddHoldings(toIdentifier, amount, world, currency);
+  }
+
+  /**
+   * Used to determine if a call to the corresponding transferHoldings method would be successful. This method does not
+   * affect an account's funds.
+   * @param fromIdentifier The identifier of the account that the holdings will be coming from.
+   * @param toIdentifier The identifier of the account that the holdings will be going to.
+   * @param amount The amount you wish to remove from this account.
+   * @return True if a call to the corresponding transferHoldings method would return true, otherwise false.
+   */
+  default boolean canTransferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount) {
+    return canRemoveHoldings(fromIdentifier, amount) && canAddHoldings(toIdentifier, amount);
+  }
+
+  /**
+   * Used to determine if a call to the corresponding transferHoldings method would be successful.
+   * This method does not affect an account's funds.
+   *
+   * @param fromIdentifier The identifier of the account that the holdings will be coming from.
+   * @param toIdentifier The identifier of the account that the holdings will be going to.
+   * @param amount The amount you wish to remove from this account.
+   * @param world The name of the {@link World} associated with the amount.
+   *
+   * @return True if a call to the corresponding transferHoldings method would return true,
+   * otherwise false.
+   */
+  default boolean canTransferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount, String world) {
+    return canRemoveHoldings(fromIdentifier, amount, world) && canAddHoldings(toIdentifier, amount, world);
+  }
+
+  /**
+   * Used to determine if a call to the corresponding transferHoldings method would be successful.
+   * This method does not affect an account's funds.
+   *
+   * @param fromIdentifier The identifier of the account that the holdings will be coming from.
+   * @param toIdentifier The identifier of the account that the holdings will be going to.
+   * @param amount The amount you wish to remove from this account.
+   * @param world The name of the {@link World} associated with the amount.
+   * @param currency The {@link Currency} associated with the balance.
+   *
+   * @return True if a call to the corresponding transferHoldings method would return true,
+   * otherwise false.
+   */
+  default boolean canTransferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount, String world, String currency) {
+    return canRemoveHoldings(fromIdentifier, amount, world, currency) && canAddHoldings(toIdentifier, amount, world, currency);
+  }
 
   /**
    * Formats a monetary amount into a more text-friendly version.
