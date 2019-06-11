@@ -1,7 +1,6 @@
 package net.tnemc.core;
 
 import net.milkbowl.vault.economy.Economy;
-import net.tnemc.core.chat.ChatAPI;
 import net.tnemc.core.command.CommandManager;
 import net.tnemc.core.command.TNECommand;
 import net.tnemc.core.command.reserve.ReserveCommand;
@@ -49,7 +48,6 @@ public class Reserve extends JavaPlugin {
 
   private LinkedHashMap<String, EconomyAPI> registeredEconomies = new LinkedHashMap<>();
   private LinkedHashMap<String, PermissionsAPI> registeredPermissions = new LinkedHashMap<>();
-  private LinkedHashMap<String, ChatAPI> registeredChats = new LinkedHashMap<>();
   private String ecoProvider = null;
   private String permissionsProvider = null;
   private String chatProvider = null;
@@ -102,24 +100,12 @@ public class Reserve extends JavaPlugin {
     registeredPermissions.put(provider.name(), provider);
   }
 
-  public void registerProvider(ChatAPI provider) {
-    getLogger().info("Chat Provider registered: " + provider.name());
-    if(provider.enabled()) {
-      chatProvider = provider.name();
-    }
-    registeredChats.put(provider.name(), provider);
-  }
-
   public LinkedHashMap<String, EconomyAPI> getRegisteredEconomies() {
     return registeredEconomies;
   }
 
   public LinkedHashMap<String, PermissionsAPI> getRegisteredPermissions() {
     return registeredPermissions;
-  }
-
-  public LinkedHashMap<String, ChatAPI> getRegisteredChats() {
-    return registeredChats;
   }
 
   public void setEconomy(String name) {
