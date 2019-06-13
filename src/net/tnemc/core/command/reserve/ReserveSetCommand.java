@@ -58,6 +58,10 @@ public class ReserveSetCommand extends TNECommand {
 
   @Override
   public boolean execute(CommandSender sender, String command, String[] arguments) {
+    if(arguments.length < 1) {
+      help(sender);
+      return false;
+    }
     if(Reserve.instance().getRegisteredEconomies().containsKey(arguments[0])) {
       Reserve.instance().setEconomy(arguments[0]);
       sender.sendMessage(ChatColor.WHITE + "Successfully set economy provider to " + arguments[0] + ".");
