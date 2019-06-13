@@ -45,12 +45,6 @@ public interface EconomyAPI {
   boolean enabled();
 
   /**
-   * @return Whether or not this implementation supports the async methods provided by
-   * Reserve.
-   */
-  boolean supportsAsync();
-
-  /**
    * @return Whether or not this implementation should have a default Vault implementation.
    */
   default boolean vault() {
