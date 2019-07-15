@@ -1,9 +1,12 @@
 package net.tnemc.core.economy;
 
+import com.sun.istack.internal.Nullable;
 import net.tnemc.core.economy.currency.Currency;
 import org.bukkit.World;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
@@ -1410,6 +1413,540 @@ public interface EconomyAPI {
    * otherwise false.
    */
   CompletableFuture<Boolean> asyncCanTransferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount, String world, String currency);
+
+  /**
+   * Used to determine if this implementation supports banks or not.
+   *
+   * @return True if banks are supported, otherwise false.
+   */
+  default boolean supportBanks() {
+    return false;
+  }
+
+  /**
+   * @return A list containing the names of the banks currently in the server.
+   */
+  List<String> getBanks();
+
+  /**
+   * @param world The name of the {@link World} to use for this call.
+   * @return A list containing the names of the banks currently in the specified world
+   */
+  List<String> getBanks(String world);
+
+  /**
+   * Asynchronous version of getBanks()
+   * @return A list containing the names of the banks currently in the server.
+   */
+  CompletableFuture<List<String>> asyncGetBanks();
+
+
+  /**
+   * Asynchronous version of getBanks(String world)
+   * @param world The name of the {@link World} to use for this call.
+   * @return A list containing the names of the banks currently in the specified world
+   */
+  CompletableFuture<List<String>> asyncGetBanks(String world);
+
+  /**
+   * @return A list of currencies that are able to be used with banks.
+   */
+  List<String> acceptedBankCurrencies();
+
+  /**
+   * @param world The name of the {@link World} to use for this call.
+   * @return A list of currencies that are able to be used with banks in the specified world.
+   */
+  List<String> acceptedBankCurrencies(String world);
+
+  /**
+   * @param world The name of the {@link World} to use for this call.
+   * @param bank The name of the bank to use for this call.
+   * @return A list of currencies that are able to be used with the specified bank in the specified world.
+   */
+  List<String> acceptedBankCurrencies(String world, String bank);
+
+  /**
+   * @return A list of currencies that are able to be used with banks.
+   */
+  CompletableFuture<List<String>> asyncAcceptedBankCurrencies();
+
+  /**
+   * @param world The name of the {@link World} to use for this call.
+   * @return A list of currencies that are able to be used with banks in the specified world.
+   */
+  CompletableFuture<List<String>> asyncAcceptedBankCurrencies(String world);
+
+  /**
+   * @param world The name of the {@link World} to use for this call.
+   * @param bank The name of the bank to use for this call.
+   * @return A list of currencies that are able to be used with the specified bank in the specified world.
+   */
+  CompletableFuture<List<String>> asyncAcceptedBankCurrencies(String world, String bank);
+
+  /**
+   * @param player The UUID of the player to use for this call.
+   * @return A List of UUIDs of bank accounts that the specified player has access to.
+   */
+  List<UUID> availableBankAccounts(UUID player);
+
+  /**
+   * @param player The UUID of the player to use for this call.
+   * @param world The name of the {@link World} to use for this call.
+   * @return A List of UUIDs of bank accounts that the specified player has access to in a specific world.
+   */
+  List<UUID> availableBankAccounts(UUID player, String world);
+
+  /**
+   * @param player The UUID of the player to use for this call.
+   * @param world The name of the {@link World} to use for this call.
+   * @param bank The name of the bank to use for this call.
+   * @return A List of UUIDs of bank accounts that the specified player has access to in a specific bank in a specific world.
+   */
+  List<UUID> availableBankAccounts(UUID player, String world, String bank);
+
+  /**
+   * @param player The UUID of the player to use for this call.
+   * @return A List of UUIDs of bank accounts that the specified player has access to.
+   */
+  CompletableFuture<List<UUID>> asyncAvailableBankAccounts(UUID player);
+
+  /**
+   * @param player The UUID of the player to use for this call.
+   * @param world The name of the {@link World} to use for this call.
+   * @return A List of UUIDs of bank accounts that the specified player has access to in a specific world.
+   */
+  CompletableFuture<List<UUID>> asyncAvailableBankAccounts(UUID player, String world);
+
+  /**
+   * @param player The UUID of the player to use for this call.
+   * @param world The name of the {@link World} to use for this call.
+   * @param bank The name of the bank to use for this call.
+   * @return A List of UUIDs of bank accounts that the specified player has access to in a specific bank in a specific world.
+   */
+  CompletableFuture<List<UUID>> asyncAvailableBankAccounts(UUID player, String world, String bank);
+
+  /**
+   * @param player The UUID of the player to use for this call.
+   * @param world The name of the {@link World} to use for this call.
+   * @return True if the specified player is the owner of a bank in the specified world.
+   */
+  boolean isBankOwner(UUID player, String world);
+
+  /**
+   * @param player The UUID of the player to use for this call.
+   * @param world The name of the {@link World} to use for this call.
+   * @param bank The name of the bank to use for this call.
+   * @return True if the specified player is the owner of the specified bank in the specified world.
+   */
+  boolean isBankOwner(UUID player, String world, String bank);
+
+  /**
+   * @param player The UUID of the player to use for this call.
+   * @param world The name of the {@link World} to use for this call.
+   * @return True if the specified player is the owner of a bank in the specified world.
+   */
+  CompletableFuture<Boolean> asyncIsBankOwner(UUID player, String world);
+
+  /**
+   * @param player The UUID of the player to use for this call.
+   * @param world The name of the {@link World} to use for this call.
+   * @param bank The name of the bank to use for this call.
+   * @return True if the specified player is the owner of the specified bank in the specified world.
+   */
+  CompletableFuture<Boolean> asyncIsBankOwner(UUID player, String world, String bank);
+
+  /**
+   * @param owner The UUID of the owner of this bank account.
+   * @return An optional with a UUID of the created bank account if it was created, otherwise an empty Optional.
+   */
+  Optional<UUID> createBankAccount(UUID owner);
+
+  /**
+   * @param owner The UUID of the owner of this bank account.
+   * @param world The name of the {@link World} to create this bank account in.
+   * @return An optional with a UUID of the created bank account if it was created, otherwise an empty Optional.
+   */
+  Optional<UUID> createBankAccount(UUID owner, String world);
+
+  /**
+   * @param owner The UUID of the owner of this bank account.
+   * @param world The name of the {@link World} to create this bank account in.
+   * @param bank The name of the bank to create this bank account in.
+   * @return An optional with a UUID of the created bank account if it was created, otherwise an empty Optional.
+   */
+  Optional<UUID> createBankAccount(UUID owner, String world, String bank);
+
+  /**
+   * @param owner The UUID of the owner of this bank account.
+   * @return An optional with a UUID of the created bank account if it was created, otherwise an empty Optional.
+   */
+  CompletableFuture<Optional<UUID>> asyncCreateBankAccount(UUID owner);
+
+  /**
+   * @param owner The UUID of the owner of this bank account.
+   * @param world The name of the {@link World} to create this bank account in.
+   * @return An optional with a UUID of the created bank account if it was created, otherwise an empty Optional.
+   */
+  CompletableFuture<Optional<UUID>> asyncCreateBankAccount(UUID owner, String world);
+
+  /**
+   * @param owner The UUID of the owner of this bank account.
+   * @param world The name of the {@link World} to create this bank account in.
+   * @param bank The name of the bank to create this bank account in.
+   * @return An optional with a UUID of the created bank account if it was created, otherwise an empty Optional.
+   */
+  CompletableFuture<Optional<UUID>> asyncCreateBankAccount(UUID owner, String world, String bank);
+
+  /**
+   * @param player The UUID of the player to use for this call.
+   * @return True if the specified player has a bank account.
+   */
+  boolean hasBankAccount(UUID player);
+
+  /**
+   * @param player The UUID of the player to use for this call.
+   * @param world The name of the {@link World} to use for this call.
+   * @return True if the specified player has a bank account in the specified world.
+   */
+  boolean hasBankAccount(UUID player, String world);
+
+  /**
+   * @param player The UUID of the player to use for this call.
+   * @param world The name of the {@link World} to use for this call.
+   * @param bank The name of the bank to use for this call.
+   * @return True if the specified player has a bank account in the specified bank in the specified world.
+   */
+  boolean hasBankAccount(UUID player, String world, String bank);
+
+  /**
+   * @param player The UUID of the player to use for this call.
+   * @return True if the specified player has a bank account.
+   */
+  CompletableFuture<Boolean> asyncHasBankAccount(UUID player);
+
+  /**
+   * @param player The UUID of the player to use for this call.
+   * @param world The name of the {@link World} to use for this call.
+   * @return True if the specified player has a bank account in the specified world.
+   */
+  CompletableFuture<Boolean> asyncHasBankAccount(UUID player, String world);
+
+  /**
+   * @param player The UUID of the player to use for this call.
+   * @param world The name of the {@link World} to use for this call.
+   * @param bank The name of the bank to use for this call.
+   * @return True if the specified player has a bank account in the specified bank in the specified world.
+   */
+  CompletableFuture<Boolean> asyncHasBankAccount(UUID player, String world, String bank);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param player The UUID of the player to use for this call.
+   * @return True if the specified player is the owner of the specified bank account.
+   */
+  boolean isBankAccountOwner(UUID account, UUID player);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param player The UUID of the player to use for this call.
+   * @return True if the specified player is the owner of the specified bank account.
+   */
+  CompletableFuture<Boolean> asyncIsBankAccountOwner(UUID account, UUID player);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param player The UUID of the player to use for this call.
+   * @return True if the specified player is a member of the specified bank account.
+   */
+  boolean isBankAccountMember(UUID account, UUID player);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param player The UUID of the player to use for this call.
+   * @return True if the specified player is a member of the specified bank account.
+   */
+  CompletableFuture<Boolean> asyncIsBankAccountMember(UUID account, UUID player);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @return The balance of the bank account.
+   */
+  BigDecimal getBankHoldings(UUID account);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param world The name of the {@link World} to use for this call.
+   * @return The balance of the bank account.
+   */
+  BigDecimal getBankHoldings(UUID account, String world);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param world The name of the {@link World} to use for this call.
+   * @param currency The name of the currency to use for this call.
+   * @return The balance of the bank account.
+   */
+  BigDecimal getBankHoldings(UUID account, String world, String currency);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param world The name of the {@link World} to use for this call.
+   * @param currency The name of the currency to use for this call.
+   * @param bank The name of the bank to use for this call.
+   * @return The balance of the bank account.
+   */
+  BigDecimal getBankHoldings(UUID account, String world, String currency, String bank);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @return The balance of the bank account.
+   */
+  CompletableFuture<BigDecimal> asyncGetBankHoldings(UUID account);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param world The name of the {@link World} to use for this call.
+   * @return The balance of the bank account.
+   */
+  CompletableFuture<BigDecimal> asyncGetBankHoldings(UUID account, String world);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param world The name of the {@link World} to use for this call.
+   * @param currency The name of the currency to use for this call.
+   * @return The balance of the bank account.
+   */
+  CompletableFuture<BigDecimal> asyncGetBankHoldings(UUID account, String world, String currency);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param world The name of the {@link World} to use for this call.
+   * @param currency The name of the currency to use for this call.
+   * @param bank The name of the bank to use for this call.
+   * @return The balance of the bank account.
+   */
+  CompletableFuture<BigDecimal> asyncGetBankHoldings(UUID account, String world, String currency, String bank);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param player The UUID of the player adding the funds to the account, null if console.
+   * @param amount The amount of funds to add to the account.
+   * @return True if the funds were added to the account, otherwise false.
+   */
+  boolean bankAddHoldings(UUID account, @Nullable UUID player, BigDecimal amount);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param player The UUID of the player adding the funds to the account, null if not associated with a player action.
+   * @param amount The amount of funds to add to the account.
+   * @param world The name of the {@link World} to use for this call.
+   * @return True if the funds were added to the account, otherwise false.
+   */
+  boolean bankAddHoldings(UUID account, @Nullable UUID player, BigDecimal amount, String world);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param player The UUID of the player adding the funds to the account, null if not associated with a player action.
+   * @param amount The amount of funds to add to the account.
+   * @param world The name of the {@link World} to use for this call.
+   * @param currency The name of the currency to use for this call.
+   * @return True if the funds were added to the account, otherwise false.
+   */
+  boolean bankAddHoldings(UUID account, @Nullable UUID player, BigDecimal amount, String world, String currency);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param player The UUID of the player adding the funds to the account, null if not associated with a player action.
+   * @param amount The amount of funds to add to the account.
+   * @param world The name of the {@link World} to use for this call.
+   * @param currency The name of the currency to use for this call.
+   * @param bank The name of the bank to use for this call.
+   * @return True if the funds were added to the account, otherwise false.
+   */
+  boolean bankAddHoldings(UUID account, @Nullable UUID player, BigDecimal amount, String world, String currency, String bank);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param player The UUID of the player adding the funds to the account, null if console.
+   * @param amount The amount of funds to add to the account.
+   * @return True if the funds were added to the account, otherwise false.
+   */
+  CompletableFuture<Boolean> asyncBankAddHoldings(UUID account, @Nullable UUID player, BigDecimal amount);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param player The UUID of the player adding the funds to the account, null if not associated with a player action.
+   * @param amount The amount of funds to add to the account.
+   * @param world The name of the {@link World} to use for this call.
+   * @return True if the funds were added to the account, otherwise false.
+   */
+  CompletableFuture<Boolean> asyncBankAddHoldings(UUID account, @Nullable UUID player, BigDecimal amount, String world);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param player The UUID of the player adding the funds to the account, null if not associated with a player action.
+   * @param amount The amount of funds to add to the account.
+   * @param world The name of the {@link World} to use for this call.
+   * @param currency The name of the currency to use for this call.
+   * @return True if the funds were added to the account, otherwise false.
+   */
+  CompletableFuture<Boolean> asyncBankAddHoldings(UUID account, @Nullable UUID player, BigDecimal amount, String world, String currency);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param player The UUID of the player adding the funds to the account, null if not associated with a player action.
+   * @param amount The amount of funds to add to the account.
+   * @param world The name of the {@link World} to use for this call.
+   * @param currency The name of the currency to use for this call.
+   * @param bank The name of the bank to use for this call.
+   * @return True if the funds were added to the account, otherwise false.
+   */
+  CompletableFuture<Boolean> asyncBankAddHoldings(UUID account, @Nullable UUID player, BigDecimal amount, String world, String currency, String bank);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param player The UUID of the player adding the funds to the account, null if console.
+   * @param amount The amount of funds to remove from the account.
+   * @return True if the funds were removed from the account, otherwise false.
+   */
+  boolean bankRemoveHoldings(UUID account, @Nullable UUID player, BigDecimal amount);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param player The UUID of the player adding the funds to the account, null if console.
+   * @param amount The amount of funds to remove from the account.
+   * @param world The name of the {@link World} to use for this call.
+   * @return True if the funds were removed from the account, otherwise false.
+   */
+  boolean bankRemoveHoldings(UUID account, @Nullable UUID player, BigDecimal amount, String world);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param player The UUID of the player adding the funds to the account, null if console.
+   * @param amount The amount of funds to remove from the account.
+   * @param world The name of the {@link World} to use for this call.
+   * @param currency The name of the currency to use for this call.
+   * @return True if the funds were removed from the account, otherwise false.
+   */
+  boolean bankRemoveHoldings(UUID account, @Nullable UUID player, BigDecimal amount, String world, String currency);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param player The UUID of the player adding the funds to the account, null if console.
+   * @param amount The amount of funds to remove from the account.
+   * @param world The name of the {@link World} to use for this call.
+   * @param currency The name of the currency to use for this call.
+   * @param bank The name of the bank to use for this call.
+   * @return True if the funds were removed from the account, otherwise false.
+   */
+  boolean bankRemoveHoldings(UUID account, @Nullable UUID player, BigDecimal amount, String world, String currency, String bank);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param player The UUID of the player adding the funds to the account, null if console.
+   * @param amount The amount of funds to remove from the account.
+   * @return True if the funds were removed from the account, otherwise false.
+   */
+  CompletableFuture<Boolean> asyncBankRemoveHoldings(UUID account, @Nullable UUID player, BigDecimal amount);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param player The UUID of the player adding the funds to the account, null if console.
+   * @param amount The amount of funds to remove from the account.
+   * @param world The name of the {@link World} to use for this call.
+   * @return True if the funds were removed from the account, otherwise false.
+   */
+  CompletableFuture<Boolean> asyncBankRemoveHoldings(UUID account, @Nullable UUID player, BigDecimal amount, String world);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param player The UUID of the player adding the funds to the account, null if console.
+   * @param amount The amount of funds to remove from the account.
+   * @param world The name of the {@link World} to use for this call.
+   * @param currency The name of the currency to use for this call.
+   * @return True if the funds were removed from the account, otherwise false.
+   */
+  CompletableFuture<Boolean> asyncBankRemoveHoldings(UUID account, @Nullable UUID player, BigDecimal amount, String world, String currency);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param player The UUID of the player adding the funds to the account, null if console.
+   * @param amount The amount of funds to remove from the account.
+   * @param world The name of the {@link World} to use for this call.
+   * @param currency The name of the currency to use for this call.
+   * @param bank The name of the bank to use for this call.
+   * @return True if the funds were removed from the account, otherwise false.
+   */
+  CompletableFuture<Boolean> asyncBankRemoveHoldings(UUID account, @Nullable UUID player, BigDecimal amount, String world, String currency, String bank);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param amount The amount to set the account's funds to
+   * @return True if the account's funds were set to the specified amount.
+   */
+  boolean bankSetHoldings(UUID account, BigDecimal amount);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param amount The amount to set the account's funds to
+   * @param world The name of the {@link World} to use for this call.
+   * @return True if the account's funds were set to the specified amount.
+   */
+  boolean bankSetHoldings(UUID account, BigDecimal amount, String world);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param amount The amount to set the account's funds to
+   * @param world The name of the {@link World} to use for this call.
+   * @param currency The name of the currency to use for this call.
+   * @return True if the account's funds were set to the specified amount.
+   */
+  boolean bankSetHoldings(UUID account, BigDecimal amount, String world, String currency);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param amount The amount to set the account's funds to
+   * @param world The name of the {@link World} to use for this call.
+   * @param currency The name of the currency to use for this call.
+   * @param bank The name of the bank to use for this call.
+   * @return True if the account's funds were set to the specified amount.
+   */
+  boolean bankSetHoldings(UUID account, BigDecimal amount, String world, String currency, String bank);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param amount The amount to set the account's funds to
+   * @return True if the account's funds were set to the specified amount.
+   */
+  CompletableFuture<Boolean> asyncBankSetHoldings(UUID account, BigDecimal amount);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param amount The amount to set the account's funds to
+   * @param world The name of the {@link World} to use for this call.
+   * @return True if the account's funds were set to the specified amount.
+   */
+  CompletableFuture<Boolean> asyncBankSetHoldings(UUID account, BigDecimal amount, String world);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param amount The amount to set the account's funds to
+   * @param world The name of the {@link World} to use for this call.
+   * @param currency The name of the currency to use for this call.
+   * @return True if the account's funds were set to the specified amount.
+   */
+  CompletableFuture<Boolean> asyncBankSetHoldings(UUID account, BigDecimal amount, String world, String currency);
+
+  /**
+   * @param account The UUID of the bank account to use for this call.
+   * @param amount The amount to set the account's funds to
+   * @param world The name of the {@link World} to use for this call.
+   * @param currency The name of the currency to use for this call.
+   * @param bank The name of the bank to use for this call.
+   * @return True if the account's funds were set to the specified amount.
+   */
+  CompletableFuture<Boolean> asyncBankSetHoldings(UUID account, BigDecimal amount, String world, String currency, String bank);
 
   /**
    * Formats a monetary amount into a more text-friendly version.
