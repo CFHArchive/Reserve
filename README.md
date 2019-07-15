@@ -18,7 +18,7 @@ If order to include Reserve into your project via Maven use the following reposi
       <dependency>
              <groupId>net.tnemc</groupId>
              <artifactId>Reserve</artifactId>
-             <version>0.1.1.0</version>
+             <version>0.1.3.0</version>
              <scope>provided</scope>
        </dependency>
  </dependencies>
