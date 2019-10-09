@@ -35,15 +35,37 @@ public interface TransactionType {
 
   /**
    *
-   * @return The {@link CurrencyEntry} value for the taxes charged to the intiator.
+   * @return The {@link TaxEntry} value for the taxes charged to the intiator.
    */
   Optional<TaxEntry> initiatorTax();
 
   /**
+   * Used to calculate a initiator's {@link TaxEntry} after taking into account things such as tax
+   * exceptions.
+   * @param identifier The identifier of the initiator.
+   * @return The final {@link TaxEntry} after lookup is performed.
+   */
+  default Optional<TaxEntry> calculateInitiatorTax(String identifier) {
+    if(taxExceptions().containsKey(identifier)) return Optional.of(taxExceptions().get(identifier));
+    return initiatorTax();
+  }
+
+  /**
    *
-   * @return The {@link CurrencyEntry} value for the taxes charged to the recipient.
+   * @return The {@link TaxEntry} value for the taxes charged to the recipient.
    */
   Optional<TaxEntry> recipientTax();
+
+  /**
+   * Used to calculate a recipient's {@link TaxEntry} after taking into account things such as tax
+   * exceptions.
+   * @param identifier The identifier of the recipient.
+   * @return The final {@link TaxEntry} after lookup is performed.
+   */
+  default Optional<TaxEntry> calculateRecipientTax(String identifier) {
+    if(taxExceptions().containsKey(identifier)) return Optional.of(taxExceptions().get(identifier));
+    return recipientTax();
+  }
 
   /**
    * @return The {@link TransactionResult} of this transaction if it were to be successful.
@@ -105,10 +127,26 @@ public interface TransactionType {
       boolean proceed = false;
 
       if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.INITIATOR)) {
+
+        final Optional<TaxEntry> calculated = calculateInitiatorTax(transaction.initiator());
+        if(calculated.isPresent()) {
+          CurrencyEntry entry = transaction.initiatorCharge().getEntry();
+          entry.setAmount(calculated.get().getType().handleTaxation(entry.getAmount(), calculated.get().getTax()));
+          transaction.initiatorCharge().setEntry(entry);
+        }
+
         proceed = api.getAccount(transaction.initiator()).canCharge(transaction.initiatorCharge());
       }
       if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.RECIPIENT)) {
         if (affected().equals(TransactionAffected.BOTH) && proceed || affected().equals(TransactionAffected.RECIPIENT)) {
+
+          final Optional<TaxEntry> calculated = calculateRecipientTax(transaction.recipient());
+          if(calculated.isPresent()) {
+            CurrencyEntry entry = transaction.recipientCharge().getEntry();
+            entry.setAmount(calculated.get().getType().handleTaxation(entry.getAmount(), calculated.get().getTax()));
+            transaction.recipientCharge().setEntry(entry);
+          }
+
           proceed = api.getAccount(transaction.recipient()).canCharge(transaction.recipientCharge());
         }
       }

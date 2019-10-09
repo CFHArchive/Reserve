@@ -39,13 +39,6 @@
         </plugins>
     </build>
 
-    <licenses>
-        <license>
-            <name>GNU AFFERO GENERAL PUBLIC LICENSE, Version 3</name>
-            <url>https://www.gnu.org/licenses/agpl.html</url>
-        </license>
-    </licenses>
-
     <organization>
         <name>The New Economy</name>
         <url>https://tnemc.net</url>
