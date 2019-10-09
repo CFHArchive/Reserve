@@ -2,15 +2,26 @@ package net.tnemc.core.economy.transaction.type;
 
 import net.tnemc.core.Reserve;
 import net.tnemc.core.economy.ExtendedEconomyAPI;
+import net.tnemc.core.economy.currency.CurrencyEntry;
+import net.tnemc.core.economy.tax.TaxEntry;
 import net.tnemc.core.economy.transaction.Transaction;
 import net.tnemc.core.economy.transaction.TransactionAffected;
 import net.tnemc.core.economy.transaction.result.TransactionResult;
+
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * Created by creatorfromhell on 8/9/2017.
  * All rights reserved.
  **/
 public interface TransactionType {
+
+  /**
+   * @return A map containing the account identifier, and matching {@link TaxEntry} for all tax exceptions
+   * for this {@link TransactionType}.
+   */
+  Map<String, TaxEntry> taxExceptions();
 
   /**
    * @return The name of this transaction type.
@@ -21,6 +32,18 @@ public interface TransactionType {
    * @return True if the recipient, or initiator may be null, which is identified as the console.
    */
   boolean console();
+
+  /**
+   *
+   * @return The {@link CurrencyEntry} value for the taxes charged to the intiator.
+   */
+  Optional<TaxEntry> initiatorTax();
+
+  /**
+   *
+   * @return The {@link CurrencyEntry} value for the taxes charged to the recipient.
+   */
+  Optional<TaxEntry> recipientTax();
 
   /**
    * @return The {@link TransactionResult} of this transaction if it were to be successful.
