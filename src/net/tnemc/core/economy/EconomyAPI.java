@@ -1414,6 +1414,52 @@ public interface EconomyAPI {
   CompletableFuture<Boolean> asyncCanTransferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount, String world, String currency);
 
   /**
+   * @return True if this economy implementation supports calculating costs for external plugins.
+   */
+  default boolean supportsExternalCosts() {
+    return false;
+  }
+
+  /**
+   * Used to calculate the cost of a product for a plugin.
+   * @param plugin The name of the plugin providing the product.
+   * @param product The name of the product.
+   * @param identifier The account identifier purchasing the product.
+   * @param baseCost The base cost of the product.
+   * @return The calculated cost in BigDecimal format.
+   */
+  default BigDecimal calculateCost(String plugin, String product, String identifier, BigDecimal baseCost) {
+    return baseCost;
+  }
+
+  /**
+   * Used to calculate the cost of a product for a plugin.
+   * @param plugin The name of the plugin providing the product.
+   * @param product The name of the product.
+   * @param world The name of the world the product is being purchased in.
+   * @param identifier The account identifier purchasing the product.
+   * @param baseCost The base cost of the product.
+   * @return The calculated cost in BigDecimal format.
+   */
+  default BigDecimal calculateCost(String plugin, String product, String identifier, String world, BigDecimal baseCost) {
+    return baseCost;
+  }
+
+  /**
+   * Used to calculate the cost of a product for a plugin.
+   * @param plugin The name of the plugin providing the product.
+   * @param product The name of the product.
+   * @param world The name of the world the product is being purchased in.
+   * @param currency The name of the currency the product is being purchased with.
+   * @param identifier The account identifier purchasing the product.
+   * @param baseCost The base cost of the product.
+   * @return The calculated cost in BigDecimal format.
+   */
+  default BigDecimal calculateCost(String plugin, String product, String identifier, String world, String currency, BigDecimal baseCost) {
+    return baseCost;
+  }
+
+  /**
    * Used to determine if this implementation supports banks or not.
    *
    * @return True if banks are supported, otherwise false.
