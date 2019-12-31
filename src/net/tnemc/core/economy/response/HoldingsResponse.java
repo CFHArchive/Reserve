@@ -3,19 +3,19 @@ package net.tnemc.core.economy.response;
 public enum HoldingsResponse implements EconomyResponse {
 
   /**
-   * The action was successfully performed on the account's holdings.
+   * The action was unsuccessful due to the account going over the max supported holdings.
    */
-  SUCCESS {
+  MAX_HOLDINGS {
     @Override
     public boolean success() {
-      return true;
+      return false;
     }
   },
 
   /**
-   * The action was unsuccessful due to the account going over the max support holdings.
+   * The action was unsuccessful due to the account going below the minimum holdings.
    */
-  MAX_HOLDINGS {
+  MIN_HOLDINGS {
     @Override
     public boolean success() {
       return false;
@@ -26,16 +26,6 @@ public enum HoldingsResponse implements EconomyResponse {
    * The action was unsuccessful due to the account not having enough funds.
    */
   INSUFFICIENT {
-    @Override
-    public boolean success() {
-      return false;
-    }
-  },
-
-  /**
-   * The action was unsuccful due to the Reserve implementation not supporting it.
-   */
-  UNSUPPORTED {
     @Override
     public boolean success() {
       return false;
