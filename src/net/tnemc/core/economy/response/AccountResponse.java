@@ -13,6 +13,16 @@ public enum AccountResponse implements EconomyResponse {
   },
 
   /**
+   * The action was successfully completed, and during it an account was created.
+   */
+  CREATION_FAILED {
+    @Override
+    public boolean success() {
+      return false;
+    }
+  },
+
+  /**
    * The account that was attempted to be created already exists.
    */
   ALREADY_EXISTS {
