@@ -102,7 +102,9 @@ public interface EconomyAPI {
    * @param name The name of the {@link Currency} to search for.
    * @return True if the currency exists, else false.
    */
-  CompletableFuture<Boolean> asyncHasCurrency(String name);
+  default CompletableFuture<Boolean> asyncHasCurrency(String name) {
+    return CompletableFuture.supplyAsync(()->hasCurrency(name));
+  }
 
   /**
    * Checks to see if a {@link Currency} exists with this name.
@@ -110,7 +112,9 @@ public interface EconomyAPI {
    * @param world The name of the {@link World} to check for this {@link Currency} in.
    * @return True if the currency exists, else false.
    */
-  CompletableFuture<Boolean> asyncHasCurrency(String name, String world);
+  default CompletableFuture<Boolean> asyncHasCurrency(String name, String world) {
+    return CompletableFuture.supplyAsync(()->hasCurrency(name, world));
+  }
 
   /**
    * Checks to see if an account exists for this identifier. This method should be used for non-player accounts.
