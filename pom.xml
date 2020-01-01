@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.tnemc</groupId>
     <artifactId>Reserve</artifactId>
-    <version>0.1.4.3</version>
+    <version>0.1.4.4</version>
     <packaging>jar</packaging>
     <name>Reserve</name>
     <properties>
@@ -65,6 +65,13 @@
             <url>https://api.bintray.com/maven/theneweconomy/java/Reserve/;publish=1</url>
         </repository>
     </distributionManagement>
+    <!--<distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub TheNewEconomy Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/TheNewEconomy/Reserve</url>
+        </repository>
+    </distributionManagement>-->
 
     <repositories>
         <repository>

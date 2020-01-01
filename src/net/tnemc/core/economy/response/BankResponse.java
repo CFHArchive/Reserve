@@ -10,6 +10,11 @@ public enum BankResponse implements EconomyResponse {
     public boolean success() {
       return false;
     }
+
+    @Override
+    public String response() {
+      return "The specified bank account doesn't exist.";
+    }
   },
 
   /**
@@ -19,6 +24,11 @@ public enum BankResponse implements EconomyResponse {
     @Override
     public boolean success() {
       return false;
+    }
+
+    @Override
+    public String response() {
+      return "The specified accessor doesn't have access to this bank account.";
     }
   }
 }

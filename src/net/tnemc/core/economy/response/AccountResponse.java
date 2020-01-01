@@ -10,6 +10,11 @@ public enum AccountResponse implements EconomyResponse {
     public boolean success() {
       return true;
     }
+
+    @Override
+    public String response() {
+      return "The specified account was created successfully.";
+    }
   },
 
   /**
@@ -19,6 +24,11 @@ public enum AccountResponse implements EconomyResponse {
     @Override
     public boolean success() {
       return false;
+    }
+
+    @Override
+    public String response() {
+      return "The specified account couldn't be created.";
     }
   },
 
@@ -30,6 +40,11 @@ public enum AccountResponse implements EconomyResponse {
     public boolean success() {
       return false;
     }
+
+    @Override
+    public String response() {
+      return "The specified account already exists.";
+    }
   },
 
   /**
@@ -39,6 +54,11 @@ public enum AccountResponse implements EconomyResponse {
     @Override
     public boolean success() {
       return false;
+    }
+
+    @Override
+    public String response() {
+      return "The specified account doesn't exist.";
     }
   }
 

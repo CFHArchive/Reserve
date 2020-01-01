@@ -10,6 +10,11 @@ public enum GeneralResponse implements EconomyResponse {
     public boolean success() {
       return true;
     }
+
+    @Override
+    public String response() {
+      return "The action was successful.";
+    }
   },
 
   /**
@@ -20,6 +25,11 @@ public enum GeneralResponse implements EconomyResponse {
     public boolean success() {
       return false;
     }
+
+    @Override
+    public String response() {
+      return "The action was unsuccessful.";
+    }
   },
 
   /**
@@ -29,6 +39,11 @@ public enum GeneralResponse implements EconomyResponse {
     @Override
     public boolean success() {
       return false;
+    }
+
+    @Override
+    public String response() {
+      return "This action is not supported by this Reserve implementation.";
     }
   }
 }

@@ -10,6 +10,11 @@ public enum HoldingsResponse implements EconomyResponse {
     public boolean success() {
       return false;
     }
+
+    @Override
+    public String response() {
+      return "The holdings change would put this account above the max allowed holdings.";
+    }
   },
 
   /**
@@ -20,6 +25,11 @@ public enum HoldingsResponse implements EconomyResponse {
     public boolean success() {
       return false;
     }
+
+    @Override
+    public String response() {
+      return "The holdings change would put this account below the minimum allowed holdings.";
+    }
   },
 
   /**
@@ -29,6 +39,11 @@ public enum HoldingsResponse implements EconomyResponse {
     @Override
     public boolean success() {
       return false;
+    }
+
+    @Override
+    public String response() {
+      return "The specified account has insufficient funds.";
     }
   }
 }
