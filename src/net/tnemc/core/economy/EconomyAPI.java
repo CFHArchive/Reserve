@@ -709,14 +709,18 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @return The balance of the account.
    */
-  CompletableFuture<BigDecimal> asyncGetHoldings(String identifier);
+  default CompletableFuture<BigDecimal> asyncGetHoldings(String identifier) {
+    return CompletableFuture.supplyAsync(()->getHoldings(identifier));
+  }
 
   /**
    * Used to get the balance of an account.
    * @param identifier The identifier of the account that is associated with this call.
    * @return The balance of the account.
    */
-  CompletableFuture<BigDecimal> asyncGetHoldings(UUID identifier);
+  default CompletableFuture<BigDecimal> asyncGetHoldings(UUID identifier) {
+    return CompletableFuture.supplyAsync(()->getHoldings(identifier));
+  }
 
   /**
    * Used to get the balance of an account.
@@ -724,7 +728,9 @@ public interface EconomyAPI {
    * @param world The name of the {@link World} associated with the balance.
    * @return The balance of the account.
    */
-  CompletableFuture<BigDecimal> asyncGetHoldings(String identifier, String world);
+  default CompletableFuture<BigDecimal> asyncGetHoldings(String identifier, String world) {
+    return CompletableFuture.supplyAsync(()->getHoldings(identifier, world));
+  }
 
   /**
    * Used to get the balance of an account.
@@ -732,7 +738,9 @@ public interface EconomyAPI {
    * @param world The name of the {@link World} associated with the balance.
    * @return The balance of the account.
    */
-  CompletableFuture<BigDecimal> asyncGetHoldings(UUID identifier, String world);
+  default CompletableFuture<BigDecimal> asyncGetHoldings(UUID identifier, String world) {
+    return CompletableFuture.supplyAsync(()->getHoldings(identifier, world));
+  }
 
   /**
    * Used to get the balance of an account.
@@ -741,7 +749,9 @@ public interface EconomyAPI {
    * @param currency The {@link Currency} associated with the balance.
    * @return The balance of the account.
    */
-  CompletableFuture<BigDecimal> asyncGetHoldings(String identifier, String world, String currency);
+  default CompletableFuture<BigDecimal> asyncGetHoldings(String identifier, String world, String currency) {
+    return CompletableFuture.supplyAsync(()->getHoldings(identifier, world, currency));
+  }
 
   /**
    * Used to get the balance of an account.
@@ -750,7 +760,9 @@ public interface EconomyAPI {
    * @param currency The {@link Currency} associated with the balance.
    * @return The balance of the account.
    */
-  CompletableFuture<BigDecimal> asyncGetHoldings(UUID identifier, String world, String currency);
+  default CompletableFuture<BigDecimal> asyncGetHoldings(UUID identifier, String world, String currency) {
+    return CompletableFuture.supplyAsync(()->getHoldings(identifier, world, currency));
+  }
 
   /**
    * Used to determine if an account has at least an amount of funds.
@@ -812,7 +824,9 @@ public interface EconomyAPI {
    * @param amount The amount you wish to use for this check.
    * @return True if the account has at least the specified amount of funds, otherwise false.
    */
-  CompletableFuture<Boolean> asyncHasHoldings(String identifier, BigDecimal amount);
+  default CompletableFuture<Boolean> asyncHasHoldings(String identifier, BigDecimal amount) {
+    return CompletableFuture.supplyAsync(()->hasHoldings(identifier, amount));
+  }
 
   /**
    * Used to determine if an account has at least an amount of funds.
@@ -820,7 +834,20 @@ public interface EconomyAPI {
    * @param amount The amount you wish to use for this check.
    * @return True if the account has at least the specified amount of funds, otherwise false.
    */
-  CompletableFuture<Boolean> asyncHasHoldings(UUID identifier, BigDecimal amount);
+  default CompletableFuture<Boolean> asyncHasHoldings(UUID identifier, BigDecimal amount) {
+    return CompletableFuture.supplyAsync(()->hasHoldings(identifier, amount));
+  }
+
+  /**
+   * Used to determine if an account has at least an amount of funds.
+   * @param identifier The identifier of the account that is associated with this call.
+   * @param amount The amount you wish to use for this check.
+   * @param world The name of the {@link World} associated with the amount.
+   * @return True if the account has at least the specified amount of funds, otherwise false.
+   */
+  default CompletableFuture<Boolean> asyncHasHoldings(String identifier, BigDecimal amount, String world) {
+    return CompletableFuture.supplyAsync(()->hasHoldings(identifier, amount, world));
+  }
 
   /**
    * Used to determine if an account has at least an amount of funds.
@@ -829,26 +856,9 @@ public interface EconomyAPI {
    * @param world The name of the {@link World} associated with the amount.
    * @return True if the account has at least the specified amount of funds, otherwise false.
    */
-  CompletableFuture<Boolean> asyncHasHoldings(String identifier, BigDecimal amount, String world);
-
-  /**
-   * Used to determine if an account has at least an amount of funds.
-   * @param identifier The identifier of the account that is associated with this call.
-   * @param amount The amount you wish to use for this check.
-   * @param world The name of the {@link World} associated with the amount.
-   * @return True if the account has at least the specified amount of funds, otherwise false.
-   */
-  CompletableFuture<Boolean> asyncHasHoldings(UUID identifier, BigDecimal amount, String world);
-
-  /**
-   * Used to determine if an account has at least an amount of funds.
-   * @param identifier The identifier of the account that is associated with this call.
-   * @param amount The amount you wish to use for this check.
-   * @param world The name of the {@link World} associated with the amount.
-   * @param currency The {@link Currency} associated with the balance.
-   * @return True if the account has at least the specified amount of funds, otherwise false.
-   */
-  CompletableFuture<Boolean> asyncHasHoldings(String identifier, BigDecimal amount, String world, String currency);
+  default CompletableFuture<Boolean> asyncHasHoldings(UUID identifier, BigDecimal amount, String world) {
+    return CompletableFuture.supplyAsync(()->hasHoldings(identifier, amount, world));
+  }
 
   /**
    * Used to determine if an account has at least an amount of funds.
@@ -858,7 +868,21 @@ public interface EconomyAPI {
    * @param currency The {@link Currency} associated with the balance.
    * @return True if the account has at least the specified amount of funds, otherwise false.
    */
-  CompletableFuture<Boolean> asyncHasHoldings(UUID identifier, BigDecimal amount, String world, String currency);
+  default CompletableFuture<Boolean> asyncHasHoldings(String identifier, BigDecimal amount, String world, String currency) {
+    return CompletableFuture.supplyAsync(()->hasHoldings(identifier, amount, world, currency));
+  }
+
+  /**
+   * Used to determine if an account has at least an amount of funds.
+   * @param identifier The identifier of the account that is associated with this call.
+   * @param amount The amount you wish to use for this check.
+   * @param world The name of the {@link World} associated with the amount.
+   * @param currency The {@link Currency} associated with the balance.
+   * @return True if the account has at least the specified amount of funds, otherwise false.
+   */
+  default CompletableFuture<Boolean> asyncHasHoldings(UUID identifier, BigDecimal amount, String world, String currency) {
+    return CompletableFuture.supplyAsync(()->hasHoldings(identifier, amount, world, currency));
+  }
 
   /**
    * Used to set the funds to an account.
@@ -3849,14 +3873,18 @@ public interface EconomyAPI {
    * Purges the database of accounts with the default balance.
    * @return True if the purge was completed successfully.
    */
-  CompletableFuture<Boolean> asyncPurgeAccounts();
+  default CompletableFuture<Boolean> asyncPurgeAccounts() {
+    return CompletableFuture.supplyAsync(this::purgeAccounts);
+  }
 
   /**
    * Purges the database of accounts with a balance under the specified one.
    * @param amount The amount that an account's balance has to be under in order to be removed.
    * @return True if the purge was completed successfully.
    */
-  CompletableFuture<Boolean> asyncPurgeAccountsUnder(BigDecimal amount);
+  default CompletableFuture<Boolean> asyncPurgeAccountsUnder(BigDecimal amount) {
+    return CompletableFuture.supplyAsync(()->purgeAccountsUnder(amount));
+  }
 
   /**
    * Whether or not this API Implementation supports the Transaction System.
