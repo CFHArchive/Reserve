@@ -50,6 +50,13 @@ public interface EconomyAPI {
   boolean enabled();
 
   /**
+   * @return True if this implementation should be override other economy implementations.
+   */
+  default boolean force() {
+    return true;
+  }
+
+  /**
    * @return Whether or not this implementation should have a default Vault implementation.
    */
   default boolean vault() {

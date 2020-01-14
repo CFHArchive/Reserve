@@ -93,11 +93,11 @@ public interface TransactionType {
       boolean proceed = false;
 
       if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.INITIATOR)) {
-        proceed = api.getAccount(transaction.initiator()).canCharge(transaction.initiatorCharge().copy(true));
+        proceed = api.getAccount(transaction.initiator()).canCharge(transaction.initiatorCharge().copy(true)).success();
       }
       if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.RECIPIENT)) {
         if (affected().equals(TransactionAffected.BOTH) && proceed || affected().equals(TransactionAffected.RECIPIENT)) {
-          proceed = api.getAccount(transaction.recipient()).canCharge(transaction.recipientCharge().copy(true));
+          proceed = api.getAccount(transaction.recipient()).canCharge(transaction.recipientCharge().copy(true)).success();
         }
       }
 
@@ -135,7 +135,7 @@ public interface TransactionType {
           transaction.initiatorCharge().setEntry(entry);
         }
 
-        proceed = api.getAccount(transaction.initiator()).canCharge(transaction.initiatorCharge());
+        proceed = api.getAccount(transaction.initiator()).canCharge(transaction.initiatorCharge()).success();
       }
       if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.RECIPIENT)) {
         if (affected().equals(TransactionAffected.BOTH) && proceed || affected().equals(TransactionAffected.RECIPIENT)) {
@@ -147,7 +147,7 @@ public interface TransactionType {
             transaction.recipientCharge().setEntry(entry);
           }
 
-          proceed = api.getAccount(transaction.recipient()).canCharge(transaction.recipientCharge());
+          proceed = api.getAccount(transaction.recipient()).canCharge(transaction.recipientCharge()).success();
         }
       }
 

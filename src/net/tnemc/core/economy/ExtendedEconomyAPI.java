@@ -2,6 +2,7 @@ package net.tnemc.core.economy;
 
 import net.tnemc.core.economy.currency.Currency;
 import net.tnemc.core.economy.currency.Tier;
+import net.tnemc.core.economy.response.EconomyResponse;
 import net.tnemc.core.economy.tax.TaxEntry;
 import net.tnemc.core.economy.tax.TaxType;
 import net.tnemc.core.economy.transaction.Transaction;
@@ -188,7 +189,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return Whether or not the player is able to withdraw holdings from this account.
    */
   @Override
-  default boolean canWithdraw(String identifier, String accessor) {
+  default EconomyResponse canWithdrawDetail(String identifier, String accessor) {
     return getAccount(identifier).canWithdraw(getAccount(accessor));
   }
 
@@ -200,7 +201,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return Whether or not the player is able to withdraw holdings from this account.
    */
   @Override
-  default boolean canWithdraw(String identifier, UUID accessor) {
+  default EconomyResponse canWithdrawDetail(String identifier, UUID accessor) {
     return getAccount(identifier).canWithdraw(getAccount(accessor));
   }
 
@@ -212,7 +213,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return Whether or not the player is able to withdraw holdings from this account.
    */
   @Override
-  default boolean canWithdraw(UUID identifier, String accessor) {
+  default EconomyResponse canWithdrawDetail(UUID identifier, String accessor) {
     return getAccount(identifier).canWithdraw(getAccount(accessor));
   }
 
@@ -224,7 +225,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return Whether or not the player is able to withdraw holdings from this account.
    */
   @Override
-  default boolean canWithdraw(UUID identifier, UUID accessor) {
+  default EconomyResponse canWithdrawDetail(UUID identifier, UUID accessor) {
     return getAccount(identifier).canWithdraw(getAccount(accessor));
   }
 
@@ -236,7 +237,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return Whether or not the player is able to deposit holdings into this account.
    */
   @Override
-  default boolean canDeposit(String identifier, String accessor) {
+  default EconomyResponse canDepositDetail(String identifier, String accessor) {
     return getAccount(identifier).canDeposit(getAccount(accessor));
   }
 
@@ -248,7 +249,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return Whether or not the player is able to deposit holdings into this account.
    */
   @Override
-  default boolean canDeposit(String identifier, UUID accessor) {
+  default EconomyResponse canDepositDetail(String identifier, UUID accessor) {
     return getAccount(identifier).canDeposit(getAccount(accessor));
   }
 
@@ -260,7 +261,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return Whether or not the player is able to deposit holdings into this account.
    */
   @Override
-  default boolean canDeposit(UUID identifier, String accessor) {
+  default EconomyResponse canDepositDetail(UUID identifier, String accessor) {
     return getAccount(identifier).canDeposit(getAccount(accessor));
   }
 
@@ -272,7 +273,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return Whether or not the player is able to deposit holdings into this account.
    */
   @Override
-  default boolean canDeposit(UUID identifier, UUID accessor) {
+  default EconomyResponse canDepositDetail(UUID identifier, UUID accessor) {
     return getAccount(identifier).canDeposit(getAccount(accessor));
   }
 
@@ -434,7 +435,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if the funds were set for the account, otherwise false.
    */
   @Override
-  default boolean setHoldings(String identifier, BigDecimal amount) {
+  default EconomyResponse setHoldingsDetail(String identifier, BigDecimal amount) {
     return getAccount(identifier).setHoldings(amount);
   }
 
@@ -446,7 +447,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if the funds were set for the account, otherwise false.
    */
   @Override
-  default boolean setHoldings(UUID identifier, BigDecimal amount) {
+  default EconomyResponse setHoldingsDetail(UUID identifier, BigDecimal amount) {
     return getAccount(identifier).setHoldings(amount);
   }
 
@@ -459,7 +460,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if the funds were set for the account, otherwise false.
    */
   @Override
-  default boolean setHoldings(String identifier, BigDecimal amount, String world) {
+  default EconomyResponse setHoldingsDetail(String identifier, BigDecimal amount, String world) {
     return getAccount(identifier).setHoldings(amount, world);
   }
 
@@ -472,7 +473,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if the funds were set for the account, otherwise false.
    */
   @Override
-  default boolean setHoldings(UUID identifier, BigDecimal amount, String world) {
+  default EconomyResponse setHoldingsDetail(UUID identifier, BigDecimal amount, String world) {
     return getAccount(identifier).setHoldings(amount, world);
   }
 
@@ -486,7 +487,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if the funds were set for the account, otherwise false.
    */
   @Override
-  default boolean setHoldings(String identifier, BigDecimal amount, String world, String currency) {
+  default EconomyResponse setHoldingsDetail(String identifier, BigDecimal amount, String world, String currency) {
     return getAccount(identifier).setHoldings(amount, getCurrency(currency, world), world);
   }
 
@@ -500,7 +501,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if the funds were set for the account, otherwise false.
    */
   @Override
-  default boolean setHoldings(UUID identifier, BigDecimal amount, String world, String currency) {
+  default EconomyResponse setHoldingsDetail(UUID identifier, BigDecimal amount, String world, String currency) {
     return getAccount(identifier).setHoldings(amount, getCurrency(currency, world), world);
   }
 
@@ -512,7 +513,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if the funds were added to the account, otherwise false.
    */
   @Override
-  default boolean addHoldings(String identifier, BigDecimal amount) {
+  default EconomyResponse addHoldingsDetail(String identifier, BigDecimal amount) {
     return getAccount(identifier).addHoldings(amount);
   }
 
@@ -524,7 +525,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if the funds were added to the account, otherwise false.
    */
   @Override
-  default boolean addHoldings(UUID identifier, BigDecimal amount) {
+  default EconomyResponse addHoldingsDetail(UUID identifier, BigDecimal amount) {
     return getAccount(identifier).addHoldings(amount);
   }
 
@@ -537,7 +538,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if the funds were added to the account, otherwise false.
    */
   @Override
-  default boolean addHoldings(String identifier, BigDecimal amount, String world) {
+  default EconomyResponse addHoldingsDetail(String identifier, BigDecimal amount, String world) {
     return getAccount(identifier).addHoldings(amount, world);
   }
 
@@ -550,7 +551,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if the funds were added to the account, otherwise false.
    */
   @Override
-  default boolean addHoldings(UUID identifier, BigDecimal amount, String world) {
+  default EconomyResponse addHoldingsDetail(UUID identifier, BigDecimal amount, String world) {
     return getAccount(identifier).addHoldings(amount, world);
   }
 
@@ -564,7 +565,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if the funds were added to the account, otherwise false.
    */
   @Override
-  default boolean addHoldings(String identifier, BigDecimal amount, String world, String currency) {
+  default EconomyResponse addHoldingsDetail(String identifier, BigDecimal amount, String world, String currency) {
     return getAccount(identifier).addHoldings(amount, getCurrency(currency, world), world);
   }
 
@@ -578,7 +579,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if the funds were added to the account, otherwise false.
    */
   @Override
-  default boolean addHoldings(UUID identifier, BigDecimal amount, String world, String currency) {
+  default EconomyResponse addHoldingsDetail(UUID identifier, BigDecimal amount, String world, String currency) {
     return getAccount(identifier).addHoldings(amount, getCurrency(currency, world), world);
   }
 
@@ -591,7 +592,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if a call to the corresponding addHoldings method would return true, otherwise false.
    */
   @Override
-  default boolean canAddHoldings(String identifier, BigDecimal amount) {
+  default EconomyResponse canAddHoldingsDetail(String identifier, BigDecimal amount) {
     return getAccount(identifier).canAddHoldings(amount);
   }
 
@@ -604,7 +605,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if a call to the corresponding addHoldings method would return true, otherwise false.
    */
   @Override
-  default boolean canAddHoldings(UUID identifier, BigDecimal amount) {
+  default EconomyResponse canAddHoldingsDetail(UUID identifier, BigDecimal amount) {
     return getAccount(identifier).canAddHoldings(amount);
   }
 
@@ -618,7 +619,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if a call to the corresponding addHoldings method would return true, otherwise false.
    */
   @Override
-  default boolean canAddHoldings(String identifier, BigDecimal amount, String world) {
+  default EconomyResponse canAddHoldingsDetail(String identifier, BigDecimal amount, String world) {
     return getAccount(identifier).canAddHoldings(amount, world);
   }
 
@@ -632,7 +633,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if a call to the corresponding addHoldings method would return true, otherwise false.
    */
   @Override
-  default boolean canAddHoldings(UUID identifier, BigDecimal amount, String world) {
+  default EconomyResponse canAddHoldingsDetail(UUID identifier, BigDecimal amount, String world) {
     return getAccount(identifier).canAddHoldings(amount, world);
   }
 
@@ -647,7 +648,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if a call to the corresponding addHoldings method would return true, otherwise false.
    */
   @Override
-  default boolean canAddHoldings(String identifier, BigDecimal amount, String world, String currency) {
+  default EconomyResponse canAddHoldingsDetail(String identifier, BigDecimal amount, String world, String currency) {
     return getAccount(identifier).canAddHoldings(amount, getCurrency(currency, world), world);
   }
 
@@ -662,7 +663,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if a call to the corresponding addHoldings method would return true, otherwise false.
    */
   @Override
-  default boolean canAddHoldings(UUID identifier, BigDecimal amount, String world, String currency) {
+  default EconomyResponse canAddHoldingsDetail(UUID identifier, BigDecimal amount, String world, String currency) {
     return getAccount(identifier).canAddHoldings(amount, getCurrency(currency, world), world);
   }
 
@@ -674,7 +675,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if the funds were removed from the account, otherwise false.
    */
   @Override
-  default boolean removeHoldings(String identifier, BigDecimal amount) {
+  default EconomyResponse removeHoldingsDetail(String identifier, BigDecimal amount) {
     return getAccount(identifier).removeHoldings(amount);
   }
 
@@ -686,7 +687,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if the funds were removed from the account, otherwise false.
    */
   @Override
-  default boolean removeHoldings(UUID identifier, BigDecimal amount) {
+  default EconomyResponse removeHoldingsDetail(UUID identifier, BigDecimal amount) {
     return getAccount(identifier).removeHoldings(amount);
   }
 
@@ -699,7 +700,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if the funds were removed from the account, otherwise false.
    */
   @Override
-  default boolean removeHoldings(String identifier, BigDecimal amount, String world) {
+  default EconomyResponse removeHoldingsDetail(String identifier, BigDecimal amount, String world) {
     return getAccount(identifier).removeHoldings(amount, world);
   }
 
@@ -712,7 +713,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if the funds were removed from the account, otherwise false.
    */
   @Override
-  default boolean removeHoldings(UUID identifier, BigDecimal amount, String world) {
+  default EconomyResponse removeHoldingsDetail(UUID identifier, BigDecimal amount, String world) {
     return getAccount(identifier).removeHoldings(amount, world);
   }
 
@@ -726,7 +727,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if the funds were removed from the account, otherwise false.
    */
   @Override
-  default boolean removeHoldings(String identifier, BigDecimal amount, String world, String currency) {
+  default EconomyResponse removeHoldingsDetail(String identifier, BigDecimal amount, String world, String currency) {
     return getAccount(identifier).removeHoldings(amount, getCurrency(currency, world), world);
   }
 
@@ -740,7 +741,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if the funds were removed from the account, otherwise false.
    */
   @Override
-  default boolean removeHoldings(UUID identifier, BigDecimal amount, String world, String currency) {
+  default EconomyResponse removeHoldingsDetail(UUID identifier, BigDecimal amount, String world, String currency) {
     return getAccount(identifier).removeHoldings(amount, getCurrency(currency, world), world);
   }
 
@@ -753,7 +754,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
    */
   @Override
-  default boolean canRemoveHoldings(String identifier, BigDecimal amount) {
+  default EconomyResponse canRemoveHoldingsDetail(String identifier, BigDecimal amount) {
     return getAccount(identifier).canRemoveHoldings(amount);
   }
 
@@ -766,7 +767,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
    */
   @Override
-  default boolean canRemoveHoldings(UUID identifier, BigDecimal amount) {
+  default EconomyResponse canRemoveHoldingsDetail(UUID identifier, BigDecimal amount) {
     return getAccount(identifier).canRemoveHoldings(amount);
   }
 
@@ -780,7 +781,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
    */
   @Override
-  default boolean canRemoveHoldings(String identifier, BigDecimal amount, String world) {
+  default EconomyResponse canRemoveHoldingsDetail(String identifier, BigDecimal amount, String world) {
     return getAccount(identifier).canRemoveHoldings(amount, world);
   }
 
@@ -794,7 +795,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
    */
   @Override
-  default boolean canRemoveHoldings(UUID identifier, BigDecimal amount, String world) {
+  default EconomyResponse canRemoveHoldingsDetail(UUID identifier, BigDecimal amount, String world) {
     return getAccount(identifier).canRemoveHoldings(amount, world);
   }
 
@@ -809,7 +810,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
    */
   @Override
-  default boolean canRemoveHoldings(String identifier, BigDecimal amount, String world, String currency) {
+  default EconomyResponse canRemoveHoldingsDetail(String identifier, BigDecimal amount, String world, String currency) {
     return getAccount(identifier).canRemoveHoldings(amount, getCurrency(currency, world), world);
   }
 
@@ -824,7 +825,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
    */
   @Override
-  default boolean canRemoveHoldings(UUID identifier, BigDecimal amount, String world, String currency) {
+  default EconomyResponse canRemoveHoldingsDetail(UUID identifier, BigDecimal amount, String world, String currency) {
     return getAccount(identifier).canRemoveHoldings(amount, getCurrency(currency, world), world);
   }
 

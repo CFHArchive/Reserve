@@ -48,9 +48,9 @@ public class Reserve extends JavaPlugin {
 
   private LinkedHashMap<String, EconomyAPI> registeredEconomies = new LinkedHashMap<>();
   private LinkedHashMap<String, PermissionsAPI> registeredPermissions = new LinkedHashMap<>();
-  private String ecoProvider = null;
-  private String permissionsProvider = null;
-  private String chatProvider = null;
+  private String ecoProvider = "";
+  private String permissionsProvider = "";
+  private String chatProvider = "";
 
   public String defaultWorld = "Default";
 
@@ -84,10 +84,12 @@ public class Reserve extends JavaPlugin {
     getLogger().info("Economy Provider registered: " + provider.name());
     registeredEconomies.put(provider.name(), provider);
     if(provider.enabled()) {
-      ecoProvider = provider.name();
-      if(provider.vault() && getServer().getPluginManager().getPlugin("Vault") != null) {
-        vaultEconomy = new Economy_Vault(this);
-        setupVault();
+      if(provider.force() || ecoProvider.equalsIgnoreCase("")) {
+        ecoProvider = provider.name();
+        if(provider.vault() && getServer().getPluginManager().getPlugin("Vault") != null) {
+          vaultEconomy = new Economy_Vault(this);
+          setupVault();
+        }
       }
     }
   }

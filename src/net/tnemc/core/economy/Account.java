@@ -1,6 +1,7 @@
 package net.tnemc.core.economy;
 
 import net.tnemc.core.economy.currency.Currency;
+import net.tnemc.core.economy.response.EconomyResponse;
 import net.tnemc.core.economy.transaction.charge.TransactionCharge;
 import net.tnemc.core.economy.transaction.charge.TransactionChargeType;
 import org.bukkit.World;
@@ -56,16 +57,16 @@ public interface Account {
   /**
    * Determines whether or not a player is able to withdraw holdings from this account.
    * @param account The {@link Account} that we're using in this check.
-   * @return Whether or not the player is able to withdraw holdings from this account.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean canWithdraw(Account account);
+  EconomyResponse canWithdraw(Account account);
 
   /**
    * Determines whether or not a player is able to deposit holdings into this account.
    * @param account The {@link Account} that we're using in this check.
-   * @return Whether or not the player is able to deposit holdings into this account.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean canDeposit(Account account);
+  EconomyResponse canDeposit(Account account);
 
   /**
    * Determines whether or not a player is able to revoke another player from accessing this account.
@@ -144,160 +145,160 @@ public interface Account {
   /**
    * Used to set the funds to an account.
    * @param amount The amount you wish to set this accounts's funds to.
-   * @return True if the funds were set for the account, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean setHoldings(BigDecimal amount);
+  EconomyResponse setHoldings(BigDecimal amount);
 
   /**
    * Used to set the funds to an account.
    * @param amount The amount you wish to set this accounts's funds to.
    * @param world The name of the {@link World} associated with the amount.
-   * @return True if the funds were set for the account, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean setHoldings(BigDecimal amount, String world);
+  EconomyResponse setHoldings(BigDecimal amount, String world);
 
   /**
    * Used to set the funds to an account.
    * @param amount The amount you wish to set this accounts's funds to.
    * @param currency The {@link Currency} object associated with the amount.
-   * @return True if the funds were set for the account, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean setHoldings(BigDecimal amount, Currency currency);
+  EconomyResponse setHoldings(BigDecimal amount, Currency currency);
 
   /**
    * Used to set the funds to an account.
    * @param amount The amount you wish to set this accounts's funds to.
    * @param currency The {@link Currency} object associated with the amount.
    * @param world The name of the {@link World} associated with the amount.
-   * @return True if the funds were set for the account, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean setHoldings(BigDecimal amount, Currency currency, String world);
+  EconomyResponse setHoldings(BigDecimal amount, Currency currency, String world);
 
   /**
    * Used to add funds to an account.
    * @param amount The amount you wish to add to this account.
-   * @return True if the funds were added to the account, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean addHoldings(BigDecimal amount);
+  EconomyResponse addHoldings(BigDecimal amount);
 
   /**
    * Used to add funds to an account.
    * @param amount The amount you wish to add to this account.
    * @param world The name of the {@link World} associated with the amount.
-   * @return True if the funds were added to the account, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean addHoldings(BigDecimal amount, String world);
+  EconomyResponse addHoldings(BigDecimal amount, String world);
 
   /**
    * Used to add funds to an account.
    * @param amount The amount you wish to add to this account.
    * @param currency The {@link Currency} object associated with the amount.
-   * @return True if the funds were added to the account, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean addHoldings(BigDecimal amount, Currency currency);
+  EconomyResponse addHoldings(BigDecimal amount, Currency currency);
 
   /**
    * Used to add funds to an account.
    * @param amount The amount you wish to add to this account.
    * @param currency The {@link Currency} object associated with the amount.
    * @param world The name of the {@link World} associated with the amount.
-   * @return True if the funds were added to the account, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean addHoldings(BigDecimal amount, Currency currency, String world);
+  EconomyResponse addHoldings(BigDecimal amount, Currency currency, String world);
 
   /**
    * Used to determine if a call to the corresponding addHoldings method would be successful. This method does not
    * affect an account's funds.
    * @param amount The amount you wish to add to this account.
-   * @return True if a call to the corresponding addHoldings method would return true, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean canAddHoldings(BigDecimal amount);
+  EconomyResponse canAddHoldings(BigDecimal amount);
 
   /**
    * Used to determine if a call to the corresponding addHoldings method would be successful. This method does not
    * affect an account's funds.
    * @param amount The amount you wish to add to this account.
    * @param world The name of the {@link World} associated with the amount.
-   * @return True if a call to the corresponding addHoldings method would return true, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean canAddHoldings(BigDecimal amount, String world);
-
-  /**
-   * Used to determine if a call to the corresponding addHoldings method would be successful. This method does not
-   * affect an account's funds.
-   * @param amount The amount you wish to add to this account.
-   * @param currency The {@link Currency} object associated with the amount.
-   * @return True if a call to the corresponding addHoldings method would return true, otherwise false.
-   */
-  boolean canAddHoldings(BigDecimal amount, Currency currency);
+  EconomyResponse canAddHoldings(BigDecimal amount, String world);
 
   /**
    * Used to determine if a call to the corresponding addHoldings method would be successful. This method does not
    * affect an account's funds.
    * @param amount The amount you wish to add to this account.
    * @param currency The {@link Currency} object associated with the amount.
-   * @param world The name of the {@link World} associated with the amount.
-   * @return True if a call to the corresponding addHoldings method would return true, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean canAddHoldings(BigDecimal amount, Currency currency, String world);
+  EconomyResponse canAddHoldings(BigDecimal amount, Currency currency);
+
+  /**
+   * Used to determine if a call to the corresponding addHoldings method would be successful. This method does not
+   * affect an account's funds.
+   * @param amount The amount you wish to add to this account.
+   * @param currency The {@link Currency} object associated with the amount.
+   * @param world The name of the {@link World} associated with the amount.
+   * @return The {@link EconomyResponse} for this action.
+   */
+  EconomyResponse canAddHoldings(BigDecimal amount, Currency currency, String world);
 
   /**
    * Used to remove funds from an account.
    * @param amount The amount you wish to remove from this account.
-   * @return True if the funds were removed from the account, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean removeHoldings(BigDecimal amount);
+  EconomyResponse removeHoldings(BigDecimal amount);
 
   /**
    * Used to remove funds from an account.
    * @param amount The amount you wish to remove from this account.
    * @param world The name of the {@link World} associated with the amount.
-   * @return True if the funds were removed from the account, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean removeHoldings(BigDecimal amount, String world);
+  EconomyResponse removeHoldings(BigDecimal amount, String world);
 
   /**
    * Used to remove funds from an account.
    * @param amount The amount you wish to remove from this account.
    * @param currency The {@link Currency} object associated with the amount.
-   * @return True if the funds were removed from the account, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean removeHoldings(BigDecimal amount, Currency currency);
+  EconomyResponse removeHoldings(BigDecimal amount, Currency currency);
 
   /**
    * Used to remove funds from an account.
    * @param amount The amount you wish to remove from this account.
    * @param currency The {@link Currency} object associated with the amount.
    * @param world The name of the {@link World} associated with the amount.
-   * @return True if the funds were removed from the account, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean removeHoldings(BigDecimal amount, Currency currency, String world);
+  EconomyResponse removeHoldings(BigDecimal amount, Currency currency, String world);
 
   /**
    * Used to determine if a call to the corresponding removeHoldings method would be successful. This method does not
    * affect an account's funds.
    * @param amount The amount you wish to remove from this account.
-   * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean canRemoveHoldings(BigDecimal amount);
+  EconomyResponse canRemoveHoldings(BigDecimal amount);
 
   /**
    * Used to determine if a call to the corresponding removeHoldings method would be successful. This method does not
    * affect an account's funds.
    * @param amount The amount you wish to remove from this account.
    * @param world The name of the {@link World} associated with the amount.
-   * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean canRemoveHoldings(BigDecimal amount, String world);
+  EconomyResponse canRemoveHoldings(BigDecimal amount, String world);
 
   /**
    * Used to determine if a call to the corresponding removeHoldings method would be successful. This method does not
    * affect an account's funds.
    * @param amount The amount you wish to remove from this account.
    * @param currency The {@link Currency} object associated with the amount.
-   * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean canRemoveHoldings(BigDecimal amount, Currency currency);
+  EconomyResponse canRemoveHoldings(BigDecimal amount, Currency currency);
 
   /**
    * Used to determine if a call to the corresponding removeHoldings method would be successful. This method does not
@@ -305,16 +306,16 @@ public interface Account {
    * @param amount The amount you wish to remove from this account.
    * @param currency The {@link Currency} object associated with the amount.
    * @param world The name of the {@link World} associated with the amount.
-   * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  boolean canRemoveHoldings(BigDecimal amount, Currency currency, String world);
+  EconomyResponse canRemoveHoldings(BigDecimal amount, Currency currency, String world);
 
   /**
    * Used to handle an {@link TransactionCharge}. This is mostly a shorthand method.
    * @param charge The {@link TransactionCharge} to handle.
-   * @return True if charge is able to be handled successfully, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  default boolean handleCharge(TransactionCharge charge) {
+  default EconomyResponse handleCharge(TransactionCharge charge) {
     if(charge.getType().equals(TransactionChargeType.LOSE)) {
       return removeHoldings(charge.getEntry().getAmount(), charge.getCurrency(), charge.getWorld());
     }
@@ -324,9 +325,9 @@ public interface Account {
   /**
    * Used to determine if a call to handleCharge would be successful. This method does not affect an account's funds.
    * @param charge The {@link TransactionCharge} to handle.
-   * @return True if a call to handleCharge would return true, otherwise false.
+   * @return The {@link EconomyResponse} for this action.
    */
-  default boolean canCharge(TransactionCharge charge) {
+  default EconomyResponse canCharge(TransactionCharge charge) {
     if(charge.getType().equals(TransactionChargeType.LOSE)) {
       return canRemoveHoldings(charge.getEntry().getAmount(), charge.getCurrency(), charge.getWorld());
     }
