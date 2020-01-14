@@ -50,7 +50,7 @@ public interface EconomyAPI {
   boolean enabled();
 
   /**
-   * @return True if this implementation should be override other economy implementations.
+   * @return True if this implementation should override other economy implementations.
    */
   default boolean force() {
     return true;
