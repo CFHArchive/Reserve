@@ -63,14 +63,7 @@ public class ReserveLoadedCommand extends TNECommand {
       if(!economies.equalsIgnoreCase("")) economies += ", ";
       economies += name;
     }
-
-    String permissions = "";
-    for(String name : Reserve.instance().getRegisteredPermissions().keySet()) {
-      if(!permissions.equalsIgnoreCase("")) permissions += ", ";
-      permissions += name;
-    }
     sender.sendMessage("Economy Providers: " + economies);
-    sender.sendMessage("Permissions Providers: " + permissions);
     return true;
   }
 }

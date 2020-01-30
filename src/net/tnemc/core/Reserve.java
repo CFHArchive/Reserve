@@ -6,7 +6,6 @@ import net.tnemc.core.command.TNECommand;
 import net.tnemc.core.command.reserve.ReserveCommand;
 import net.tnemc.core.economy.EconomyAPI;
 import net.tnemc.core.economy.Economy_Vault;
-import net.tnemc.core.permissions.PermissionsAPI;
 import net.tnemc.core.utils.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -47,10 +46,7 @@ public class Reserve extends JavaPlugin {
   protected CommandManager commandManager;
 
   private LinkedHashMap<String, EconomyAPI> registeredEconomies = new LinkedHashMap<>();
-  private LinkedHashMap<String, PermissionsAPI> registeredPermissions = new LinkedHashMap<>();
   private String ecoProvider = "";
-  private String permissionsProvider = "";
-  private String chatProvider = "";
 
   public String defaultWorld = "Default";
 
@@ -94,52 +90,20 @@ public class Reserve extends JavaPlugin {
     }
   }
 
-  public void registerProvider(PermissionsAPI provider) {
-    getLogger().info("Permissions Provider registered: " + provider.name());
-    if(provider.enabled()) {
-      permissionsProvider = provider.name();
-    }
-    registeredPermissions.put(provider.name(), provider);
-  }
-
   public LinkedHashMap<String, EconomyAPI> getRegisteredEconomies() {
     return registeredEconomies;
-  }
-
-  public LinkedHashMap<String, PermissionsAPI> getRegisteredPermissions() {
-    return registeredPermissions;
   }
 
   public void setEconomy(String name) {
     ecoProvider = name;
   }
 
-  public void setPermissions(String name) {
-    permissionsProvider = name;
-  }
-
-  public void setChat(String name) {
-    chatProvider = name;
-  }
-
   public EconomyAPI economy() {
     return registeredEconomies.get(ecoProvider);
   }
 
-  public PermissionsAPI permissions() {
-    return registeredPermissions.get(permissionsProvider);
-  }
-
   public boolean economyProvided() {
     return ecoProvider != null;
-  }
-
-  public boolean permissionsProvided() {
-    return permissionsProvider != null;
-  }
-
-  public boolean chatProvided() {
-    return chatProvider != null;
   }
 
   private CommandManager getCommandManager() {
