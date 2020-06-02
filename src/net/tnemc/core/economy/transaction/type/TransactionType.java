@@ -3,9 +3,12 @@ package net.tnemc.core.economy.transaction.type;
 import net.tnemc.core.Reserve;
 import net.tnemc.core.economy.ExtendedEconomyAPI;
 import net.tnemc.core.economy.currency.CurrencyEntry;
+import net.tnemc.core.economy.response.CustomResponse;
+import net.tnemc.core.economy.response.EconomyResponse;
 import net.tnemc.core.economy.tax.TaxEntry;
 import net.tnemc.core.economy.transaction.Transaction;
 import net.tnemc.core.economy.transaction.TransactionAffected;
+import net.tnemc.core.economy.transaction.result.CustomTransactionResult;
 import net.tnemc.core.economy.transaction.result.TransactionResult;
 
 import java.util.Map;
@@ -68,16 +71,6 @@ public interface TransactionType {
   }
 
   /**
-   * @return The {@link TransactionResult} of this transaction if it were to be successful.
-   */
-  TransactionResult success();
-
-  /**
-   * @return The {@link TransactionResult} of this transaction if it were to fail.
-   */
-  TransactionResult fail();
-
-  /**
    * @return The {@link TransactionAffected} of this transaction type.
    */
   TransactionAffected affected();
@@ -122,9 +115,11 @@ public interface TransactionType {
    * @return The {@link TransactionResult} of this {@link Transaction}.
    */
   default TransactionResult perform(Transaction transaction) {
+    EconomyResponse response = new CustomResponse(false, "placeholder");
+
     if(Reserve.instance().economyProvided() && Reserve.instance().economy().supportTransactions()) {
+
       ExtendedEconomyAPI api = (ExtendedEconomyAPI)Reserve.instance().economy();
-      boolean proceed = false;
 
       if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.INITIATOR)) {
 
@@ -135,10 +130,10 @@ public interface TransactionType {
           transaction.initiatorCharge().setEntry(entry);
         }
 
-        proceed = api.getAccount(transaction.initiator()).canCharge(transaction.initiatorCharge()).success();
+        response = api.getAccount(transaction.initiator()).canCharge(transaction.initiatorCharge());
       }
       if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.RECIPIENT)) {
-        if (affected().equals(TransactionAffected.BOTH) && proceed || affected().equals(TransactionAffected.RECIPIENT)) {
+        if (affected().equals(TransactionAffected.BOTH) && response.success() || affected().equals(TransactionAffected.RECIPIENT)) {
 
           final Optional<TaxEntry> calculated = calculateRecipientTax(transaction.recipient());
           if(calculated.isPresent()) {
@@ -147,12 +142,12 @@ public interface TransactionType {
             transaction.recipientCharge().setEntry(entry);
           }
 
-          proceed = api.getAccount(transaction.recipient()).canCharge(transaction.recipientCharge()).success();
+          response = api.getAccount(transaction.recipient()).canCharge(transaction.recipientCharge());
         }
       }
 
 
-      if (proceed) {
+      if (response.success()) {
         if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.INITIATOR)) {
           api.getAccount(transaction.initiator()).handleCharge(transaction.initiatorCharge());
         }
@@ -160,9 +155,9 @@ public interface TransactionType {
         if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.RECIPIENT)) {
           api.getAccount(transaction.recipient()).handleCharge(transaction.recipientCharge());
         }
-        return success();
       }
+
     }
-    return fail();
+    return new CustomTransactionResult("generated", response.response(), response.responseRecipient(), response.success());
   }
 }
