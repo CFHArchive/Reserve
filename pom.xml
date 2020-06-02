@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.tnemc</groupId>
     <artifactId>Reserve</artifactId>
-    <version>0.1.4.8</version>
+    <version>0.1.4.9</version>
     <packaging>jar</packaging>
     <name>Reserve</name>
     <properties>
@@ -59,19 +59,15 @@
         </developer>
     </developers>
     <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
         <repository>
-            <id>bintray-theneweconomy-java</id>
-            <name>theneweconomy-java</name>
-            <url>https://api.bintray.com/maven/theneweconomy/java/Reserve/;publish=1</url>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
-    <!--<distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub TheNewEconomy Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/TheNewEconomy/Reserve</url>
-        </repository>
-    </distributionManagement>-->
 
     <repositories>
         <repository>
