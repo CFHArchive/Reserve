@@ -61,7 +61,7 @@ public class Message {
     colours.put("<reset>", ChatColor.RESET.toString());
   }
 
-  private HashMap<String, String> variables = new HashMap<String, String>();
+  private HashMap<String, String> variables = new HashMap<>();
   private String node;
 
   public Message(String node) {

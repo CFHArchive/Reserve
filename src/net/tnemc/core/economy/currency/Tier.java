@@ -24,5 +24,5 @@ public interface Tier {
   /**
    * @return Gets the weight of this tier. A weight of one is equivalent to 1.0 of currency.
    */
-  int weight();
+  double weight();
 }
