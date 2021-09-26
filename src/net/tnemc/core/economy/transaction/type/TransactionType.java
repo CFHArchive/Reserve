@@ -32,7 +32,7 @@ public interface TransactionType {
   String name();
 
   /**
-   * @return True if the recipient, or initiator may be null, which is identified as the console.
+   * @return True if the recipient, or initiator contain the console
    */
   boolean console();
 
@@ -86,21 +86,21 @@ public interface TransactionType {
       boolean proceed = false;
 
       if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.INITIATOR)) {
-        proceed = api.getAccount(transaction.initiator()).canCharge(transaction.initiatorCharge().copy(true)).success();
+        proceed = api.createIfNotExists(transaction.initiator()).canCharge(transaction.initiatorCharge().copy(true)).success();
       }
       if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.RECIPIENT)) {
         if (affected().equals(TransactionAffected.BOTH) && proceed || affected().equals(TransactionAffected.RECIPIENT)) {
-          proceed = api.getAccount(transaction.recipient()).canCharge(transaction.recipientCharge().copy(true)).success();
+          proceed = api.createIfNotExists(transaction.recipient()).canCharge(transaction.recipientCharge().copy(true)).success();
         }
       }
 
 
       if (proceed) {
         if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.INITIATOR)) {
-          api.getAccount(transaction.initiator()).handleCharge(transaction.initiatorCharge().copy(true));
+          api.createIfNotExists(transaction.initiator()).handleCharge(transaction.initiatorCharge().copy(true));
         }
         if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.RECIPIENT)) {
-          api.getAccount(transaction.recipient()).handleCharge(transaction.recipientCharge().copy(true));
+          api.createIfNotExists(transaction.recipient()).handleCharge(transaction.recipientCharge().copy(true));
         }
         return true;
       }
@@ -130,7 +130,7 @@ public interface TransactionType {
           transaction.initiatorCharge().setEntry(entry);
         }
 
-        response = api.getAccount(transaction.initiator()).canCharge(transaction.initiatorCharge());
+        response = api.createIfNotExists(transaction.initiator()).canCharge(transaction.initiatorCharge());
       }
       if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.RECIPIENT)) {
         if (affected().equals(TransactionAffected.BOTH) && response.success() || affected().equals(TransactionAffected.RECIPIENT)) {
@@ -142,18 +142,18 @@ public interface TransactionType {
             transaction.recipientCharge().setEntry(entry);
           }
 
-          response = api.getAccount(transaction.recipient()).canCharge(transaction.recipientCharge());
+          response = api.createIfNotExists(transaction.recipient()).canCharge(transaction.recipientCharge());
         }
       }
 
 
       if (response.success()) {
         if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.INITIATOR)) {
-          api.getAccount(transaction.initiator()).handleCharge(transaction.initiatorCharge());
+          api.createIfNotExists(transaction.initiator()).handleCharge(transaction.initiatorCharge());
         }
 
         if (affected().equals(TransactionAffected.BOTH) || affected().equals(TransactionAffected.RECIPIENT)) {
-          api.getAccount(transaction.recipient()).handleCharge(transaction.recipientCharge());
+          api.createIfNotExists(transaction.recipient()).handleCharge(transaction.recipientCharge());
         }
       }
 

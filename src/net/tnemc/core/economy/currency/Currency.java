@@ -1,6 +1,8 @@
 package net.tnemc.core.economy.currency;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.TreeMap;
 
 /**
@@ -48,4 +50,12 @@ public interface Currency {
    * @return A TreeMap sorted by weight of the various minor tiers that belong to this currency.
    */
   TreeMap<Integer, Tier> getMinorTiers();
+
+  /**
+   * A map contain all conversion values for other currencies for how this currency would convert to them.
+   * @return A map in the form of Currency Name, Exchange Rate in relation to this currency.
+   */
+  default Map<String, Double> converionRates() {
+    return new HashMap<>();
+  }
 }

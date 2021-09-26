@@ -69,7 +69,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @param name The name of the currency you are attempted to retrieve.
    * @return The {@link Currency} object if it exists, otherwise null.
    */
-  Currency getCurrency(String name);
+  Optional<Currency> getCurrency(String name);
 
   /**
    * Grabs a currency based on the name provided.
@@ -77,7 +77,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @param world The name of the {@link World} to use in this search.
    * @return The {@link Currency} object if it exists, otherwise null.
    */
-  Currency getCurrency(String name, String world);
+  Optional<Currency> getCurrency(String name, String world);
 
   /**
    * Checks to see if a {@link Currency} has the specified tier.
@@ -108,14 +108,14 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    * @param identifier The of the account.
    * @return The instance of the account if it exists, otherwise null.
    */
-  Account getAccount(String identifier);
+  Optional<Account> getAccount(String identifier);
 
   /**
    * Attempts to retrieve an account by the specified identifier. This method should be used for player accounts.
    * @param identifier The {@link UUID} of the account.
    * @return The instance of the account if it exists, otherwise null.
    */
-  Account getAccount(UUID identifier);
+  Optional<Account> getAccount(UUID identifier);
 
   /**
    * This is a shortcut method that combines getAccount with createAccount. This method should be used for non-player
@@ -142,7 +142,12 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default boolean isAccessor(String identifier, String accessor) {
-    return getAccount(identifier).isAccessor(getAccount(accessor));
+    final Optional<Account> account = getAccount(identifier);
+    final Optional<Account> accessorAccount = getAccount(accessor);
+    if(account.isPresent() && accessorAccount.isPresent()) {
+      return account.get().isAccessor(accessorAccount.get());
+    }
+    return false;
   }
 
   /**
@@ -154,7 +159,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default boolean isAccessor(String identifier, UUID accessor) {
-    return getAccount(identifier).isAccessor(getAccount(accessor));
+    return isAccessor(identifier, accessor.toString());
   }
 
   /**
@@ -166,7 +171,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default boolean isAccessor(UUID identifier, String accessor) {
-    return getAccount(identifier).isAccessor(getAccount(accessor));
+    return isAccessor(identifier.toString(), accessor);
   }
 
   /**
@@ -178,7 +183,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default boolean isAccessor(UUID identifier, UUID accessor) {
-    return getAccount(identifier).isAccessor(getAccount(accessor));
+    return isAccessor(identifier.toString(), accessor.toString());
   }
 
   /**
@@ -190,7 +195,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse canWithdrawDetail(String identifier, String accessor) {
-    return getAccount(identifier).canWithdraw(getAccount(accessor));
+    return createIfNotExists(identifier).canWithdraw(createIfNotExists(accessor));
   }
 
   /**
@@ -202,7 +207,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse canWithdrawDetail(String identifier, UUID accessor) {
-    return getAccount(identifier).canWithdraw(getAccount(accessor));
+    return createIfNotExists(identifier).canWithdraw(createIfNotExists(accessor));
   }
 
   /**
@@ -214,7 +219,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse canWithdrawDetail(UUID identifier, String accessor) {
-    return getAccount(identifier).canWithdraw(getAccount(accessor));
+    return createIfNotExists(identifier).canWithdraw(createIfNotExists(accessor));
   }
 
   /**
@@ -226,7 +231,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse canWithdrawDetail(UUID identifier, UUID accessor) {
-    return getAccount(identifier).canWithdraw(getAccount(accessor));
+    return createIfNotExists(identifier).canWithdraw(createIfNotExists(accessor));
   }
 
   /**
@@ -238,7 +243,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse canDepositDetail(String identifier, String accessor) {
-    return getAccount(identifier).canDeposit(getAccount(accessor));
+    return createIfNotExists(identifier).canDeposit(createIfNotExists(accessor));
   }
 
   /**
@@ -250,7 +255,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse canDepositDetail(String identifier, UUID accessor) {
-    return getAccount(identifier).canDeposit(getAccount(accessor));
+    return createIfNotExists(identifier).canDeposit(createIfNotExists(accessor));
   }
 
   /**
@@ -262,7 +267,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse canDepositDetail(UUID identifier, String accessor) {
-    return getAccount(identifier).canDeposit(getAccount(accessor));
+    return createIfNotExists(identifier).canDeposit(createIfNotExists(accessor));
   }
 
   /**
@@ -274,7 +279,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse canDepositDetail(UUID identifier, UUID accessor) {
-    return getAccount(identifier).canDeposit(getAccount(accessor));
+    return createIfNotExists(identifier).canDeposit(createIfNotExists(accessor));
   }
 
   /**
@@ -285,7 +290,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default BigDecimal getHoldings(String identifier) {
-    return getAccount(identifier).getHoldings();
+    return createIfNotExists(identifier).getHoldings();
   }
 
   /**
@@ -296,7 +301,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default BigDecimal getHoldings(UUID identifier) {
-    return getAccount(identifier).getHoldings();
+    return createIfNotExists(identifier).getHoldings();
   }
 
   /**
@@ -308,7 +313,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default BigDecimal getHoldings(String identifier, String world) {
-    return getAccount(identifier).getHoldings(world);
+    return createIfNotExists(identifier).getHoldings(world);
   }
 
   /**
@@ -320,7 +325,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default BigDecimal getHoldings(UUID identifier, String world) {
-    return getAccount(identifier).getHoldings(world);
+    return createIfNotExists(identifier).getHoldings(world);
   }
 
   /**
@@ -333,7 +338,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default BigDecimal getHoldings(String identifier, String world, String currency) {
-    return getAccount(identifier).getHoldings(world, getCurrency(currency, world));
+    return createIfNotExists(identifier).getHoldings(world, getCurrency(currency, world).get());
   }
 
   /**
@@ -346,7 +351,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default BigDecimal getHoldings(UUID identifier, String world, String currency) {
-    return getAccount(identifier).getHoldings(world, getCurrency(currency, world));
+    return createIfNotExists(identifier).getHoldings(world, getCurrency(currency, world).get());
   }
 
   /**
@@ -358,7 +363,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default boolean hasHoldings(String identifier, BigDecimal amount) {
-    return getAccount(identifier).hasHoldings(amount);
+    return createIfNotExists(identifier).hasHoldings(amount);
   }
 
   /**
@@ -370,7 +375,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default boolean hasHoldings(UUID identifier, BigDecimal amount) {
-    return getAccount(identifier).hasHoldings(amount);
+    return createIfNotExists(identifier).hasHoldings(amount);
   }
 
   /**
@@ -383,7 +388,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default boolean hasHoldings(String identifier, BigDecimal amount, String world) {
-    return getAccount(identifier).hasHoldings(amount, world);
+    return createIfNotExists(identifier).hasHoldings(amount, world);
   }
 
   /**
@@ -396,7 +401,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default boolean hasHoldings(UUID identifier, BigDecimal amount, String world) {
-    return getAccount(identifier).hasHoldings(amount, world);
+    return createIfNotExists(identifier).hasHoldings(amount, world);
   }
 
   /**
@@ -410,7 +415,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default boolean hasHoldings(String identifier, BigDecimal amount, String world, String currency) {
-    return getAccount(identifier).hasHoldings(amount, getCurrency(currency, world), world);
+    return createIfNotExists(identifier).hasHoldings(amount, getCurrency(currency, world).get(), world);
   }
 
   /**
@@ -424,7 +429,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default boolean hasHoldings(UUID identifier, BigDecimal amount, String world, String currency) {
-    return getAccount(identifier).hasHoldings(amount, getCurrency(currency, world), world);
+    return createIfNotExists(identifier).hasHoldings(amount, getCurrency(currency, world).get(), world);
   }
 
   /**
@@ -436,7 +441,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse setHoldingsDetail(String identifier, BigDecimal amount) {
-    return getAccount(identifier).setHoldings(amount);
+    return createIfNotExists(identifier).setHoldings(amount);
   }
 
   /**
@@ -448,7 +453,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse setHoldingsDetail(UUID identifier, BigDecimal amount) {
-    return getAccount(identifier).setHoldings(amount);
+    return createIfNotExists(identifier).setHoldings(amount);
   }
 
   /**
@@ -461,7 +466,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse setHoldingsDetail(String identifier, BigDecimal amount, String world) {
-    return getAccount(identifier).setHoldings(amount, world);
+    return createIfNotExists(identifier).setHoldings(amount, world);
   }
 
   /**
@@ -474,7 +479,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse setHoldingsDetail(UUID identifier, BigDecimal amount, String world) {
-    return getAccount(identifier).setHoldings(amount, world);
+    return createIfNotExists(identifier).setHoldings(amount, world);
   }
 
   /**
@@ -488,7 +493,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse setHoldingsDetail(String identifier, BigDecimal amount, String world, String currency) {
-    return getAccount(identifier).setHoldings(amount, getCurrency(currency, world), world);
+    return createIfNotExists(identifier).setHoldings(amount, getCurrency(currency, world).get(), world);
   }
 
   /**
@@ -502,7 +507,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse setHoldingsDetail(UUID identifier, BigDecimal amount, String world, String currency) {
-    return getAccount(identifier).setHoldings(amount, getCurrency(currency, world), world);
+    return createIfNotExists(identifier).setHoldings(amount, getCurrency(currency, world).get(), world);
   }
 
   /**
@@ -514,7 +519,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse addHoldingsDetail(String identifier, BigDecimal amount) {
-    return getAccount(identifier).addHoldings(amount);
+    return createIfNotExists(identifier).addHoldings(amount);
   }
 
   /**
@@ -526,7 +531,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse addHoldingsDetail(UUID identifier, BigDecimal amount) {
-    return getAccount(identifier).addHoldings(amount);
+    return createIfNotExists(identifier).addHoldings(amount);
   }
 
   /**
@@ -539,7 +544,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse addHoldingsDetail(String identifier, BigDecimal amount, String world) {
-    return getAccount(identifier).addHoldings(amount, world);
+    return createIfNotExists(identifier).addHoldings(amount, world);
   }
 
   /**
@@ -552,7 +557,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse addHoldingsDetail(UUID identifier, BigDecimal amount, String world) {
-    return getAccount(identifier).addHoldings(amount, world);
+    return createIfNotExists(identifier).addHoldings(amount, world);
   }
 
   /**
@@ -566,7 +571,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse addHoldingsDetail(String identifier, BigDecimal amount, String world, String currency) {
-    return getAccount(identifier).addHoldings(amount, getCurrency(currency, world), world);
+    return createIfNotExists(identifier).addHoldings(amount, getCurrency(currency, world).get(), world);
   }
 
   /**
@@ -580,7 +585,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse addHoldingsDetail(UUID identifier, BigDecimal amount, String world, String currency) {
-    return getAccount(identifier).addHoldings(amount, getCurrency(currency, world), world);
+    return createIfNotExists(identifier).addHoldings(amount, getCurrency(currency, world).get(), world);
   }
 
   /**
@@ -593,7 +598,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse canAddHoldingsDetail(String identifier, BigDecimal amount) {
-    return getAccount(identifier).canAddHoldings(amount);
+    return createIfNotExists(identifier).canAddHoldings(amount);
   }
 
   /**
@@ -606,7 +611,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse canAddHoldingsDetail(UUID identifier, BigDecimal amount) {
-    return getAccount(identifier).canAddHoldings(amount);
+    return createIfNotExists(identifier).canAddHoldings(amount);
   }
 
   /**
@@ -620,7 +625,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse canAddHoldingsDetail(String identifier, BigDecimal amount, String world) {
-    return getAccount(identifier).canAddHoldings(amount, world);
+    return createIfNotExists(identifier).canAddHoldings(amount, world);
   }
 
   /**
@@ -634,7 +639,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse canAddHoldingsDetail(UUID identifier, BigDecimal amount, String world) {
-    return getAccount(identifier).canAddHoldings(amount, world);
+    return createIfNotExists(identifier).canAddHoldings(amount, world);
   }
 
   /**
@@ -649,7 +654,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse canAddHoldingsDetail(String identifier, BigDecimal amount, String world, String currency) {
-    return getAccount(identifier).canAddHoldings(amount, getCurrency(currency, world), world);
+    return createIfNotExists(identifier).canAddHoldings(amount, getCurrency(currency, world).get(), world);
   }
 
   /**
@@ -664,7 +669,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse canAddHoldingsDetail(UUID identifier, BigDecimal amount, String world, String currency) {
-    return getAccount(identifier).canAddHoldings(amount, getCurrency(currency, world), world);
+    return createIfNotExists(identifier).canAddHoldings(amount, getCurrency(currency, world).get(), world);
   }
 
   /**
@@ -676,7 +681,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse removeHoldingsDetail(String identifier, BigDecimal amount) {
-    return getAccount(identifier).removeHoldings(amount);
+    return createIfNotExists(identifier).removeHoldings(amount);
   }
 
   /**
@@ -688,7 +693,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse removeHoldingsDetail(UUID identifier, BigDecimal amount) {
-    return getAccount(identifier).removeHoldings(amount);
+    return createIfNotExists(identifier).removeHoldings(amount);
   }
 
   /**
@@ -701,7 +706,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse removeHoldingsDetail(String identifier, BigDecimal amount, String world) {
-    return getAccount(identifier).removeHoldings(amount, world);
+    return createIfNotExists(identifier).removeHoldings(amount, world);
   }
 
   /**
@@ -714,7 +719,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse removeHoldingsDetail(UUID identifier, BigDecimal amount, String world) {
-    return getAccount(identifier).removeHoldings(amount, world);
+    return createIfNotExists(identifier).removeHoldings(amount, world);
   }
 
   /**
@@ -728,7 +733,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse removeHoldingsDetail(String identifier, BigDecimal amount, String world, String currency) {
-    return getAccount(identifier).removeHoldings(amount, getCurrency(currency, world), world);
+    return createIfNotExists(identifier).removeHoldings(amount, getCurrency(currency, world).get(), world);
   }
 
   /**
@@ -742,7 +747,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse removeHoldingsDetail(UUID identifier, BigDecimal amount, String world, String currency) {
-    return getAccount(identifier).removeHoldings(amount, getCurrency(currency, world), world);
+    return createIfNotExists(identifier).removeHoldings(amount, getCurrency(currency, world).get(), world);
   }
 
   /**
@@ -755,7 +760,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse canRemoveHoldingsDetail(String identifier, BigDecimal amount) {
-    return getAccount(identifier).canRemoveHoldings(amount);
+    return createIfNotExists(identifier).canRemoveHoldings(amount);
   }
 
   /**
@@ -768,7 +773,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse canRemoveHoldingsDetail(UUID identifier, BigDecimal amount) {
-    return getAccount(identifier).canRemoveHoldings(amount);
+    return createIfNotExists(identifier).canRemoveHoldings(amount);
   }
 
   /**
@@ -782,7 +787,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse canRemoveHoldingsDetail(String identifier, BigDecimal amount, String world) {
-    return getAccount(identifier).canRemoveHoldings(amount, world);
+    return createIfNotExists(identifier).canRemoveHoldings(amount, world);
   }
 
   /**
@@ -796,7 +801,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse canRemoveHoldingsDetail(UUID identifier, BigDecimal amount, String world) {
-    return getAccount(identifier).canRemoveHoldings(amount, world);
+    return createIfNotExists(identifier).canRemoveHoldings(amount, world);
   }
 
   /**
@@ -811,7 +816,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse canRemoveHoldingsDetail(String identifier, BigDecimal amount, String world, String currency) {
-    return getAccount(identifier).canRemoveHoldings(amount, getCurrency(currency, world), world);
+    return createIfNotExists(identifier).canRemoveHoldings(amount, getCurrency(currency, world).get(), world);
   }
 
   /**
@@ -826,7 +831,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default EconomyResponse canRemoveHoldingsDetail(UUID identifier, BigDecimal amount, String world, String currency) {
-    return getAccount(identifier).canRemoveHoldings(amount, getCurrency(currency, world), world);
+    return createIfNotExists(identifier).canRemoveHoldings(amount, getCurrency(currency, world).get(), world);
   }
 
   /**
@@ -847,7 +852,7 @@ public interface ExtendedEconomyAPI extends EconomyAPI {
    */
   @Override
   default String format(BigDecimal amount, String world, String currency) {
-    return format(amount, getCurrency(currency, world), world);
+    return format(amount, getCurrency(currency, world).get(), world);
   }
 
   /**

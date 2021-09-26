@@ -15,6 +15,8 @@ import java.util.UUID;
  **/
 public interface Transaction {
 
+
+
   /**
    * @return The identifier of the initiator's account. This may be a {@link UUID}, or a player's name.
    */
@@ -122,11 +124,11 @@ public interface Transaction {
     if(Reserve.instance().economyProvided() && Reserve.instance().economy().supportTransactions()) {
       ExtendedEconomyAPI api = (ExtendedEconomyAPI)Reserve.instance().economy();
       CurrencyEntry recipientInitial = recipientCharge().getEntry();
-      recipientInitial.setAmount(api.getAccount(recipient()).getHoldings(recipientInitial.getWorld(), recipientInitial.getCurrency()));
+      recipientInitial.setAmount(api.createIfNotExists(recipient()).getHoldings(recipientInitial.getWorld(), recipientInitial.getCurrency()));
       setRecipientBalance(recipientInitial);
 
       CurrencyEntry initiatorInitial = recipientCharge().getEntry();
-      initiatorInitial.setAmount(api.getAccount(initiator()).getHoldings(initiatorInitial.getWorld(), initiatorInitial.getCurrency()));
+      initiatorInitial.setAmount(api.createIfNotExists(initiator()).getHoldings(initiatorInitial.getWorld(), initiatorInitial.getCurrency()));
       setInitiatorBalance(initiatorInitial);
     }
     return type().perform(this);
