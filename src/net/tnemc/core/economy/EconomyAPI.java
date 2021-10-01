@@ -3102,4 +3102,11 @@ public interface EconomyAPI {
   default CompletableFuture<Boolean> asyncPurgeAccountsUnder(BigDecimal amount) {
     return CompletableFuture.supplyAsync(()->purgeAccountsUnder(amount));
   }
+
+  /**
+   * Whether or not this API Implementation supports the Transaction System.
+   */
+  default boolean supportTransactions() {
+    return false;
+  }
 }

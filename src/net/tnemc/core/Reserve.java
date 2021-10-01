@@ -22,7 +22,7 @@ import java.util.Map;
  *
  * Reserve API
  *
- * Copyright (C) 2018 creatorfromhell
+ * Copyright (C) 2021 creatorfromhell
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published
@@ -52,6 +52,7 @@ public class Reserve extends JavaPlugin {
 
   public void onLoad() {
     instance = this;
+    System.out.println("Instance created");
 
     ConfigurationManager.initialize(this);
   }
