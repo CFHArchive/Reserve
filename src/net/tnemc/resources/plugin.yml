@@ -6,6 +6,6 @@ author: creatorfromhell
 api-version: 1.13
 
 #Plugin Data
-main: net.tnemc.reserve.core.Reserve
+main: net.tnemc.core.Reserve
 load: STARTUP
 softdepend: [Vault]
