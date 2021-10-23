@@ -52,7 +52,6 @@ public class Reserve extends JavaPlugin {
 
   public void onLoad() {
     instance = this;
-    System.out.println("Instance created");
 
     ConfigurationManager.initialize(this);
   }
