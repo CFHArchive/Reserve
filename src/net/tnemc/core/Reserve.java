@@ -6,7 +6,7 @@ import net.tnemc.core.command.TNECommand;
 import net.tnemc.core.command.reserve.ReserveCommand;
 import net.tnemc.core.economy.EconomyAPI;
 import net.tnemc.core.economy.Economy_Vault;
-import net.tnemc.core.utils.Metrics;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -45,7 +45,7 @@ public class Reserve extends JavaPlugin {
 
   protected CommandManager commandManager;
 
-  private LinkedHashMap<String, EconomyAPI> registeredEconomies = new LinkedHashMap<>();
+  private final LinkedHashMap<String, EconomyAPI> registeredEconomies = new LinkedHashMap<>();
   private String ecoProvider = "";
 
   public String defaultWorld = "Default";
@@ -60,17 +60,17 @@ public class Reserve extends JavaPlugin {
   public void onEnable() {
     commandManager = new CommandManager();
 
-    if (!ConfigurationManager.loadSettings()){
+    if (!ConfigurationManager.loadSettings()) {
       // Failed to load configuration. You decide what to do.
     }
-    if(Bukkit.getWorlds().size() >= 1) {
+    if (Bukkit.getWorlds().size() >= 1) {
       defaultWorld = Bukkit.getServer().getWorlds().get(0).getName();
     } else {
       defaultWorld = "world";
     }
-    registerCommand(new String[] { "reserve", "rsv" }, new ReserveCommand(this));
+    registerCommand(new String[]{"reserve", "rsv"}, new ReserveCommand(this));
 
-    new Metrics(this);
+    new Metrics(this, 2586);
   }
 
   public static Reserve instance() {
@@ -80,10 +80,10 @@ public class Reserve extends JavaPlugin {
   public void registerProvider(EconomyAPI provider) {
     getLogger().info("Economy Provider registered: " + provider.name());
     registeredEconomies.put(provider.name(), provider);
-    if(provider.enabled()) {
-      if(provider.force() || ecoProvider.equalsIgnoreCase("")) {
+    if (provider.enabled()) {
+      if (provider.force() || ecoProvider.equalsIgnoreCase("")) {
         ecoProvider = provider.name();
-        if(provider.vault() && getServer().getPluginManager().getPlugin("Vault") != null) {
+        if (provider.vault() && getServer().getPluginManager().getPlugin("Vault") != null) {
           vaultEconomy = new Economy_Vault(this);
           setupVault();
         }
@@ -128,8 +128,8 @@ public class Reserve extends JavaPlugin {
   @Override
   public boolean onCommand(CommandSender sender, Command command, String label, String[] arguments) {
     TNECommand ecoCommand = commandManager.Find(label);
-    if(ecoCommand != null) {
-      if(!ecoCommand.canExecute(sender)) {
+    if (ecoCommand != null) {
+      if (!ecoCommand.canExecute(sender)) {
         sender.sendMessage(ChatColor.RED + "I'm sorry, but you're not allowed to use that commands.");
         return false;
       }
