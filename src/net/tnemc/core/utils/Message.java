@@ -5,11 +5,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 /**
- *
  * Reserve API
  *
  * Copyright (C) 2018 creatorfromhell
@@ -30,6 +28,7 @@ import java.util.Map;
 public class Message {
 
   public static final Map<String, String> colours;
+
   static {
     colours = new HashMap<>();
     //Colour Characters
@@ -61,8 +60,8 @@ public class Message {
     colours.put("<reset>", ChatColor.RESET.toString());
   }
 
-  private HashMap<String, String> variables = new HashMap<>();
-  private String node;
+  private final HashMap<String, String> variables = new HashMap<>();
+  private final String node;
 
   public Message(String node) {
     this.node = node;
@@ -73,44 +72,34 @@ public class Message {
   }
 
   public static String replaceColours(String message, boolean strip) {
-    Iterator<java.util.Map.Entry<String, String>> it = colours.entrySet().iterator();
-
-    while(it.hasNext()) {
-      java.util.Map.Entry<String, String> entry = it.next();
-      String replacement = (strip)? "" : entry.getValue();
+    for (Map.Entry<String, String> entry : colours.entrySet()) {
+      String replacement = (strip) ? "" : entry.getValue();
       message = message.replace(entry.getKey(), replacement);
     }
-    if(strip) {
+    if (strip) {
       return ChatColor.stripColor(message);
     }
     return ChatColor.translateAlternateColorCodes('&', message);
   }
 
   public String grab(String world, CommandSender sender) {
-
     String message = this.node;
-    Iterator<java.util.Map.Entry<String, String>> it = variables.entrySet().iterator();
 
-    while (it.hasNext()) {
-      java.util.Map.Entry<String, String> entry = it.next();
+    for (Map.Entry<String, String> entry : variables.entrySet()) {
       message = message.replace(entry.getKey(), entry.getValue());
     }
     return message;
   }
 
   public String[] grabWithNew(String world, CommandSender sender) {
-
-    String[] message = new String[] { this.node };
+    String[] message = new String[]{this.node};
 
     String[] formatted = new String[message.length];
 
-    for(int i = 0; i < message.length; i++) {
+    for (int i = 0; i < message.length; i++) {
       String send = message[i];
       if (!send.equals(this.node)) {
-        Iterator<java.util.Map.Entry<String, String>> it = variables.entrySet().iterator();
-
-        while (it.hasNext()) {
-          java.util.Map.Entry<String, String> entry = it.next();
+        for (Map.Entry<String, String> entry : variables.entrySet()) {
           send = send.replace(entry.getKey(), entry.getValue());
         }
       }
@@ -121,20 +110,17 @@ public class Message {
   }
 
   public void translate(String world, CommandSender sender) {
-    if(sender == null) return;
+    if (sender == null) return;
 
-    String[] message = new String[] { this.node };
-    for(String s : message) {
+    String[] message = new String[]{this.node};
+    for (String s : message) {
       String send = s;
       if (!send.equals(this.node)) {
-        Iterator<java.util.Map.Entry<String, String>> it = variables.entrySet().iterator();
-
-        while (it.hasNext()) {
-          java.util.Map.Entry<String, String> entry = it.next();
+        for (Map.Entry<String, String> entry : variables.entrySet()) {
           send = send.replace(entry.getKey(), entry.getValue());
         }
       }
-      Boolean strip = !(sender instanceof Player);
+      boolean strip = !(sender instanceof Player);
       sender.sendMessage(replaceColours(send, strip));
     }
   }
