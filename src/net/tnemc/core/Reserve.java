@@ -6,7 +6,7 @@ import net.tnemc.core.command.TNECommand;
 import net.tnemc.core.command.reserve.ReserveCommand;
 import net.tnemc.core.economy.EconomyAPI;
 import net.tnemc.core.economy.Economy_Vault;
-import net.tnemc.core.utils.Metrics;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -70,7 +70,7 @@ public class Reserve extends JavaPlugin {
     }
     registerCommand(new String[] { "reserve", "rsv" }, new ReserveCommand(this));
 
-    new Metrics(this);
+    new Metrics(this, 2586);
   }
 
   public static Reserve instance() {
