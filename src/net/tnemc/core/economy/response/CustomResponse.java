@@ -8,7 +8,7 @@ public class CustomResponse implements EconomyResponse {
   /**
    * This is a helper class for Reserve implementations to return custom responses during API calls
    * that return an {@link EconomyResponse} object.
-   * @param success Whether or not the action was performed successfully.
+   * @param success Whether the action was performed successfully.
    * @param response The message to send describing the response. Example: "Action failed because account
    * doesn't exist"
    */

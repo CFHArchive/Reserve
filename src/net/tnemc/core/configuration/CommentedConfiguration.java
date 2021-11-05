@@ -27,8 +27,8 @@ public class CommentedConfiguration extends YamlConfiguration {
   private final DumperOptions yamlOptions = new DumperOptions();
   private final Representer yamlRepresenter = new YamlRepresenter();
   private final Yaml yaml = new Yaml(new YamlConstructor(), yamlRepresenter, yamlOptions);
-  private HashMap<String, String> comments;
-  private File file;
+  private final HashMap<String, String> comments;
+  private final File file;
 
   public CommentedConfiguration(File file) {
     super();
@@ -63,7 +63,7 @@ public class CommentedConfiguration extends YamlConfiguration {
       saved = false;
     }
 
-    // if there's comments to add and it saved fine, we need to add comments
+    // if there's comments to add, and it saved fine, we need to add comments
     if (!comments.isEmpty() && saved) {
       // String array of each line in the config file
       String[] yamlContents = FileMgmt.convertFileToString(file).split("[" + System.getProperty("line.separator") + "]");
@@ -84,7 +84,7 @@ public class CommentedConfiguration extends YamlConfiguration {
         // If the line is a node (and not something like a list value)
         if (line.contains(": ") || (line.length() > 1 && line.charAt(line.length() - 1) == ':')) {
 
-          // This is a new node so we need to mark it for commenting (if there are comments)
+          // This is a new node, so we need to mark it for commenting (if there are comments)
           commentedPath = false;
           // This is a node so flag it as one
           node = true;
@@ -95,7 +95,7 @@ public class CommentedConfiguration extends YamlConfiguration {
           if (index < 0) {
             index = line.length() - 1;
           }
-          // If currentPath is empty, store the node name as the currentPath. (this is only on the first iteration, i think)
+          // If currentPath is empty, store the node name as the currentPath. (this is only on the first iteration, I think)
           if (currentPath.isEmpty()) {
             currentPath = line.substring(0, index);
           } else {
@@ -110,7 +110,7 @@ public class CommentedConfiguration extends YamlConfiguration {
             }
             // Find out if the current depth (whitespace * 2) is greater/lesser/equal to the previous depth
             if (whiteSpace / 2 > depth) {
-              // Path is deeper.  Add a . and the node name
+              // Path is deeper.  Add a "." and the node name
               currentPath += "." + line.substring(whiteSpace, index);
               depth++;
             } else if (whiteSpace / 2 < depth) {
@@ -193,7 +193,7 @@ public class CommentedConfiguration extends YamlConfiguration {
    * @param commentLines Comments to add. One String per line.
    */
   public void addComment(String path, String... commentLines) {
-    StringBuilder commentstring = new StringBuilder();
+    StringBuilder commentString = new StringBuilder();
     StringBuilder leadingSpaces = new StringBuilder();
     for (int n = 0; n < path.length(); n++) {
       if (path.charAt(n) == '.') {
@@ -206,12 +206,12 @@ public class CommentedConfiguration extends YamlConfiguration {
       } else {
         line = " ";
       }
-      if (commentstring.length() > 0) {
-        commentstring.append(System.getProperty("line.separator"));
+      if (commentString.length() > 0) {
+        commentString.append(System.getProperty("line.separator"));
       }
-      commentstring.append(line);
+      commentString.append(line);
     }
-    comments.put(path, commentstring.toString());
+    comments.put(path, commentString.toString());
   }
 
   public void save(File file) throws IOException {

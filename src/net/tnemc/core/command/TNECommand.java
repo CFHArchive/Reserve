@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Reserve API
@@ -31,13 +32,13 @@ import java.util.Map;
  **/
 public abstract class TNECommand {
 
-  protected Reserve plugin;
+  protected final Reserve plugin;
 
   public TNECommand(Reserve plugin) {
     this.plugin = plugin;
   }
 
-  public List<TNECommand> subCommands = new ArrayList<>();
+  public final List<TNECommand> subCommands = new ArrayList<>();
 
   public abstract String getName();
 
@@ -79,15 +80,15 @@ public abstract class TNECommand {
     }
 
 
-    Integer linesPerPage = 5;
-    Integer remaining = linesPerPage;
+    int linesPerPage = 5;
+    int remaining = linesPerPage;
     Integer maxPage = 1;
     for (int i = 0; i < help.size(); i++) {
       if (remaining <= 0) {
         maxPage++;
         remaining = linesPerPage;
       }
-      Integer length = help.get(i).length;
+      int length = help.get(i).length;
       if (i == help.size() - 1 && remaining - length < 0) maxPage++;
       remaining -= length;
     }
@@ -101,7 +102,7 @@ public abstract class TNECommand {
         loopPage++;
         remaining = linesPerPage;
       }
-      Integer length = help.get(i).length;
+      int length = help.get(i).length;
       if (i == help.size() - 1 && remaining - length < 0) loopPage++;
       if (loopPage.equals(helpPage)) send.add(i);
       remaining -= length;
@@ -138,7 +139,7 @@ public abstract class TNECommand {
     String world = Reserve.instance().defaultWorld;
 
     if (developer()) {
-      if (!((Player) sender).getUniqueId().equals("5bb0dcb3-98ee-47b3-8f66-3eb1cdd1a881")) {
+      if (!((Player) sender).getUniqueId().equals(UUID.fromString("5bb0dcb3-98ee-47b3-8f66-3eb1cdd1a881"))) {
         sender.sendMessage(ChatColor.RED + "You must be a TNE developer to use this commands.");
         return false;
       }
@@ -182,9 +183,7 @@ public abstract class TNECommand {
 
   protected String[] removeSub(String[] oldArguments) {
     String[] arguments = new String[oldArguments.length - 1];
-    for (int i = 1; i < oldArguments.length; i++) {
-      arguments[i - 1] = oldArguments[i];
-    }
+    System.arraycopy(oldArguments, 1, arguments, 0, oldArguments.length - 1);
     return arguments;
   }
 
@@ -205,11 +204,11 @@ public abstract class TNECommand {
   }
 
   public Integer getPage(String pageValue) {
-    Integer page = 1;
+    int page = 1;
     try {
-      page = Integer.valueOf(pageValue);
-    } catch (Exception e) {
-      return 1;
+      page = Integer.parseInt(pageValue);
+    } catch (Exception ignored) {
+
     }
     return page;
   }

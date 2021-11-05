@@ -44,7 +44,7 @@ public interface EconomyAPI {
   String version();
 
   /**
-   * @return Whether or not this implementation is enabled.
+   * @return Whether this implementation is enabled.
    */
   boolean enabled();
 
@@ -56,7 +56,7 @@ public interface EconomyAPI {
   }
 
   /**
-   * @return Whether or not this implementation should have a default Vault implementation.
+   * @return Whether this implementation should have a default Vault implementation.
    */
   default boolean vault() {
     return true;
@@ -359,87 +359,87 @@ public interface EconomyAPI {
   }
 
   /**
-   * Determines whether or not a player is able to access this account.
+   * Determines whether a player is able to access this account.
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor The identifier of the user attempting to access this account.
-   * @return Whether or not the player is able to access this account.
+   * @return Whether the player is able to access this account.
    */
   boolean isAccessor(String identifier, String accessor);
 
   /**
-   * Determines whether or not a player is able to access this account.
+   * Determines whether a player is able to access this account.
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor The identifier of the user attempting to access this account.
-   * @return Whether or not the player is able to access this account.
+   * @return Whether the player is able to access this account.
    */
   boolean isAccessor(String identifier, UUID accessor);
 
   /**
-   * Determines whether or not a player is able to access this account.
+   * Determines whether a player is able to access this account.
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor The identifier of the user attempting to access this account.
-   * @return Whether or not the player is able to access this account.
+   * @return Whether the player is able to access this account.
    */
   boolean isAccessor(UUID identifier, String accessor);
 
   /**
-   * Determines whether or not a player is able to access this account.
+   * Determines whether a player is able to access this account.
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor The identifier of the user attempting to access this account.
-   * @return Whether or not the player is able to access this account.
+   * @return Whether the player is able to access this account.
    */
   boolean isAccessor(UUID identifier, UUID accessor);
 
   /**
-   * Determines whether or not a player is able to withdraw holdings from this account.
+   * Determines whether a player is able to withdraw holdings from this account.
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor The identifier of the user attempting to access this account.
-   * @return Whether or not the player is able to withdraw holdings from this account.
+   * @return Whether the player is able to withdraw holdings from this account.
    */
   default boolean canWithdraw(String identifier, String accessor) {
     return canWithdrawDetail(identifier, accessor).success();
   }
 
   /**
-   * Determines whether or not a player is able to withdraw holdings from this account.
+   * Determines whether a player is able to withdraw holdings from this account.
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor The identifier of the user attempting to access this account.
-   * @return Whether or not the player is able to withdraw holdings from this account.
+   * @return Whether the player is able to withdraw holdings from this account.
    */
   default boolean canWithdraw(String identifier, UUID accessor) {
     return canWithdrawDetail(identifier, accessor).success();
   }
 
   /**
-   * Determines whether or not a player is able to withdraw holdings from this account.
+   * Determines whether a player is able to withdraw holdings from this account.
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor The identifier of the user attempting to access this account.
-   * @return Whether or not the player is able to withdraw holdings from this account.
+   * @return Whether the player is able to withdraw holdings from this account.
    */
   default boolean canWithdraw(UUID identifier, String accessor) {
     return canWithdrawDetail(identifier, accessor).success();
   }
 
   /**
-   * Determines whether or not a player is able to withdraw holdings from this account.
+   * Determines whether a player is able to withdraw holdings from this account.
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor The identifier of the user attempting to access this account.
-   * @return Whether or not the player is able to withdraw holdings from this account.
+   * @return Whether the player is able to withdraw holdings from this account.
    */
   default boolean canWithdraw(UUID identifier, UUID accessor) {
     return canWithdrawDetail(identifier, accessor).success();
   }
 
   /**
-   * Determines whether or not a player is able to withdraw holdings from this account.
+   * Determines whether a player is able to withdraw holdings from this account.
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor The identifier of the user attempting to access this account.
@@ -448,7 +448,7 @@ public interface EconomyAPI {
   EconomyResponse canWithdrawDetail(String identifier, String accessor);
 
   /**
-   * Determines whether or not a player is able to withdraw holdings from this account.
+   * Determines whether a player is able to withdraw holdings from this account.
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor The identifier of the user attempting to access this account.
@@ -457,7 +457,7 @@ public interface EconomyAPI {
   EconomyResponse canWithdrawDetail(String identifier, UUID accessor);
 
   /**
-   * Determines whether or not a player is able to withdraw holdings from this account.
+   * Determines whether a player is able to withdraw holdings from this account.
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor The identifier of the user attempting to access this account.
@@ -466,7 +466,7 @@ public interface EconomyAPI {
   EconomyResponse canWithdrawDetail(UUID identifier, String accessor);
 
   /**
-   * Determines whether or not a player is able to withdraw holdings from this account.
+   * Determines whether a player is able to withdraw holdings from this account.
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor The identifier of the user attempting to access this account.
@@ -475,51 +475,51 @@ public interface EconomyAPI {
   EconomyResponse canWithdrawDetail(UUID identifier, UUID accessor);
 
   /**
-   * Determines whether or not a player is able to deposit holdings into this account.
+   * Determines whether a player is able to deposit holdings into this account.
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor The identifier of the user attempting to access this account.
-   * @return Whether or not the player is able to deposit holdings into this account.
+   * @return Whether the player is able to deposit holdings into this account.
    */
   default boolean canDeposit(String identifier, String accessor) {
     return canDepositDetail(identifier, accessor).success();
   }
 
   /**
-   * Determines whether or not a player is able to deposit holdings into this account.
+   * Determines whether a player is able to deposit holdings into this account.
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor The identifier of the user attempting to access this account.
-   * @return Whether or not the player is able to deposit holdings into this account.
+   * @return Whether the player is able to deposit holdings into this account.
    */
   default boolean canDeposit(String identifier, UUID accessor) {
     return canDepositDetail(identifier, accessor).success();
   }
 
   /**
-   * Determines whether or not a player is able to deposit holdings into this account.
+   * Determines whether a player is able to deposit holdings into this account.
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor The identifier of the user attempting to access this account.
-   * @return Whether or not the player is able to deposit holdings into this account.
+   * @return Whether the player is able to deposit holdings into this account.
    */
   default boolean canDeposit(UUID identifier, String accessor) {
     return canDepositDetail(identifier, accessor).success();
   }
 
   /**
-   * Determines whether or not a player is able to deposit holdings into this account.
+   * Determines whether a player is able to deposit holdings into this account.
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor The identifier of the user attempting to access this account.
-   * @return Whether or not the player is able to deposit holdings into this account.
+   * @return Whether the player is able to deposit holdings into this account.
    */
   default boolean canDeposit(UUID identifier, UUID accessor) {
     return canDepositDetail(identifier, accessor).success();
   }
 
   /**
-   * Determines whether or not a player is able to deposit holdings into this account.
+   * Determines whether a player is able to deposit holdings into this account.
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor The identifier of the user attempting to access this account.
@@ -528,7 +528,7 @@ public interface EconomyAPI {
   EconomyResponse canDepositDetail(String identifier, String accessor);
 
   /**
-   * Determines whether or not a player is able to deposit holdings into this account.
+   * Determines whether a player is able to deposit holdings into this account.
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor The identifier of the user attempting to access this account.
@@ -537,7 +537,7 @@ public interface EconomyAPI {
   EconomyResponse canDepositDetail(String identifier, UUID accessor);
 
   /**
-   * Determines whether or not a player is able to deposit holdings into this account.
+   * Determines whether a player is able to deposit holdings into this account.
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor The identifier of the user attempting to access this account.
@@ -546,7 +546,7 @@ public interface EconomyAPI {
   EconomyResponse canDepositDetail(UUID identifier, String accessor);
 
   /**
-   * Determines whether or not a player is able to deposit holdings into this account.
+   * Determines whether a player is able to deposit holdings into this account.
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor The identifier of the user attempting to access this account.
@@ -672,7 +672,7 @@ public interface EconomyAPI {
    * Used to set the funds to an account.
    *
    * @param identifier The identifier of the account that is associated with this call.
-   * @param amount The amount you wish to set this accounts's funds to.
+   * @param amount The amount you wish to set this account's funds to.
    * @return True if the funds were set for the account, otherwise false.
    */
   default boolean setHoldings(String identifier, BigDecimal amount) {
@@ -683,7 +683,7 @@ public interface EconomyAPI {
    * Used to set the funds to an account.
    *
    * @param identifier The identifier of the account that is associated with this call.
-   * @param amount The amount you wish to set this accounts's funds to.
+   * @param amount The amount you wish to set this account's funds to.
    * @return True if the funds were set for the account, otherwise false.
    */
   default boolean setHoldings(UUID identifier, BigDecimal amount) {
@@ -694,7 +694,7 @@ public interface EconomyAPI {
    * Used to set the funds to an account.
    *
    * @param identifier The identifier of the account that is associated with this call.
-   * @param amount The amount you wish to set this accounts's funds to.
+   * @param amount The amount you wish to set this account's funds to.
    * @param world The name of the {@link World} associated with the amount.
    * @return True if the funds were set for the account, otherwise false.
    */
@@ -706,7 +706,7 @@ public interface EconomyAPI {
    * Used to set the funds to an account.
    *
    * @param identifier The identifier of the account that is associated with this call.
-   * @param amount The amount you wish to set this accounts's funds to.
+   * @param amount The amount you wish to set this account's funds to.
    * @param world The name of the {@link World} associated with the amount.
    * @return True if the funds were set for the account, otherwise false.
    */
@@ -718,7 +718,7 @@ public interface EconomyAPI {
    * Used to set the funds to an account.
    *
    * @param identifier The identifier of the account that is associated with this call.
-   * @param amount The amount you wish to set this accounts's funds to.
+   * @param amount The amount you wish to set this account's funds to.
    * @param world The name of the {@link World} associated with the amount.
    * @param currency The name of the currency associated with the balance.
    * @return True if the funds were set for the account, otherwise false.
@@ -731,7 +731,7 @@ public interface EconomyAPI {
    * Used to set the funds to an account.
    *
    * @param identifier The identifier of the account that is associated with this call.
-   * @param amount The amount you wish to set this accounts's funds to.
+   * @param amount The amount you wish to set this account's funds to.
    * @param world The name of the {@link World} associated with the amount.
    * @param currency The name of the currency associated with the balance.
    * @return True if the funds were set for the account, otherwise false.
@@ -744,7 +744,7 @@ public interface EconomyAPI {
    * Used to set the funds to an account.
    *
    * @param identifier The identifier of the account that is associated with this call.
-   * @param amount The amount you wish to set this accounts's funds to.
+   * @param amount The amount you wish to set this account's funds to.
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse setHoldingsDetail(String identifier, BigDecimal amount);
@@ -753,7 +753,7 @@ public interface EconomyAPI {
    * Used to set the funds to an account.
    *
    * @param identifier The identifier of the account that is associated with this call.
-   * @param amount The amount you wish to set this accounts's funds to.
+   * @param amount The amount you wish to set this account's funds to.
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse setHoldingsDetail(UUID identifier, BigDecimal amount);
@@ -762,7 +762,7 @@ public interface EconomyAPI {
    * Used to set the funds to an account.
    *
    * @param identifier The identifier of the account that is associated with this call.
-   * @param amount The amount you wish to set this accounts's funds to.
+   * @param amount The amount you wish to set this account's funds to.
    * @param world The name of the {@link World} associated with the amount.
    * @return The {@link EconomyResponse} for this action.
    */
@@ -772,7 +772,7 @@ public interface EconomyAPI {
    * Used to set the funds to an account.
    *
    * @param identifier The identifier of the account that is associated with this call.
-   * @param amount The amount you wish to set this accounts's funds to.
+   * @param amount The amount you wish to set this account's funds to.
    * @param world The name of the {@link World} associated with the amount.
    * @return The {@link EconomyResponse} for this action.
    */
@@ -782,7 +782,7 @@ public interface EconomyAPI {
    * Used to set the funds to an account.
    *
    * @param identifier The identifier of the account that is associated with this call.
-   * @param amount The amount you wish to set this accounts's funds to.
+   * @param amount The amount you wish to set this account's funds to.
    * @param world The name of the {@link World} associated with the amount.
    * @param currency The name of the currency associated with the balance.
    * @return The {@link EconomyResponse} for this action.
@@ -793,7 +793,7 @@ public interface EconomyAPI {
    * Used to set the funds to an account.
    *
    * @param identifier The identifier of the account that is associated with this call.
-   * @param amount The amount you wish to set this accounts's funds to.
+   * @param amount The amount you wish to set this account's funds to.
    * @param world The name of the {@link World} associated with the amount.
    * @param currency The name of the currency associated with the balance.
    * @return The {@link EconomyResponse} for this action.

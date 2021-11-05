@@ -103,7 +103,7 @@ public class Message {
           send = send.replace(entry.getKey(), entry.getValue());
         }
       }
-      Boolean strip = !(sender instanceof Player);
+      boolean strip = !(sender instanceof Player);
       formatted[i] = replaceColours(send, strip);
     }
     return formatted;
