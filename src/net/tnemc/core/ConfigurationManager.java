@@ -32,18 +32,16 @@ public class ConfigurationManager {
 
   private static void loadConfig(String filepath, String version) {
     File file = FileMgmt.CheckYMLExists(new File(filepath));
-    if (file != null) {
 
-      // read the config.yml into memory
-      config = new CommentedConfiguration(file);
-      if (!config.load()) {
-        plugin.getLogger().log(SEVERE, "Failed to load configuration");
-      }
-
-      setDefaults(version, file);
-
-      config.save();
+    // read the config.yml into memory
+    config = new CommentedConfiguration(file);
+    if (!config.load()) {
+      plugin.getLogger().log(SEVERE, "Failed to load configuration");
     }
+
+    setDefaults(version, file);
+
+    config.save();
   }
 
   /**
