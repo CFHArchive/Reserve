@@ -12,23 +12,28 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+
 /**
+ * Created by creatorfromhell on 8/9/2017.
+ *
  * Reserve API
  *
- * Copyright (C) 2018 creatorfromhell
+ * Copyright (C) 2021 creatorfromhell
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published
- * by the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3 of the License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA, or see
+ * it at <https://www.gnu.org/licenses/lgpl-3.0.txt>.
  **/
 public abstract class TNECommand {
 
@@ -47,10 +52,6 @@ public abstract class TNECommand {
   public abstract String getNode();
 
   public abstract boolean console();
-
-  public boolean developer() {
-    return false;
-  }
 
   public String getHelp() {
     return "Command help coming soon!";
@@ -137,13 +138,6 @@ public abstract class TNECommand {
 
   public boolean execute(CommandSender sender, String command, String[] arguments) {
     String world = Reserve.instance().defaultWorld;
-
-    if (developer()) {
-      if (!sender.hasPermission("tne.developer")) {
-        sender.sendMessage(ChatColor.RED + "You must be a TNE developer to use this commands.");
-        return false;
-      }
-    }
 
     if (arguments.length == 0) {
       help(sender);

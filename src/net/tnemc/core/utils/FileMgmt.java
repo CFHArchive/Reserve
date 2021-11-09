@@ -12,6 +12,9 @@ import java.io.Reader;
 import java.io.StringWriter;
 import java.io.Writer;
 
+/**
+ * @author dumptruckman
+ */
 public class FileMgmt {
 
   public static void checkFolders(String[] folders) {

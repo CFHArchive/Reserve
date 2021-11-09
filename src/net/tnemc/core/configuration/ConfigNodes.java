@@ -1,5 +1,8 @@
 package net.tnemc.core.configuration;
 
+/**
+ * @author dumptruckman
+ */
 public enum ConfigNodes {
   VERSION_HEADER("version", "", ""),
   VERSION(
