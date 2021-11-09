@@ -139,7 +139,7 @@ public abstract class TNECommand {
     String world = Reserve.instance().defaultWorld;
 
     if (developer()) {
-      if (!((Player) sender).getUniqueId().equals(UUID.fromString("5bb0dcb3-98ee-47b3-8f66-3eb1cdd1a881"))) {
+      if (!sender.hasPermission("tne.developer")) {
         sender.sendMessage(ChatColor.RED + "You must be a TNE developer to use this commands.");
         return false;
       }
