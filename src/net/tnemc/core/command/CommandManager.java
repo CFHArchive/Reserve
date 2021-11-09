@@ -10,7 +10,6 @@ import org.bukkit.plugin.Plugin;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -54,14 +53,10 @@ public class CommandManager {
 
     if(commandMap != null && knownCommands != null) {
 
-      Iterator<Map.Entry<String[], TNECommand>> i = commands.entrySet().iterator();
-
-      while(i.hasNext()) {
-        Map.Entry<String[], TNECommand> entry = i.next();
-
+      for (Map.Entry<String[], TNECommand> entry : commands.entrySet()) {
         for (String s : entry.getKey()) {
-          if(entry.getValue().activated("", "")) {
-            if(registered(s)) {
+          if (entry.getValue().activated("", "")) {
+            if (registered(s)) {
               unregister(s);
             }
             register(s);
@@ -82,11 +77,9 @@ public class CommandManager {
       Constructor<PluginCommand> c = PluginCommand.class.getDeclaredConstructor(String.class, Plugin.class);
       c.setAccessible(true);
       PluginCommand pluginCommand = c.newInstance(command, Reserve.instance());
-      if(pluginCommand != null) {
-        ((SimpleCommandMap) commandMap.get(Bukkit.getServer())).register(command, pluginCommand);
-      }
+      ((SimpleCommandMap) commandMap.get(Bukkit.getServer())).register(command, pluginCommand);
     } catch(Exception e) {
-      //nothing to see here;
+      //nothing to see here
     }
   }
 
