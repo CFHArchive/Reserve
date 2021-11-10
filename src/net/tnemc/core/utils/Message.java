@@ -115,7 +115,7 @@ public class Message {
   }
 
   public void translate(String world, CommandSender sender) {
-    if(sender == null) return;
+    if(sender == null) { return; }
 
     String[] message = new String[]{this.node};
     for(String s : message) {

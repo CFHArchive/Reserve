@@ -43,7 +43,7 @@ public class CommandManager {
   private Field knownCommands = null;
 
   public void registerCommands() {
-    if(lastRegister == commands.size()) return;
+    if(lastRegister == commands.size()) { return; }
 
     lastRegister = commands.size();
     try {

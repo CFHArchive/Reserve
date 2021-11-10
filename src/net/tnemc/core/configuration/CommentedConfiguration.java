@@ -151,8 +151,7 @@ public class CommentedConfiguration extends YamlConfiguration {
 
           }
 
-        } else
-          node = false;
+        } else { node = false; }
 
         if(node) {
           String comment = null;
@@ -177,8 +176,9 @@ public class CommentedConfiguration extends YamlConfiguration {
        * Due to a bukkit bug we need to strip any extra new lines from the
        * beginning of this file, else they will multiply.
        */
-      while(newContents.toString().startsWith(System.getProperty("line.separator")))
+      while(newContents.toString().startsWith(System.getProperty("line.separator"))) {
         newContents = new StringBuilder(newContents.toString().replaceFirst(System.getProperty("line.separator"), ""));
+      }
 
       // Write the string to the config file
       FileMgmt.stringToFile(newContents.toString(), file);

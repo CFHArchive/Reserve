@@ -83,6 +83,7 @@ public interface EconomyAPI {
    * Used to get the plural name of the default currency for a world.
    *
    * @param world The world to be used in this check.
+   *
    * @return The plural name of the default currency.
    */
   String currencyDefaultPlural(String world);
@@ -91,6 +92,7 @@ public interface EconomyAPI {
    * Used to get the singular name of the default currency for a world.
    *
    * @param world The world to be used in this check.
+   *
    * @return The plural name of the default currency.
    */
   String currencyDefaultSingular(String world);
@@ -99,6 +101,7 @@ public interface EconomyAPI {
    * Checks to see if a name of the currency exists with this name.
    *
    * @param name The name of the name of the currency to search for.
+   *
    * @return True if the currency exists, else false.
    */
   boolean hasCurrency(String name);
@@ -108,6 +111,7 @@ public interface EconomyAPI {
    *
    * @param name  The name of the name of the currency to search for.
    * @param world The name of the {@link World} to check for this name of the currency in.
+   *
    * @return True if the currency exists, else false.
    */
   boolean hasCurrency(String name, String world);
@@ -116,6 +120,7 @@ public interface EconomyAPI {
    * Checks to see if a name of the currency exists with this name.
    *
    * @param name The name of the name of the currency to search for.
+   *
    * @return True if the currency exists, else false.
    */
   default CompletableFuture<Boolean> asyncHasCurrency(String name) {
@@ -127,6 +132,7 @@ public interface EconomyAPI {
    *
    * @param name  The name of the name of the currency to search for.
    * @param world The name of the {@link World} to check for this name of the currency in.
+   *
    * @return True if the currency exists, else false.
    */
   default CompletableFuture<Boolean> asyncHasCurrency(String name, String world) {
@@ -137,6 +143,7 @@ public interface EconomyAPI {
    * Checks to see if an account exists for this identifier. This method should be used for non-player accounts.
    *
    * @param identifier The identifier of the account.
+   *
    * @return True if an account exists for this player, else false.
    */
   default boolean hasAccount(String identifier) {
@@ -147,6 +154,7 @@ public interface EconomyAPI {
    * Checks to see if an account exists for this identifier. This method should be used for player accounts.
    *
    * @param identifier The {@link UUID} of the account.
+   *
    * @return True if an account exists for this player, else false.
    */
   default boolean hasAccount(UUID identifier) {
@@ -157,6 +165,7 @@ public interface EconomyAPI {
    * Checks to see if an account exists for this identifier. This method should be used for non-player accounts.
    *
    * @param identifier The identifier of the account.
+   *
    * @return True if an account exists for this player, else false.
    */
   default CompletableFuture<Boolean> asyncHasAccount(String identifier) {
@@ -167,6 +176,7 @@ public interface EconomyAPI {
    * Checks to see if an account exists for this identifier. This method should be used for player accounts.
    *
    * @param identifier The {@link UUID} of the account.
+   *
    * @return True if an account exists for this player, else false.
    */
   default CompletableFuture<Boolean> asyncHasAccount(UUID identifier) {
@@ -177,6 +187,7 @@ public interface EconomyAPI {
    * Checks to see if an account exists for this identifier. This method should be used for non-player accounts.
    *
    * @param identifier The identifier of the account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse hasAccountDetail(String identifier);
@@ -185,6 +196,7 @@ public interface EconomyAPI {
    * Checks to see if an account exists for this identifier. This method should be used for player accounts.
    *
    * @param identifier The {@link UUID} of the account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse hasAccountDetail(UUID identifier);
@@ -193,6 +205,7 @@ public interface EconomyAPI {
    * Checks to see if an account exists for this identifier. This method should be used for non-player accounts.
    *
    * @param identifier The identifier of the account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncHasAccountDetail(String identifier) {
@@ -203,6 +216,7 @@ public interface EconomyAPI {
    * Checks to see if an account exists for this identifier. This method should be used for player accounts.
    *
    * @param identifier The {@link UUID} of the account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncHasAccountDetail(UUID identifier) {
@@ -213,6 +227,7 @@ public interface EconomyAPI {
    * Attempts to create an account for this identifier. This method should be used for non-player accounts.
    *
    * @param identifier The identifier of the account.
+   *
    * @return True if an account was created, else false.
    */
   default boolean createAccount(String identifier) {
@@ -223,6 +238,7 @@ public interface EconomyAPI {
    * Attempts to create an account for this identifier. This method should be used for player accounts.
    *
    * @param identifier The {@link UUID} of the account.
+   *
    * @return True if an account was created, else false.
    */
   default boolean createAccount(UUID identifier) {
@@ -233,6 +249,7 @@ public interface EconomyAPI {
    * Attempts to create an account for this identifier. This method should be used for non-player accounts.
    *
    * @param identifier The identifier of the account.
+   *
    * @return True if an account was created, else false.
    */
   default CompletableFuture<Boolean> asyncCreateAccount(String identifier) {
@@ -243,6 +260,7 @@ public interface EconomyAPI {
    * Attempts to create an account for this identifier. This method should be used for player accounts.
    *
    * @param identifier The {@link UUID} of the account.
+   *
    * @return True if an account was created, else false.
    */
   default CompletableFuture<Boolean> asyncCreateAccount(UUID identifier) {
@@ -253,6 +271,7 @@ public interface EconomyAPI {
    * Attempts to create an account for this identifier. This method should be used for non-player accounts.
    *
    * @param identifier The identifier of the account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse createAccountDetail(String identifier);
@@ -261,6 +280,7 @@ public interface EconomyAPI {
    * Attempts to create an account for this identifier. This method should be used for player accounts.
    *
    * @param identifier The {@link UUID} of the account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse createAccountDetail(UUID identifier);
@@ -269,6 +289,7 @@ public interface EconomyAPI {
    * Attempts to create an account for this identifier. This method should be used for non-player accounts.
    *
    * @param identifier The identifier of the account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncCreateAccountDetail(String identifier) {
@@ -279,6 +300,7 @@ public interface EconomyAPI {
    * Attempts to create an account for this identifier. This method should be used for player accounts.
    *
    * @param identifier The {@link UUID} of the account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncCreateAccountDetail(UUID identifier) {
@@ -289,6 +311,7 @@ public interface EconomyAPI {
    * Attempts to delete an account for this identifier. This method should be used for non-player accounts.
    *
    * @param identifier The identifier of the account.
+   *
    * @return True if an account was deleted, else false.
    */
   default boolean deleteAccount(String identifier) {
@@ -299,6 +322,7 @@ public interface EconomyAPI {
    * Attempts to delete an account for this identifier. This method should be used for player accounts.
    *
    * @param identifier The {@link UUID} of the account.
+   *
    * @return True if an account was deleted, else false.
    */
   default boolean deleteAccount(UUID identifier) {
@@ -309,6 +333,7 @@ public interface EconomyAPI {
    * Attempts to delete an account for this identifier. This method should be used for non-player accounts.
    *
    * @param identifier The identifier of the account.
+   *
    * @return True if an account was deleted, else false.
    */
   default CompletableFuture<Boolean> asyncDeleteAccount(String identifier) {
@@ -319,6 +344,7 @@ public interface EconomyAPI {
    * Attempts to delete an account for this identifier. This method should be used for player accounts.
    *
    * @param identifier The {@link UUID} of the account.
+   *
    * @return True if an account was deleted, else false.
    */
   default CompletableFuture<Boolean> asyncDeleteAccount(UUID identifier) {
@@ -329,6 +355,7 @@ public interface EconomyAPI {
    * Attempts to delete an account for this identifier. This method should be used for non-player accounts.
    *
    * @param identifier The identifier of the account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse deleteAccountDetail(String identifier);
@@ -337,6 +364,7 @@ public interface EconomyAPI {
    * Attempts to delete an account for this identifier. This method should be used for player accounts.
    *
    * @param identifier The {@link UUID} of the account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse deleteAccountDetail(UUID identifier);
@@ -345,6 +373,7 @@ public interface EconomyAPI {
    * Attempts to delete an account for this identifier. This method should be used for non-player accounts.
    *
    * @param identifier The identifier of the account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncDeleteAccountDetail(String identifier) {
@@ -355,6 +384,7 @@ public interface EconomyAPI {
    * Attempts to delete an account for this identifier. This method should be used for player accounts.
    *
    * @param identifier The {@link UUID} of the account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncDeleteAccountDetail(UUID identifier) {
@@ -366,6 +396,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor   The identifier of the user attempting to access this account.
+   *
    * @return Whether the player is able to access this account.
    */
   boolean isAccessor(String identifier, String accessor);
@@ -375,6 +406,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor   The identifier of the user attempting to access this account.
+   *
    * @return Whether the player is able to access this account.
    */
   boolean isAccessor(String identifier, UUID accessor);
@@ -384,6 +416,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor   The identifier of the user attempting to access this account.
+   *
    * @return Whether the player is able to access this account.
    */
   boolean isAccessor(UUID identifier, String accessor);
@@ -393,6 +426,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor   The identifier of the user attempting to access this account.
+   *
    * @return Whether the player is able to access this account.
    */
   boolean isAccessor(UUID identifier, UUID accessor);
@@ -402,6 +436,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor   The identifier of the user attempting to access this account.
+   *
    * @return Whether the player is able to withdraw holdings from this account.
    */
   default boolean canWithdraw(String identifier, String accessor) {
@@ -413,6 +448,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor   The identifier of the user attempting to access this account.
+   *
    * @return Whether the player is able to withdraw holdings from this account.
    */
   default boolean canWithdraw(String identifier, UUID accessor) {
@@ -424,6 +460,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor   The identifier of the user attempting to access this account.
+   *
    * @return Whether the player is able to withdraw holdings from this account.
    */
   default boolean canWithdraw(UUID identifier, String accessor) {
@@ -435,6 +472,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor   The identifier of the user attempting to access this account.
+   *
    * @return Whether the player is able to withdraw holdings from this account.
    */
   default boolean canWithdraw(UUID identifier, UUID accessor) {
@@ -446,6 +484,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor   The identifier of the user attempting to access this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse canWithdrawDetail(String identifier, String accessor);
@@ -455,6 +494,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor   The identifier of the user attempting to access this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse canWithdrawDetail(String identifier, UUID accessor);
@@ -464,6 +504,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor   The identifier of the user attempting to access this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse canWithdrawDetail(UUID identifier, String accessor);
@@ -473,6 +514,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor   The identifier of the user attempting to access this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse canWithdrawDetail(UUID identifier, UUID accessor);
@@ -482,6 +524,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor   The identifier of the user attempting to access this account.
+   *
    * @return Whether the player is able to deposit holdings into this account.
    */
   default boolean canDeposit(String identifier, String accessor) {
@@ -493,6 +536,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor   The identifier of the user attempting to access this account.
+   *
    * @return Whether the player is able to deposit holdings into this account.
    */
   default boolean canDeposit(String identifier, UUID accessor) {
@@ -504,6 +548,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor   The identifier of the user attempting to access this account.
+   *
    * @return Whether the player is able to deposit holdings into this account.
    */
   default boolean canDeposit(UUID identifier, String accessor) {
@@ -515,6 +560,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor   The identifier of the user attempting to access this account.
+   *
    * @return Whether the player is able to deposit holdings into this account.
    */
   default boolean canDeposit(UUID identifier, UUID accessor) {
@@ -526,6 +572,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor   The identifier of the user attempting to access this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse canDepositDetail(String identifier, String accessor);
@@ -535,6 +582,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor   The identifier of the user attempting to access this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse canDepositDetail(String identifier, UUID accessor);
@@ -544,6 +592,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor   The identifier of the user attempting to access this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse canDepositDetail(UUID identifier, String accessor);
@@ -553,6 +602,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param accessor   The identifier of the user attempting to access this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse canDepositDetail(UUID identifier, UUID accessor);
@@ -561,6 +611,7 @@ public interface EconomyAPI {
    * Used to get the balance of an account.
    *
    * @param identifier The identifier of the account that is associated with this call.
+   *
    * @return The balance of the account.
    */
   BigDecimal getHoldings(String identifier);
@@ -569,6 +620,7 @@ public interface EconomyAPI {
    * Used to get the balance of an account.
    *
    * @param identifier The identifier of the account that is associated with this call.
+   *
    * @return The balance of the account.
    */
   BigDecimal getHoldings(UUID identifier);
@@ -578,6 +630,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param world      The name of the {@link World} associated with the balance.
+   *
    * @return The balance of the account.
    */
   BigDecimal getHoldings(String identifier, String world);
@@ -587,6 +640,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param world      The name of the {@link World} associated with the balance.
+   *
    * @return The balance of the account.
    */
   BigDecimal getHoldings(UUID identifier, String world);
@@ -597,6 +651,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param world      The name of the {@link World} associated with the balance.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The balance of the account.
    */
   BigDecimal getHoldings(String identifier, String world, String currency);
@@ -607,6 +662,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param world      The name of the {@link World} associated with the balance.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The balance of the account.
    */
   BigDecimal getHoldings(UUID identifier, String world, String currency);
@@ -616,6 +672,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to use for this check.
+   *
    * @return True if the account has at least the specified amount of funds, otherwise false.
    */
   boolean hasHoldings(String identifier, BigDecimal amount);
@@ -625,6 +682,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to use for this check.
+   *
    * @return True if the account has at least the specified amount of funds, otherwise false.
    */
   boolean hasHoldings(UUID identifier, BigDecimal amount);
@@ -635,6 +693,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to use for this check.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return True if the account has at least the specified amount of funds, otherwise false.
    */
   boolean hasHoldings(String identifier, BigDecimal amount, String world);
@@ -645,6 +704,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to use for this check.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return True if the account has at least the specified amount of funds, otherwise false.
    */
   boolean hasHoldings(UUID identifier, BigDecimal amount, String world);
@@ -656,6 +716,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to use for this check.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return True if the account has at least the specified amount of funds, otherwise false.
    */
   boolean hasHoldings(String identifier, BigDecimal amount, String world, String currency);
@@ -667,6 +728,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to use for this check.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return True if the account has at least the specified amount of funds, otherwise false.
    */
   boolean hasHoldings(UUID identifier, BigDecimal amount, String world, String currency);
@@ -676,6 +738,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to set this account's funds to.
+   *
    * @return True if the funds were set for the account, otherwise false.
    */
   default boolean setHoldings(String identifier, BigDecimal amount) {
@@ -687,6 +750,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to set this account's funds to.
+   *
    * @return True if the funds were set for the account, otherwise false.
    */
   default boolean setHoldings(UUID identifier, BigDecimal amount) {
@@ -699,6 +763,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to set this account's funds to.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return True if the funds were set for the account, otherwise false.
    */
   default boolean setHoldings(String identifier, BigDecimal amount, String world) {
@@ -711,6 +776,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to set this account's funds to.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return True if the funds were set for the account, otherwise false.
    */
   default boolean setHoldings(UUID identifier, BigDecimal amount, String world) {
@@ -724,6 +790,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to set this account's funds to.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return True if the funds were set for the account, otherwise false.
    */
   default boolean setHoldings(String identifier, BigDecimal amount, String world, String currency) {
@@ -737,6 +804,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to set this account's funds to.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return True if the funds were set for the account, otherwise false.
    */
   default boolean setHoldings(UUID identifier, BigDecimal amount, String world, String currency) {
@@ -748,6 +816,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to set this account's funds to.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse setHoldingsDetail(String identifier, BigDecimal amount);
@@ -757,6 +826,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to set this account's funds to.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse setHoldingsDetail(UUID identifier, BigDecimal amount);
@@ -767,6 +837,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to set this account's funds to.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse setHoldingsDetail(String identifier, BigDecimal amount, String world);
@@ -777,6 +848,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to set this account's funds to.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse setHoldingsDetail(UUID identifier, BigDecimal amount, String world);
@@ -788,6 +860,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to set this account's funds to.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse setHoldingsDetail(String identifier, BigDecimal amount, String world, String currency);
@@ -799,6 +872,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to set this account's funds to.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse setHoldingsDetail(UUID identifier, BigDecimal amount, String world, String currency);
@@ -808,6 +882,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
+   *
    * @return True if the funds were added to the account, otherwise false.
    */
   default boolean addHoldings(String identifier, BigDecimal amount) {
@@ -819,6 +894,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
+   *
    * @return True if the funds were added to the account, otherwise false.
    */
   default boolean addHoldings(UUID identifier, BigDecimal amount) {
@@ -831,6 +907,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return True if the funds were added to the account, otherwise false.
    */
   default boolean addHoldings(String identifier, BigDecimal amount, String world) {
@@ -843,6 +920,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return True if the funds were added to the account, otherwise false.
    */
   default boolean addHoldings(UUID identifier, BigDecimal amount, String world) {
@@ -856,6 +934,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return True if the funds were added to the account, otherwise false.
    */
   default boolean addHoldings(String identifier, BigDecimal amount, String world, String currency) {
@@ -869,6 +948,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return True if the funds were added to the account, otherwise false.
    */
   default boolean addHoldings(UUID identifier, BigDecimal amount, String world, String currency) {
@@ -880,6 +960,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse addHoldingsDetail(String identifier, BigDecimal amount);
@@ -889,6 +970,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse addHoldingsDetail(UUID identifier, BigDecimal amount);
@@ -899,6 +981,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse addHoldingsDetail(String identifier, BigDecimal amount, String world);
@@ -909,6 +992,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse addHoldingsDetail(UUID identifier, BigDecimal amount, String world);
@@ -920,6 +1004,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse addHoldingsDetail(String identifier, BigDecimal amount, String world, String currency);
@@ -931,6 +1016,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse addHoldingsDetail(UUID identifier, BigDecimal amount, String world, String currency);
@@ -940,6 +1026,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncAddHoldingsDetail(String identifier, BigDecimal amount) {
@@ -951,6 +1038,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncAddHoldingsDetail(UUID identifier, BigDecimal amount) {
@@ -963,6 +1051,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncAddHoldingsDetail(String identifier, BigDecimal amount, String world) {
@@ -975,6 +1064,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncAddHoldingsDetail(UUID identifier, BigDecimal amount, String world) {
@@ -988,6 +1078,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncAddHoldingsDetail(String identifier, BigDecimal amount, String world, String currency) {
@@ -1001,6 +1092,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncAddHoldingsDetail(UUID identifier, BigDecimal amount, String world, String currency) {
@@ -1013,6 +1105,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default boolean canAddHoldings(String identifier, BigDecimal amount) {
@@ -1025,6 +1118,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default boolean canAddHoldings(UUID identifier, BigDecimal amount) {
@@ -1038,6 +1132,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default boolean canAddHoldings(String identifier, BigDecimal amount, String world) {
@@ -1051,6 +1146,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default boolean canAddHoldings(UUID identifier, BigDecimal amount, String world) {
@@ -1065,6 +1161,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default boolean canAddHoldings(String identifier, BigDecimal amount, String world, String currency) {
@@ -1079,6 +1176,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default boolean canAddHoldings(UUID identifier, BigDecimal amount, String world, String currency) {
@@ -1091,6 +1189,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<Boolean> asyncCanAddHoldings(String identifier, BigDecimal amount) {
@@ -1103,6 +1202,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<Boolean> asyncCanAddHoldings(UUID identifier, BigDecimal amount) {
@@ -1116,6 +1216,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<Boolean> asyncCanAddHoldings(String identifier, BigDecimal amount, String world) {
@@ -1129,6 +1230,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<Boolean> asyncCanAddHoldings(UUID identifier, BigDecimal amount, String world) {
@@ -1143,6 +1245,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<Boolean> asyncCanAddHoldings(String identifier, BigDecimal amount, String world, String currency) {
@@ -1157,6 +1260,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<Boolean> asyncCanAddHoldings(UUID identifier, BigDecimal amount, String world, String currency) {
@@ -1169,6 +1273,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse canAddHoldingsDetail(String identifier, BigDecimal amount);
@@ -1179,6 +1284,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse canAddHoldingsDetail(UUID identifier, BigDecimal amount);
@@ -1190,6 +1296,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse canAddHoldingsDetail(String identifier, BigDecimal amount, String world);
@@ -1201,6 +1308,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse canAddHoldingsDetail(UUID identifier, BigDecimal amount, String world);
@@ -1213,6 +1321,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse canAddHoldingsDetail(String identifier, BigDecimal amount, String world, String currency);
@@ -1225,6 +1334,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse canAddHoldingsDetail(UUID identifier, BigDecimal amount, String world, String currency);
@@ -1235,6 +1345,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncCanAddHoldingsDetail(String identifier, BigDecimal amount) {
@@ -1247,6 +1358,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncCanAddHoldingsDetail(UUID identifier, BigDecimal amount) {
@@ -1260,6 +1372,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncCanAddHoldingsDetail(String identifier, BigDecimal amount, String world) {
@@ -1273,6 +1386,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncCanAddHoldingsDetail(UUID identifier, BigDecimal amount, String world) {
@@ -1287,6 +1401,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncCanAddHoldingsDetail(String identifier, BigDecimal amount, String world, String currency) {
@@ -1301,6 +1416,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to add to this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncCanAddHoldingsDetail(UUID identifier, BigDecimal amount, String world, String currency) {
@@ -1312,6 +1428,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
+   *
    * @return True if the funds were removed from the account, otherwise false.
    */
   default boolean removeHoldings(String identifier, BigDecimal amount) {
@@ -1323,6 +1440,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
+   *
    * @return True if the funds were removed from the account, otherwise false.
    */
   default boolean removeHoldings(UUID identifier, BigDecimal amount) {
@@ -1335,6 +1453,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return True if the funds were removed from the account, otherwise false.
    */
   default boolean removeHoldings(String identifier, BigDecimal amount, String world) {
@@ -1347,6 +1466,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return True if the funds were removed from the account, otherwise false.
    */
   default boolean removeHoldings(UUID identifier, BigDecimal amount, String world) {
@@ -1360,6 +1480,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return True if the funds were removed from the account, otherwise false.
    */
   default boolean removeHoldings(String identifier, BigDecimal amount, String world, String currency) {
@@ -1373,6 +1494,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return True if the funds were removed from the account, otherwise false.
    */
   default boolean removeHoldings(UUID identifier, BigDecimal amount, String world, String currency) {
@@ -1384,6 +1506,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
+   *
    * @return True if the funds were removed from the account, otherwise false.
    */
   default CompletableFuture<Boolean> asyncRemoveHoldings(String identifier, BigDecimal amount) {
@@ -1395,6 +1518,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
+   *
    * @return True if the funds were removed from the account, otherwise false.
    */
   default CompletableFuture<Boolean> asyncRemoveHoldings(UUID identifier, BigDecimal amount) {
@@ -1407,6 +1531,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return True if the funds were removed from the account, otherwise false.
    */
   default CompletableFuture<Boolean> asyncRemoveHoldings(String identifier, BigDecimal amount, String world) {
@@ -1419,6 +1544,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return True if the funds were removed from the account, otherwise false.
    */
   default CompletableFuture<Boolean> asyncRemoveHoldings(UUID identifier, BigDecimal amount, String world) {
@@ -1432,6 +1558,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return True if the funds were removed from the account, otherwise false.
    */
   default CompletableFuture<Boolean> asyncRemoveHoldings(String identifier, BigDecimal amount, String world, String currency) {
@@ -1445,6 +1572,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return True if the funds were removed from the account, otherwise false.
    */
   default CompletableFuture<Boolean> asyncRemoveHoldings(UUID identifier, BigDecimal amount, String world, String currency) {
@@ -1456,6 +1584,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse removeHoldingsDetail(String identifier, BigDecimal amount);
@@ -1465,6 +1594,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse removeHoldingsDetail(UUID identifier, BigDecimal amount);
@@ -1475,6 +1605,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse removeHoldingsDetail(String identifier, BigDecimal amount, String world);
@@ -1485,6 +1616,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse removeHoldingsDetail(UUID identifier, BigDecimal amount, String world);
@@ -1496,6 +1628,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse removeHoldingsDetail(String identifier, BigDecimal amount, String world, String currency);
@@ -1507,6 +1640,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   EconomyResponse removeHoldingsDetail(UUID identifier, BigDecimal amount, String world, String currency);
@@ -1516,6 +1650,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncRemoveHoldingsDetail(String identifier, BigDecimal amount) {
@@ -1527,6 +1662,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncRemoveHoldingsDetail(UUID identifier, BigDecimal amount) {
@@ -1539,6 +1675,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncRemoveHoldingsDetail(String identifier, BigDecimal amount, String world) {
@@ -1551,6 +1688,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncRemoveHoldingsDetail(UUID identifier, BigDecimal amount, String world) {
@@ -1564,6 +1702,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncRemoveHoldingsDetail(String identifier, BigDecimal amount, String world, String currency) {
@@ -1577,6 +1716,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncRemoveHoldingsDetail(UUID identifier, BigDecimal amount, String world, String currency) {
@@ -1589,6 +1729,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
+   *
    * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
    */
   default boolean canRemoveHoldings(String identifier, BigDecimal amount) {
@@ -1601,6 +1742,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
+   *
    * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
    */
   default boolean canRemoveHoldings(UUID identifier, BigDecimal amount) {
@@ -1614,6 +1756,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
    */
   default boolean canRemoveHoldings(String identifier, BigDecimal amount, String world) {
@@ -1627,6 +1770,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
    */
   default boolean canRemoveHoldings(UUID identifier, BigDecimal amount, String world) {
@@ -1641,6 +1785,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
    */
   default boolean canRemoveHoldings(String identifier, BigDecimal amount, String world, String currency) {
@@ -1655,6 +1800,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
    */
   default boolean canRemoveHoldings(UUID identifier, BigDecimal amount, String world, String currency) {
@@ -1667,6 +1813,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
+   *
    * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
    */
   default CompletableFuture<Boolean> asyncCanRemoveHoldings(String identifier, BigDecimal amount) {
@@ -1679,6 +1826,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
+   *
    * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
    */
   default CompletableFuture<Boolean> asyncCanRemoveHoldings(UUID identifier, BigDecimal amount) {
@@ -1692,6 +1840,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
    */
   default CompletableFuture<Boolean> asyncCanRemoveHoldings(String identifier, BigDecimal amount, String world) {
@@ -1705,6 +1854,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
    */
   default CompletableFuture<Boolean> asyncCanRemoveHoldings(UUID identifier, BigDecimal amount, String world) {
@@ -1719,6 +1869,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
    */
   default CompletableFuture<Boolean> asyncCanRemoveHoldings(String identifier, BigDecimal amount, String world, String currency) {
@@ -1733,6 +1884,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return True if a call to the corresponding removeHoldings method would return true, otherwise false.
    */
   default CompletableFuture<Boolean> asyncCanRemoveHoldings(UUID identifier, BigDecimal amount, String world, String currency) {
@@ -1745,6 +1897,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
+   *
    * @return The {@link EconomyResponse} that would be returned with the corresponding removeHoldingsDetail method.
    */
   EconomyResponse canRemoveHoldingsDetail(String identifier, BigDecimal amount);
@@ -1755,6 +1908,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
+   *
    * @return The {@link EconomyResponse} that would be returned with the corresponding removeHoldingsDetail method.
    */
   EconomyResponse canRemoveHoldingsDetail(UUID identifier, BigDecimal amount);
@@ -1766,6 +1920,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} that would be returned with the corresponding removeHoldingsDetail method.
    */
   EconomyResponse canRemoveHoldingsDetail(String identifier, BigDecimal amount, String world);
@@ -1777,6 +1932,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} that would be returned with the corresponding removeHoldingsDetail method.
    */
   EconomyResponse canRemoveHoldingsDetail(UUID identifier, BigDecimal amount, String world);
@@ -1789,6 +1945,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} that would be returned with the corresponding removeHoldingsDetail method.
    */
   EconomyResponse canRemoveHoldingsDetail(String identifier, BigDecimal amount, String world, String currency);
@@ -1801,6 +1958,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} that would be returned with the corresponding removeHoldingsDetail method.
    */
   EconomyResponse canRemoveHoldingsDetail(UUID identifier, BigDecimal amount, String world, String currency);
@@ -1811,6 +1969,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
+   *
    * @return The {@link EconomyResponse} that would be returned with the corresponding removeHoldingsDetail method.
    */
   default CompletableFuture<EconomyResponse> asyncCanRemoveHoldingsDetail(String identifier, BigDecimal amount) {
@@ -1823,6 +1982,7 @@ public interface EconomyAPI {
    *
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
+   *
    * @return The {@link EconomyResponse} that would be returned with the corresponding removeHoldingsDetail method.
    */
   default CompletableFuture<EconomyResponse> asyncCanRemoveHoldingsDetail(UUID identifier, BigDecimal amount) {
@@ -1836,6 +1996,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} that would be returned with the corresponding removeHoldingsDetail method.
    */
   default CompletableFuture<EconomyResponse> asyncCanRemoveHoldingsDetail(String identifier, BigDecimal amount, String world) {
@@ -1849,6 +2010,7 @@ public interface EconomyAPI {
    * @param identifier The identifier of the account that is associated with this call.
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} that would be returned with the corresponding removeHoldingsDetail method.
    */
   default CompletableFuture<EconomyResponse> asyncCanRemoveHoldingsDetail(UUID identifier, BigDecimal amount, String world) {
@@ -1863,6 +2025,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} that would be returned with the corresponding removeHoldingsDetail method.
    */
   default CompletableFuture<EconomyResponse> asyncCanRemoveHoldingsDetail(String identifier, BigDecimal amount, String world, String currency) {
@@ -1877,6 +2040,7 @@ public interface EconomyAPI {
    * @param amount     The amount you wish to remove from this account.
    * @param world      The name of the {@link World} associated with the amount.
    * @param currency   The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} that would be returned with the corresponding removeHoldingsDetail method.
    */
   default CompletableFuture<EconomyResponse> asyncCanRemoveHoldingsDetail(UUID identifier, BigDecimal amount, String world, String currency) {
@@ -1889,6 +2053,7 @@ public interface EconomyAPI {
    * @param fromIdentifier The identifier of the account that the holdings will be coming from.
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
+   *
    * @return True if the funds were transferred.
    */
   default boolean transferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount) {
@@ -1902,6 +2067,7 @@ public interface EconomyAPI {
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
+   *
    * @return True if the funds were transferred.
    */
   default boolean transferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount, String world) {
@@ -1916,6 +2082,7 @@ public interface EconomyAPI {
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
    * @param currency       The name of the currency associated with the balance.
+   *
    * @return True if the funds were transferred.
    */
   default boolean transferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount, String world, String currency) {
@@ -1928,6 +2095,7 @@ public interface EconomyAPI {
    * @param fromIdentifier The identifier of the account that the holdings will be coming from.
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
+   *
    * @return True if the funds were transferred.
    */
   default boolean transferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount) {
@@ -1941,6 +2109,7 @@ public interface EconomyAPI {
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
+   *
    * @return True if the funds were transferred.
    */
   default boolean transferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount, String world) {
@@ -1955,6 +2124,7 @@ public interface EconomyAPI {
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
    * @param currency       The name of the currency associated with the balance.
+   *
    * @return True if the funds were transferred.
    */
   default boolean transferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount, String world, String currency) {
@@ -1967,6 +2137,7 @@ public interface EconomyAPI {
    * @param fromIdentifier The identifier of the account that the holdings will be coming from.
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
+   *
    * @return True if the funds were transferred.
    */
   default CompletableFuture<Boolean> asyncTransferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount) {
@@ -1980,6 +2151,7 @@ public interface EconomyAPI {
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
+   *
    * @return True if the funds were transferred.
    */
   default CompletableFuture<Boolean> asyncTransferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount, String world) {
@@ -1994,6 +2166,7 @@ public interface EconomyAPI {
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
    * @param currency       The name of the currency associated with the balance.
+   *
    * @return True if the funds were transferred.
    */
   default CompletableFuture<Boolean> asyncTransferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount, String world, String currency) {
@@ -2006,6 +2179,7 @@ public interface EconomyAPI {
    * @param fromIdentifier The identifier of the account that the holdings will be coming from.
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
+   *
    * @return True if the funds were transferred.
    */
   default CompletableFuture<Boolean> asyncTransferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount) {
@@ -2019,6 +2193,7 @@ public interface EconomyAPI {
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
+   *
    * @return True if the funds were transferred.
    */
   default CompletableFuture<Boolean> asyncTransferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount, String world) {
@@ -2033,6 +2208,7 @@ public interface EconomyAPI {
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
    * @param currency       The name of the currency associated with the balance.
+   *
    * @return True if the funds were transferred.
    */
   default CompletableFuture<Boolean> asyncTransferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount, String world, String currency) {
@@ -2045,6 +2221,7 @@ public interface EconomyAPI {
    * @param fromIdentifier The identifier of the account that the holdings will be coming from.
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default EconomyResponse transferHoldingsDetail(String fromIdentifier, String toIdentifier, BigDecimal amount) {
@@ -2061,6 +2238,7 @@ public interface EconomyAPI {
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default EconomyResponse transferHoldingsDetail(String fromIdentifier, String toIdentifier, BigDecimal amount, String world) {
@@ -2078,6 +2256,7 @@ public interface EconomyAPI {
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
    * @param currency       The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default EconomyResponse transferHoldingsDetail(String fromIdentifier, String toIdentifier, BigDecimal amount, String world, String currency) {
@@ -2093,6 +2272,7 @@ public interface EconomyAPI {
    * @param fromIdentifier The identifier of the account that the holdings will be coming from.
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default EconomyResponse transferHoldingsDetail(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount) {
@@ -2109,6 +2289,7 @@ public interface EconomyAPI {
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default EconomyResponse transferHoldingsDetail(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount, String world) {
@@ -2126,6 +2307,7 @@ public interface EconomyAPI {
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
    * @param currency       The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default EconomyResponse transferHoldingsDetail(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount, String world, String currency) {
@@ -2141,6 +2323,7 @@ public interface EconomyAPI {
    * @param fromIdentifier The identifier of the account that the holdings will be coming from.
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncTransferHoldingsDetail(String fromIdentifier, String toIdentifier, BigDecimal amount) {
@@ -2154,6 +2337,7 @@ public interface EconomyAPI {
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncTransferHoldingsDetail(String fromIdentifier, String toIdentifier, BigDecimal amount, String world) {
@@ -2168,6 +2352,7 @@ public interface EconomyAPI {
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
    * @param currency       The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncTransferHoldingsDetail(String fromIdentifier, String toIdentifier, BigDecimal amount, String world, String currency) {
@@ -2180,6 +2365,7 @@ public interface EconomyAPI {
    * @param fromIdentifier The identifier of the account that the holdings will be coming from.
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncTransferHoldingsDetail(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount) {
@@ -2193,6 +2379,7 @@ public interface EconomyAPI {
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncTransferHoldingsDetail(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount, String world) {
@@ -2207,6 +2394,7 @@ public interface EconomyAPI {
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
    * @param currency       The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default CompletableFuture<EconomyResponse> asyncTransferHoldingsDetail(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount, String world, String currency) {
@@ -2220,6 +2408,7 @@ public interface EconomyAPI {
    * @param fromIdentifier The identifier of the account that the holdings will be coming from.
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
+   *
    * @return True if a call to the corresponding transferHoldings method would return true, otherwise false.
    */
   default boolean canTransferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount) {
@@ -2234,6 +2423,7 @@ public interface EconomyAPI {
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
+   *
    * @return True if a call to the corresponding transferHoldings method would return true, otherwise false.
    */
   default boolean canTransferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount, String world) {
@@ -2249,6 +2439,7 @@ public interface EconomyAPI {
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
    * @param currency       The name of the currency associated with the balance.
+   *
    * @return True if a call to the corresponding transferHoldings method would return true, otherwise false.
    */
   default boolean canTransferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount, String world, String currency) {
@@ -2262,6 +2453,7 @@ public interface EconomyAPI {
    * @param fromIdentifier The identifier of the account that the holdings will be coming from.
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
+   *
    * @return True if a call to the corresponding transferHoldings method would return true, otherwise false.
    */
   default boolean canTransferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount) {
@@ -2276,6 +2468,7 @@ public interface EconomyAPI {
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
+   *
    * @return True if a call to the corresponding transferHoldings method would return true,
    * otherwise false.
    */
@@ -2292,6 +2485,7 @@ public interface EconomyAPI {
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
    * @param currency       The name of the currency associated with the balance.
+   *
    * @return True if a call to the corresponding transferHoldings method would return true,
    * otherwise false.
    */
@@ -2306,6 +2500,7 @@ public interface EconomyAPI {
    * @param fromIdentifier The identifier of the account that the holdings will be coming from.
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
+   *
    * @return True if a call to the corresponding transferHoldings method would return true, otherwise false.
    */
   default CompletableFuture<Boolean> asyncCanTransferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount) {
@@ -2320,6 +2515,7 @@ public interface EconomyAPI {
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
+   *
    * @return True if a call to the corresponding transferHoldings method would return true, otherwise false.
    */
   default CompletableFuture<Boolean> asyncCanTransferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount, String world) {
@@ -2335,6 +2531,7 @@ public interface EconomyAPI {
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
    * @param currency       The name of the currency associated with the balance.
+   *
    * @return True if a call to the corresponding transferHoldings method would return true, otherwise false.
    */
   default CompletableFuture<Boolean> asyncCanTransferHoldings(String fromIdentifier, String toIdentifier, BigDecimal amount, String world, String currency) {
@@ -2348,6 +2545,7 @@ public interface EconomyAPI {
    * @param fromIdentifier The identifier of the account that the holdings will be coming from.
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
+   *
    * @return True if a call to the corresponding transferHoldings method would return true, otherwise false.
    */
   default CompletableFuture<Boolean> asyncCanTransferHoldings(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount) {
@@ -2362,6 +2560,7 @@ public interface EconomyAPI {
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
+   *
    * @return True if a call to the corresponding transferHoldings method would return true,
    * otherwise false.
    */
@@ -2378,6 +2577,7 @@ public interface EconomyAPI {
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
    * @param currency       The name of the currency associated with the balance.
+   *
    * @return True if a call to the corresponding transferHoldings method would return true,
    * otherwise false.
    */
@@ -2392,10 +2592,13 @@ public interface EconomyAPI {
    * @param fromIdentifier The identifier of the account that the holdings will be coming from.
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
+   *
    * @return The {@link EconomyResponse} associated with the corresponding transferHoldingsDetail method.
    */
   default EconomyResponse canTransferHoldingsDetail(String fromIdentifier, String toIdentifier, BigDecimal amount) {
-    if(canTransferHoldings(fromIdentifier, toIdentifier, amount)) return GeneralResponse.SUCCESS;
+    if(canTransferHoldings(fromIdentifier, toIdentifier, amount)) {
+      return GeneralResponse.SUCCESS;
+    }
     return GeneralResponse.FAILED;
   }
 
@@ -2407,11 +2610,13 @@ public interface EconomyAPI {
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} associated with the corresponding transferHoldingsDetail method.
    */
   default EconomyResponse canTransferHoldingsDetail(String fromIdentifier, String toIdentifier, BigDecimal amount, String world) {
-    if(canTransferHoldings(fromIdentifier, toIdentifier, amount, world))
+    if(canTransferHoldings(fromIdentifier, toIdentifier, amount, world)) {
       return GeneralResponse.SUCCESS;
+    }
     return GeneralResponse.FAILED;
   }
 
@@ -2424,11 +2629,13 @@ public interface EconomyAPI {
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
    * @param currency       The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} associated with the corresponding transferHoldingsDetail method.
    */
   default EconomyResponse canTransferHoldingsDetail(String fromIdentifier, String toIdentifier, BigDecimal amount, String world, String currency) {
-    if(canTransferHoldings(fromIdentifier, toIdentifier, amount, world, currency))
+    if(canTransferHoldings(fromIdentifier, toIdentifier, amount, world, currency)) {
       return GeneralResponse.SUCCESS;
+    }
     return GeneralResponse.FAILED;
   }
 
@@ -2439,10 +2646,13 @@ public interface EconomyAPI {
    * @param fromIdentifier The identifier of the account that the holdings will be coming from.
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
+   *
    * @return The {@link EconomyResponse} associated with the corresponding transferHoldingsDetail method.
    */
   default EconomyResponse canTransferHoldingsDetail(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount) {
-    if(canTransferHoldings(fromIdentifier, toIdentifier, amount)) return GeneralResponse.SUCCESS;
+    if(canTransferHoldings(fromIdentifier, toIdentifier, amount)) {
+      return GeneralResponse.SUCCESS;
+    }
     return GeneralResponse.FAILED;
   }
 
@@ -2454,12 +2664,14 @@ public interface EconomyAPI {
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
+   *
    * @return True if a call to the corresponding transferHoldings method would return true,
    * otherwise false.
    */
   default EconomyResponse canTransferHoldingsDetail(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount, String world) {
-    if(canTransferHoldings(fromIdentifier, toIdentifier, amount, world))
+    if(canTransferHoldings(fromIdentifier, toIdentifier, amount, world)) {
       return GeneralResponse.SUCCESS;
+    }
     return GeneralResponse.FAILED;
   }
 
@@ -2472,12 +2684,14 @@ public interface EconomyAPI {
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
    * @param currency       The name of the currency associated with the balance.
+   *
    * @return True if a call to the corresponding transferHoldings method would return true,
    * otherwise false.
    */
   default EconomyResponse canTransferHoldingsDetail(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount, String world, String currency) {
-    if(canTransferHoldings(fromIdentifier, toIdentifier, amount, currency))
+    if(canTransferHoldings(fromIdentifier, toIdentifier, amount, currency)) {
       return GeneralResponse.SUCCESS;
+    }
     return GeneralResponse.FAILED;
   }
 
@@ -2488,6 +2702,7 @@ public interface EconomyAPI {
    * @param fromIdentifier The identifier of the account that the holdings will be coming from.
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
+   *
    * @return The {@link EconomyResponse} associated with the corresponding transferHoldingsDetail method.
    */
   default CompletableFuture<EconomyResponse> asyncCanTransferHoldingsDetail(String fromIdentifier, String toIdentifier, BigDecimal amount) {
@@ -2502,6 +2717,7 @@ public interface EconomyAPI {
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
+   *
    * @return The {@link EconomyResponse} associated with the corresponding transferHoldingsDetail method.
    */
   default CompletableFuture<EconomyResponse> asyncCanTransferHoldingsDetail(String fromIdentifier, String toIdentifier, BigDecimal amount, String world) {
@@ -2517,6 +2733,7 @@ public interface EconomyAPI {
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
    * @param currency       The name of the currency associated with the balance.
+   *
    * @return The {@link EconomyResponse} associated with the corresponding transferHoldingsDetail method.
    */
   default CompletableFuture<EconomyResponse> asyncCanTransferHoldingsDetail(String fromIdentifier, String toIdentifier, BigDecimal amount, String world, String currency) {
@@ -2530,6 +2747,7 @@ public interface EconomyAPI {
    * @param fromIdentifier The identifier of the account that the holdings will be coming from.
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
+   *
    * @return The {@link EconomyResponse} associated with the corresponding transferHoldingsDetail method.
    */
   default CompletableFuture<EconomyResponse> asyncCanTransferHoldingsDetail(UUID fromIdentifier, UUID toIdentifier, BigDecimal amount) {
@@ -2544,6 +2762,7 @@ public interface EconomyAPI {
    * @param toIdentifier   The identifier of the account that the holdings will be going to.
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
+   *
    * @return True if a call to the corresponding transferHoldings method would return true,
    * otherwise false.
    */
@@ -2560,6 +2779,7 @@ public interface EconomyAPI {
    * @param amount         The amount you wish to remove from this account.
    * @param world          The name of the {@link World} associated with the amount.
    * @param currency       The name of the currency associated with the balance.
+   *
    * @return True if a call to the corresponding transferHoldings method would return true,
    * otherwise false.
    */
@@ -2581,6 +2801,7 @@ public interface EconomyAPI {
    * @param product    The name of the product.
    * @param identifier The account identifier purchasing the product.
    * @param baseCost   The base cost of the product.
+   *
    * @return The calculated cost in BigDecimal format.
    */
   default BigDecimal calculateCost(String plugin, String product, String identifier, BigDecimal baseCost) {
@@ -2595,6 +2816,7 @@ public interface EconomyAPI {
    * @param world      The name of the world the product is being purchased in.
    * @param identifier The account identifier purchasing the product.
    * @param baseCost   The base cost of the product.
+   *
    * @return The calculated cost in BigDecimal format.
    */
   default BigDecimal calculateCost(String plugin, String product, String identifier, String world, BigDecimal baseCost) {
@@ -2610,6 +2832,7 @@ public interface EconomyAPI {
    * @param currency   The name of the currency the product is being purchased with.
    * @param identifier The account identifier purchasing the product.
    * @param baseCost   The base cost of the product.
+   *
    * @return The calculated cost in BigDecimal format.
    */
   default BigDecimal calculateCost(String plugin, String product, String identifier, String world, String currency, BigDecimal baseCost) {
@@ -2634,6 +2857,7 @@ public interface EconomyAPI {
 
   /**
    * @param world The name of the {@link World} to use for this call.
+   *
    * @return A list containing the names of the banks currently in the specified world
    */
   default List<String> getBanks(String world) {
@@ -2654,6 +2878,7 @@ public interface EconomyAPI {
    * Asynchronous version of getBanks(String world)
    *
    * @param world The name of the {@link World} to use for this call.
+   *
    * @return A list containing the names of the banks currently in the specified world
    */
   default CompletableFuture<List<String>> asyncGetBanks(String world) {
@@ -2669,6 +2894,7 @@ public interface EconomyAPI {
 
   /**
    * @param world The name of the {@link World} to use for this call.
+   *
    * @return A list of currencies that are able to be used with banks in the specified world.
    */
   default List<String> acceptedBankCurrencies(String world) {
@@ -2678,6 +2904,7 @@ public interface EconomyAPI {
   /**
    * @param world The name of the {@link World} to use for this call.
    * @param bank  The name of the bank to use for this call.
+   *
    * @return A list of currencies that are able to be used with the specified bank in the specified world.
    */
   default List<String> acceptedBankCurrencies(String world, String bank) {
@@ -2693,6 +2920,7 @@ public interface EconomyAPI {
 
   /**
    * @param world The name of the {@link World} to use for this call.
+   *
    * @return A list of currencies that are able to be used with banks in the specified world.
    */
   default CompletableFuture<List<String>> asyncAcceptedBankCurrencies(String world) {
@@ -2702,6 +2930,7 @@ public interface EconomyAPI {
   /**
    * @param world The name of the {@link World} to use for this call.
    * @param bank  The name of the bank to use for this call.
+   *
    * @return A list of currencies that are able to be used with the specified bank in the specified world.
    */
   default CompletableFuture<List<String>> asyncAcceptedBankCurrencies(String world, String bank) {
@@ -2710,6 +2939,7 @@ public interface EconomyAPI {
 
   /**
    * @param player The UUID of the player to use for this call.
+   *
    * @return A List of UUIDs of bank accounts that the specified player has access to.
    */
   default List<UUID> availableBankAccounts(UUID player) {
@@ -2719,6 +2949,7 @@ public interface EconomyAPI {
   /**
    * @param player The UUID of the player to use for this call.
    * @param world  The name of the {@link World} to use for this call.
+   *
    * @return A List of UUIDs of bank accounts that the specified player has access to in a specific world.
    */
   default List<UUID> availableBankAccounts(UUID player, String world) {
@@ -2729,6 +2960,7 @@ public interface EconomyAPI {
    * @param player The UUID of the player to use for this call.
    * @param world  The name of the {@link World} to use for this call.
    * @param bank   The name of the bank to use for this call.
+   *
    * @return A List of UUIDs of bank accounts that the specified player has access to in a specific bank in a specific world.
    */
   default List<UUID> availableBankAccounts(UUID player, String world, String bank) {
@@ -2737,6 +2969,7 @@ public interface EconomyAPI {
 
   /**
    * @param player The UUID of the player to use for this call.
+   *
    * @return A List of UUIDs of bank accounts that the specified player has access to.
    */
   default CompletableFuture<List<UUID>> asyncAvailableBankAccounts(UUID player) {
@@ -2746,6 +2979,7 @@ public interface EconomyAPI {
   /**
    * @param player The UUID of the player to use for this call.
    * @param world  The name of the {@link World} to use for this call.
+   *
    * @return A List of UUIDs of bank accounts that the specified player has access to in a specific world.
    */
   default CompletableFuture<List<UUID>> asyncAvailableBankAccounts(UUID player, String world) {
@@ -2756,6 +2990,7 @@ public interface EconomyAPI {
    * @param player The UUID of the player to use for this call.
    * @param world  The name of the {@link World} to use for this call.
    * @param bank   The name of the bank to use for this call.
+   *
    * @return A List of UUIDs of bank accounts that the specified player has access to in a specific bank in a specific world.
    */
   default CompletableFuture<List<UUID>> asyncAvailableBankAccounts(UUID player, String world, String bank) {
@@ -2765,6 +3000,7 @@ public interface EconomyAPI {
   /**
    * @param player The UUID of the player to use for this call.
    * @param world  The name of the {@link World} to use for this call.
+   *
    * @return True if the specified player is the owner of a bank in the specified world.
    */
   default boolean isBankOwner(UUID player, String world) {
@@ -2775,6 +3011,7 @@ public interface EconomyAPI {
    * @param player The UUID of the player to use for this call.
    * @param world  The name of the {@link World} to use for this call.
    * @param bank   The name of the bank to use for this call.
+   *
    * @return True if the specified player is the owner of the specified bank in the specified world.
    */
   default boolean isBankOwner(UUID player, String world, String bank) {
@@ -2784,6 +3021,7 @@ public interface EconomyAPI {
   /**
    * @param player The UUID of the player to use for this call.
    * @param world  The name of the {@link World} to use for this call.
+   *
    * @return True if the specified player is the owner of a bank in the specified world.
    */
   default CompletableFuture<Boolean> asyncIsBankOwner(UUID player, String world) {
@@ -2794,6 +3032,7 @@ public interface EconomyAPI {
    * @param player The UUID of the player to use for this call.
    * @param world  The name of the {@link World} to use for this call.
    * @param bank   The name of the bank to use for this call.
+   *
    * @return True if the specified player is the owner of the specified bank in the specified world.
    */
   default CompletableFuture<Boolean> asyncIsBankOwner(UUID player, String world, String bank) {
@@ -2802,6 +3041,7 @@ public interface EconomyAPI {
 
   /**
    * @param owner The UUID of the owner of this bank account.
+   *
    * @return An optional with a UUID of the created bank account if it was created, otherwise an empty Optional.
    */
   default Optional<UUID> createBankAccount(UUID owner) {
@@ -2811,6 +3051,7 @@ public interface EconomyAPI {
   /**
    * @param owner The UUID of the owner of this bank account.
    * @param world The name of the {@link World} to create this bank account in.
+   *
    * @return An optional with a UUID of the created bank account if it was created, otherwise an empty Optional.
    */
   default Optional<UUID> createBankAccount(UUID owner, String world) {
@@ -2821,6 +3062,7 @@ public interface EconomyAPI {
    * @param owner The UUID of the owner of this bank account.
    * @param world The name of the {@link World} to create this bank account in.
    * @param bank  The name of the bank to create this bank account in.
+   *
    * @return An optional with a UUID of the created bank account if it was created, otherwise an empty Optional.
    */
   default Optional<UUID> createBankAccount(UUID owner, String world, String bank) {
@@ -2829,6 +3071,7 @@ public interface EconomyAPI {
 
   /**
    * @param owner The UUID of the owner of this bank account.
+   *
    * @return An optional with a UUID of the created bank account if it was created, otherwise an empty Optional.
    */
   default CompletableFuture<Optional<UUID>> asyncCreateBankAccount(UUID owner) {
@@ -2838,6 +3081,7 @@ public interface EconomyAPI {
   /**
    * @param owner The UUID of the owner of this bank account.
    * @param world The name of the {@link World} to create this bank account in.
+   *
    * @return An optional with a UUID of the created bank account if it was created, otherwise an empty Optional.
    */
   default CompletableFuture<Optional<UUID>> asyncCreateBankAccount(UUID owner, String world) {
@@ -2848,6 +3092,7 @@ public interface EconomyAPI {
    * @param owner The UUID of the owner of this bank account.
    * @param world The name of the {@link World} to create this bank account in.
    * @param bank  The name of the bank to create this bank account in.
+   *
    * @return An optional with a UUID of the created bank account if it was created, otherwise an empty Optional.
    */
   default CompletableFuture<Optional<UUID>> asyncCreateBankAccount(UUID owner, String world, String bank) {
@@ -2856,6 +3101,7 @@ public interface EconomyAPI {
 
   /**
    * @param player The UUID of the player to use for this call.
+   *
    * @return True if the specified player has a bank account.
    */
   default boolean hasBankAccount(UUID player) {
@@ -2865,6 +3111,7 @@ public interface EconomyAPI {
   /**
    * @param player The UUID of the player to use for this call.
    * @param world  The name of the {@link World} to use for this call.
+   *
    * @return True if the specified player has a bank account in the specified world.
    */
   default boolean hasBankAccount(UUID player, String world) {
@@ -2875,6 +3122,7 @@ public interface EconomyAPI {
    * @param player The UUID of the player to use for this call.
    * @param world  The name of the {@link World} to use for this call.
    * @param bank   The name of the bank to use for this call.
+   *
    * @return True if the specified player has a bank account in the specified bank in the specified world.
    */
   default boolean hasBankAccount(UUID player, String world, String bank) {
@@ -2883,6 +3131,7 @@ public interface EconomyAPI {
 
   /**
    * @param player The UUID of the player to use for this call.
+   *
    * @return True if the specified player has a bank account.
    */
   default CompletableFuture<Boolean> asyncHasBankAccount(UUID player) {
@@ -2892,6 +3141,7 @@ public interface EconomyAPI {
   /**
    * @param player The UUID of the player to use for this call.
    * @param world  The name of the {@link World} to use for this call.
+   *
    * @return True if the specified player has a bank account in the specified world.
    */
   default CompletableFuture<Boolean> asyncHasBankAccount(UUID player, String world) {
@@ -2902,6 +3152,7 @@ public interface EconomyAPI {
    * @param player The UUID of the player to use for this call.
    * @param world  The name of the {@link World} to use for this call.
    * @param bank   The name of the bank to use for this call.
+   *
    * @return True if the specified player has a bank account in the specified bank in the specified world.
    */
   default CompletableFuture<Boolean> asyncHasBankAccount(UUID player, String world, String bank) {
@@ -2911,6 +3162,7 @@ public interface EconomyAPI {
   /**
    * @param account The UUID of the bank account to use for this call.
    * @param player  The UUID of the player to use for this call.
+   *
    * @return True if the specified player is the owner of the specified bank account.
    */
   default boolean isBankAccountOwner(UUID account, UUID player) {
@@ -2920,6 +3172,7 @@ public interface EconomyAPI {
   /**
    * @param account The UUID of the bank account to use for this call.
    * @param player  The UUID of the player to use for this call.
+   *
    * @return True if the specified player is the owner of the specified bank account.
    */
   default CompletableFuture<Boolean> asyncIsBankAccountOwner(UUID account, UUID player) {
@@ -2929,6 +3182,7 @@ public interface EconomyAPI {
   /**
    * @param account The UUID of the bank account to use for this call.
    * @param player  The UUID of the player to use for this call.
+   *
    * @return True if the specified player is a member of the specified bank account.
    */
   default boolean isBankAccountMember(UUID account, UUID player) {
@@ -2938,6 +3192,7 @@ public interface EconomyAPI {
   /**
    * @param account The UUID of the bank account to use for this call.
    * @param player  The UUID of the player to use for this call.
+   *
    * @return True if the specified player is a member of the specified bank account.
    */
   default CompletableFuture<Boolean> asyncIsBankAccountMember(UUID account, UUID player) {
@@ -2946,6 +3201,7 @@ public interface EconomyAPI {
 
   /**
    * @param account The UUID of the bank account to use for this call.
+   *
    * @return The balance of the bank account.
    */
   default BigDecimal getBankHoldings(UUID account) {
@@ -2955,6 +3211,7 @@ public interface EconomyAPI {
   /**
    * @param account The UUID of the bank account to use for this call.
    * @param world   The name of the {@link World} to use for this call.
+   *
    * @return The balance of the bank account.
    */
   default BigDecimal getBankHoldings(UUID account, String world) {
@@ -2965,6 +3222,7 @@ public interface EconomyAPI {
    * @param account  The UUID of the bank account to use for this call.
    * @param world    The name of the {@link World} to use for this call.
    * @param currency The name of the currency to use for this call.
+   *
    * @return The balance of the bank account.
    */
   default BigDecimal getBankHoldings(UUID account, String world, String currency) {
@@ -2976,6 +3234,7 @@ public interface EconomyAPI {
    * @param world    The name of the {@link World} to use for this call.
    * @param currency The name of the currency to use for this call.
    * @param bank     The name of the bank to use for this call.
+   *
    * @return The balance of the bank account.
    */
   default BigDecimal getBankHoldings(UUID account, String world, String currency, String bank) {
@@ -2986,6 +3245,7 @@ public interface EconomyAPI {
    * @param account The UUID of the bank account to use for this call.
    * @param player  The UUID of the player adding the funds to the account, null if console.
    * @param amount  The amount of funds to add to the account.
+   *
    * @return True if the funds were added to the account, otherwise false.
    */
   default boolean bankAddHoldings(UUID account, UUID player, BigDecimal amount) {
@@ -2997,6 +3257,7 @@ public interface EconomyAPI {
    * @param player  The UUID of the player adding the funds to the account, null if not associated with a player action.
    * @param amount  The amount of funds to add to the account.
    * @param world   The name of the {@link World} to use for this call.
+   *
    * @return True if the funds were added to the account, otherwise false.
    */
   default boolean bankAddHoldings(UUID account, UUID player, BigDecimal amount, String world) {
@@ -3009,6 +3270,7 @@ public interface EconomyAPI {
    * @param amount   The amount of funds to add to the account.
    * @param world    The name of the {@link World} to use for this call.
    * @param currency The name of the currency to use for this call.
+   *
    * @return True if the funds were added to the account, otherwise false.
    */
   default boolean bankAddHoldings(UUID account, UUID player, BigDecimal amount, String world, String currency) {
@@ -3022,6 +3284,7 @@ public interface EconomyAPI {
    * @param world    The name of the {@link World} to use for this call.
    * @param currency The name of the currency to use for this call.
    * @param bank     The name of the bank to use for this call.
+   *
    * @return True if the funds were added to the account, otherwise false.
    */
   default boolean bankAddHoldings(UUID account, UUID player, BigDecimal amount, String world, String currency, String bank) {
@@ -3032,6 +3295,7 @@ public interface EconomyAPI {
    * @param account The UUID of the bank account to use for this call.
    * @param player  The UUID of the player adding the funds to the account, null if console.
    * @param amount  The amount of funds to add to the account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default EconomyResponse bankAddHoldingsDetail(UUID account, UUID player, BigDecimal amount) {
@@ -3043,6 +3307,7 @@ public interface EconomyAPI {
    * @param player  The UUID of the player adding the funds to the account, null if not associated with a player action.
    * @param amount  The amount of funds to add to the account.
    * @param world   The name of the {@link World} to use for this call.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default EconomyResponse bankAddHoldingsDetail(UUID account, UUID player, BigDecimal amount, String world) {
@@ -3055,6 +3320,7 @@ public interface EconomyAPI {
    * @param amount   The amount of funds to add to the account.
    * @param world    The name of the {@link World} to use for this call.
    * @param currency The name of the currency to use for this call.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default EconomyResponse bankAddHoldingsDetail(UUID account, UUID player, BigDecimal amount, String world, String currency) {
@@ -3068,6 +3334,7 @@ public interface EconomyAPI {
    * @param world    The name of the {@link World} to use for this call.
    * @param currency The name of the currency to use for this call.
    * @param bank     The name of the bank to use for this call.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default EconomyResponse bankAddHoldingsDetail(UUID account, UUID player, BigDecimal amount, String world, String currency, String bank) {
@@ -3078,6 +3345,7 @@ public interface EconomyAPI {
    * @param account The UUID of the bank account to use for this call.
    * @param player  The UUID of the player adding the funds to the account, null if console.
    * @param amount  The amount of funds to remove from the account.
+   *
    * @return True if the funds were removed from the account, otherwise false.
    */
   default boolean bankRemoveHoldings(UUID account, UUID player, BigDecimal amount) {
@@ -3089,6 +3357,7 @@ public interface EconomyAPI {
    * @param player  The UUID of the player adding the funds to the account, null if console.
    * @param amount  The amount of funds to remove from the account.
    * @param world   The name of the {@link World} to use for this call.
+   *
    * @return True if the funds were removed from the account, otherwise false.
    */
   default boolean bankRemoveHoldings(UUID account, UUID player, BigDecimal amount, String world) {
@@ -3101,6 +3370,7 @@ public interface EconomyAPI {
    * @param amount   The amount of funds to remove from the account.
    * @param world    The name of the {@link World} to use for this call.
    * @param currency The name of the currency to use for this call.
+   *
    * @return True if the funds were removed from the account, otherwise false.
    */
   default boolean bankRemoveHoldings(UUID account, UUID player, BigDecimal amount, String world, String currency) {
@@ -3114,6 +3384,7 @@ public interface EconomyAPI {
    * @param world    The name of the {@link World} to use for this call.
    * @param currency The name of the currency to use for this call.
    * @param bank     The name of the bank to use for this call.
+   *
    * @return True if the funds were removed from the account, otherwise false.
    */
   default boolean bankRemoveHoldings(UUID account, UUID player, BigDecimal amount, String world, String currency, String bank) {
@@ -3124,6 +3395,7 @@ public interface EconomyAPI {
    * @param account The UUID of the bank account to use for this call.
    * @param player  The UUID of the player adding the funds to the account, null if console.
    * @param amount  The amount of funds to remove from the account.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default EconomyResponse bankRemoveHoldingsDetail(UUID account, UUID player, BigDecimal amount) {
@@ -3135,6 +3407,7 @@ public interface EconomyAPI {
    * @param player  The UUID of the player adding the funds to the account, null if console.
    * @param amount  The amount of funds to remove from the account.
    * @param world   The name of the {@link World} to use for this call.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default EconomyResponse bankRemoveHoldingsDetail(UUID account, UUID player, BigDecimal amount, String world) {
@@ -3147,6 +3420,7 @@ public interface EconomyAPI {
    * @param amount   The amount of funds to remove from the account.
    * @param world    The name of the {@link World} to use for this call.
    * @param currency The name of the currency to use for this call.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default EconomyResponse bankRemoveHoldingsDetail(UUID account, UUID player, BigDecimal amount, String world, String currency) {
@@ -3160,6 +3434,7 @@ public interface EconomyAPI {
    * @param world    The name of the {@link World} to use for this call.
    * @param currency The name of the currency to use for this call.
    * @param bank     The name of the bank to use for this call.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default EconomyResponse bankRemoveHoldingsDetail(UUID account, UUID player, BigDecimal amount, String world, String currency, String bank) {
@@ -3169,6 +3444,7 @@ public interface EconomyAPI {
   /**
    * @param account The UUID of the bank account to use for this call.
    * @param amount  The amount to set the account's funds to
+   *
    * @return True if the account's funds were set to the specified amount.
    */
   default boolean bankSetHoldings(UUID account, BigDecimal amount) {
@@ -3179,6 +3455,7 @@ public interface EconomyAPI {
    * @param account The UUID of the bank account to use for this call.
    * @param amount  The amount to set the account's funds to
    * @param world   The name of the {@link World} to use for this call.
+   *
    * @return True if the account's funds were set to the specified amount.
    */
   default boolean bankSetHoldings(UUID account, BigDecimal amount, String world) {
@@ -3190,6 +3467,7 @@ public interface EconomyAPI {
    * @param amount   The amount to set the account's funds to
    * @param world    The name of the {@link World} to use for this call.
    * @param currency The name of the currency to use for this call.
+   *
    * @return True if the account's funds were set to the specified amount.
    */
   default boolean bankSetHoldings(UUID account, BigDecimal amount, String world, String currency) {
@@ -3202,6 +3480,7 @@ public interface EconomyAPI {
    * @param world    The name of the {@link World} to use for this call.
    * @param currency The name of the currency to use for this call.
    * @param bank     The name of the bank to use for this call.
+   *
    * @return True if the account's funds were set to the specified amount.
    */
   default boolean bankSetHoldings(UUID account, BigDecimal amount, String world, String currency, String bank) {
@@ -3211,6 +3490,7 @@ public interface EconomyAPI {
   /**
    * @param account The UUID of the bank account to use for this call.
    * @param amount  The amount to set the account's funds to
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default EconomyResponse bankSetHoldingsDetail(UUID account, BigDecimal amount) {
@@ -3221,6 +3501,7 @@ public interface EconomyAPI {
    * @param account The UUID of the bank account to use for this call.
    * @param amount  The amount to set the account's funds to
    * @param world   The name of the {@link World} to use for this call.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default EconomyResponse bankSetHoldingsDetail(UUID account, BigDecimal amount, String world) {
@@ -3232,6 +3513,7 @@ public interface EconomyAPI {
    * @param amount   The amount to set the account's funds to
    * @param world    The name of the {@link World} to use for this call.
    * @param currency The name of the currency to use for this call.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default EconomyResponse bankSetHoldingsDetail(UUID account, BigDecimal amount, String world, String currency) {
@@ -3244,6 +3526,7 @@ public interface EconomyAPI {
    * @param world    The name of the {@link World} to use for this call.
    * @param currency The name of the currency to use for this call.
    * @param bank     The name of the bank to use for this call.
+   *
    * @return The {@link EconomyResponse} for this action.
    */
   default EconomyResponse bankSetHoldingsDetail(UUID account, BigDecimal amount, String world, String currency, String bank) {
@@ -3254,6 +3537,7 @@ public interface EconomyAPI {
    * Formats a monetary amount into a more text-friendly version.
    *
    * @param amount The amount of currency to format.
+   *
    * @return The formatted amount.
    */
   String format(BigDecimal amount);
@@ -3263,6 +3547,7 @@ public interface EconomyAPI {
    *
    * @param amount The amount of currency to format.
    * @param world  The {@link World} in which this format operation is occurring.
+   *
    * @return The formatted amount.
    */
   String format(BigDecimal amount, String world);
@@ -3273,6 +3558,7 @@ public interface EconomyAPI {
    * @param amount   The amount of currency to format.
    * @param world    The {@link World} in which this format operation is occurring.
    * @param currency The name of the currency associated with the balance.
+   *
    * @return The formatted amount.
    */
   String format(BigDecimal amount, String world, String currency);
@@ -3288,6 +3574,7 @@ public interface EconomyAPI {
    * Purges the database of accounts with a balance under the specified one.
    *
    * @param amount The amount that an account's balance has to be under in order to be removed.
+   *
    * @return True if the purge was completed successfully.
    */
   boolean purgeAccountsUnder(BigDecimal amount);
@@ -3305,6 +3592,7 @@ public interface EconomyAPI {
    * Purges the database of accounts with a balance under the specified one.
    *
    * @param amount The amount that an account's balance has to be under in order to be removed.
+   *
    * @return True if the purge was completed successfully.
    */
   default CompletableFuture<Boolean> asyncPurgeAccountsUnder(BigDecimal amount) {

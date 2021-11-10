@@ -81,8 +81,9 @@ public class ConfigurationManager {
         setNewProperty(root.getRoot(), version);
       } else if(root.getRoot().equals(ConfigNodes.LAST_RUN_VERSION.getRoot())) {
         setNewProperty(root.getRoot(), getLastRunVersion(version));
-      } else
+      } else {
         setNewProperty(root.getRoot(), (config.get(root.getRoot().toLowerCase()) != null)? config.get(root.getRoot().toLowerCase()) : root.getDefault());
+      }
     }
 
     config = newConfig;

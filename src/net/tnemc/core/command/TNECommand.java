@@ -90,7 +90,7 @@ public abstract class TNECommand {
         remaining = linesPerPage;
       }
       int length = help.get(i).length;
-      if(i == help.size() - 1 && remaining - length < 0) maxPage++;
+      if(i == help.size() - 1 && remaining - length < 0) { maxPage++; }
       remaining -= length;
     }
 
@@ -104,8 +104,8 @@ public abstract class TNECommand {
         remaining = linesPerPage;
       }
       int length = help.get(i).length;
-      if(i == help.size() - 1 && remaining - length < 0) loopPage++;
-      if(loopPage.equals(helpPage)) send.add(i);
+      if(i == help.size() - 1 && remaining - length < 0) { loopPage++; }
+      if(loopPage.equals(helpPage)) { send.add(i); }
       remaining -= length;
     }
 
