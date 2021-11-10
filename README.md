@@ -1,7 +1,16 @@
 # Reserve
 
-A common API to let plugin developers integrate with economy plugins. Permissions support coming soon.
+The goal of the Reserve project is to provide a common set of APIs to allow for
+painless compatibility between various spigot plugins.
 
+# APIs Available
+- Economy
+
+# Future APIs
+- Ban
+- Permissions
+- Land Protection
+- Minigame
 
 # Maven
 
@@ -11,15 +20,15 @@ If order to include Reserve into your project via Maven use the following reposi
 <repositories>
          <repository>
              <id>reserve-repo</id>
-             <url>https://dl.bintray.com/theneweconomy/java/</url>
+             <url>https://repo.codemc.io/repository/maven-public/</url>
          </repository>
  </repositories>
  <dependencies>
       <dependency>
-             <groupId>net.tnemc</groupId>
-             <artifactId>Reserve</artifactId>
-             <version>0.1.3.0</version>
-             <scope>provided</scope>
-       </dependency>
+            <groupId>net.tnemc</groupId>
+            <artifactId>Reserve</artifactId>
+            <version>0.1.5.3-SNAPSHOT-4</version>
+            <scope>provided</scope>
+      </dependency>
  </dependencies>
  `
