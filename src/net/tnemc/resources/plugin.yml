@@ -8,4 +8,4 @@ api-version: 1.13
 #Plugin Data
 main: net.tnemc.core.Reserve
 load: STARTUP
-softdepend: [Vault]
+softdepend: [ Vault ]

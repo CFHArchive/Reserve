@@ -8,11 +8,13 @@ public enum ConfigNodes {
   VERSION(
       "version.version",
       "",
-      "# This is the current version of TownyEco.  Please do not edit."),
+      "# This is the current version of TownyEco.  Please do not edit."
+  ),
   LAST_RUN_VERSION(
       "version.last_run_version",
       "",
-      "# Please do not edit."),
+      "# Please do not edit."
+  ),
   HOOK_INTO_VAULT(
       "vault-support",
       "true",
@@ -54,7 +56,7 @@ public enum ConfigNodes {
    * @return The comments for a config path
    */
   public String[] getComments() {
-    if (comments != null) {
+    if(comments != null) {
       return comments;
     }
 

@@ -12,21 +12,21 @@ import java.util.List;
 
 /**
  * Created by creatorfromhell on 8/9/2017.
- *
+ * <p>
  * Reserve API
- *
+ * <p>
  * Copyright (C) 2021 creatorfromhell
- *
+ * <p>
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 3 of the License, or (at your option) any later version.
- *
+ * <p>
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- *
+ * <p>
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA, or see
@@ -149,18 +149,18 @@ public class Economy_Vault implements Economy {
 
   @Override
   public EconomyResponse withdrawPlayer(String username, String world, double amount) {
-    if (!hasAccount(username)) {
+    if(!hasAccount(username)) {
       return new EconomyResponse(0, 0, EconomyResponse.ResponseType.FAILURE, "That account does not exist!");
     }
 
-    if (amount < 0) {
+    if(amount < 0) {
       return new EconomyResponse(0, 0, EconomyResponse.ResponseType.FAILURE, "Cannot withdraw negative amounts.");
     }
 
-    if (!has(username, world, amount)) {
+    if(!has(username, world, amount)) {
       return new EconomyResponse(0, 0, EconomyResponse.ResponseType.FAILURE, "Insufficient funds!");
     }
-    if (economyAPI.removeHoldings(username, new BigDecimal(amount + ""), world)) {
+    if(economyAPI.removeHoldings(username, new BigDecimal(amount + ""), world)) {
       return new EconomyResponse(amount, getBalance(username, world), EconomyResponse.ResponseType.SUCCESS, "");
     }
     return new EconomyResponse(amount, getBalance(username, world), EconomyResponse.ResponseType.FAILURE, "Unable to complete transaction!");
@@ -183,14 +183,14 @@ public class Economy_Vault implements Economy {
 
   @Override
   public EconomyResponse depositPlayer(String username, String world, double amount) {
-    if (!hasAccount(username)) {
+    if(!hasAccount(username)) {
       return new EconomyResponse(0, 0, EconomyResponse.ResponseType.FAILURE, "That account does not exist!");
     }
 
-    if (amount < 0) {
+    if(amount < 0) {
       return new EconomyResponse(0, 0, EconomyResponse.ResponseType.FAILURE, "Cannot deposit negative amounts.");
     }
-    if (economyAPI.addHoldings(username, new BigDecimal(amount + ""), world)) {
+    if(economyAPI.addHoldings(username, new BigDecimal(amount + ""), world)) {
       return new EconomyResponse(amount, getBalance(username, world), EconomyResponse.ResponseType.SUCCESS, "");
     }
     return new EconomyResponse(amount, getBalance(username, world), EconomyResponse.ResponseType.FAILURE, "Unable to complete transaction!");

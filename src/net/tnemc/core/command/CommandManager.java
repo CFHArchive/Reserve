@@ -15,21 +15,21 @@ import java.util.Map;
 
 /**
  * Created by creatorfromhell on 8/9/2017.
- *
+ * <p>
  * Reserve API
- *
+ * <p>
  * Copyright (C) 2021 creatorfromhell
- *
+ * <p>
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 3 of the License, or (at your option) any later version.
- *
+ * <p>
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- *
+ * <p>
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA, or see
@@ -51,16 +51,16 @@ public class CommandManager {
       commandMap.setAccessible(true);
       knownCommands = SimpleCommandMap.class.getDeclaredField("knownCommands");
       knownCommands.setAccessible(true);
-    } catch (Exception e) {
+    } catch(Exception e) {
       /* do nothing */
     }
 
     if(commandMap != null && knownCommands != null) {
 
-      for (Map.Entry<String[], TNECommand> entry : commands.entrySet()) {
-        for (String s : entry.getKey()) {
-          if (entry.getValue().activated("", "")) {
-            if (registered(s)) {
+      for(Map.Entry<String[], TNECommand> entry : commands.entrySet()) {
+        for(String s : entry.getKey()) {
+          if(entry.getValue().activated("", "")) {
+            if(registered(s)) {
               unregister(s);
             }
             register(s);
@@ -81,7 +81,7 @@ public class CommandManager {
       Constructor<PluginCommand> c = PluginCommand.class.getDeclaredConstructor(String.class, Plugin.class);
       c.setAccessible(true);
       PluginCommand pluginCommand = c.newInstance(command, Reserve.instance());
-      ((SimpleCommandMap) commandMap.get(Bukkit.getServer())).register(command, pluginCommand);
+      ((SimpleCommandMap)commandMap.get(Bukkit.getServer())).register(command, pluginCommand);
     } catch(Exception e) {
       //nothing to see here
     }
@@ -89,7 +89,7 @@ public class CommandManager {
 
   private void unregister(String command) {
     try {
-      ((Map<String, Command>) knownCommands.get(commandMap.get(Bukkit.getServer()))).remove(command);
+      ((Map<String, Command>)knownCommands.get(commandMap.get(Bukkit.getServer()))).remove(command);
     } catch(Exception e) {
       //nothing to see here;
     }
@@ -97,7 +97,7 @@ public class CommandManager {
 
   private Boolean registered(String command) {
     try {
-      return ((Map<String, Command>) knownCommands.get(commandMap.get(Bukkit.getServer()))).containsKey(command);
+      return ((Map<String, Command>)knownCommands.get(commandMap.get(Bukkit.getServer()))).containsKey(command);
     } catch(Exception e) {
       //nothing to see here;
     }

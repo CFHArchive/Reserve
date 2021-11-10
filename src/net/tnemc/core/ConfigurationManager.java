@@ -11,21 +11,21 @@ import static java.util.logging.Level.SEVERE;
 
 /**
  * Created by creatorfromhell on 8/9/2017.
- *
+ * <p>
  * Reserve API
- *
+ * <p>
  * Copyright (C) 2021 creatorfromhell
- *
+ * <p>
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 3 of the License, or (at your option) any later version.
- *
+ * <p>
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- *
+ * <p>
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA, or see
@@ -46,7 +46,7 @@ public class ConfigurationManager {
           getRootFolder()});
 
       loadConfig(getRootFolder() + FileMgmt.fileSeparator() + "config.yml", plugin.getDescription().getVersion());
-    } catch (Exception e) {
+    } catch(Exception e) {
       return false;
     }
     return true;
@@ -57,7 +57,7 @@ public class ConfigurationManager {
 
     // read the config.yml into memory
     config = new CommentedConfiguration(file);
-    if (!config.load()) {
+    if(!config.load()) {
       plugin.getLogger().log(SEVERE, "Failed to load configuration");
     }
 
@@ -73,16 +73,16 @@ public class ConfigurationManager {
     newConfig = new CommentedConfiguration(file);
     newConfig.load();
 
-    for (ConfigNodes root : ConfigNodes.values()) {
-      if (root.getComments().length > 0) {
+    for(ConfigNodes root : ConfigNodes.values()) {
+      if(root.getComments().length > 0) {
         addComment(root.getRoot(), root.getComments());
       }
-      if (root.getRoot().equals(ConfigNodes.VERSION.getRoot())) {
+      if(root.getRoot().equals(ConfigNodes.VERSION.getRoot())) {
         setNewProperty(root.getRoot(), version);
-      } else if (root.getRoot().equals(ConfigNodes.LAST_RUN_VERSION.getRoot())) {
+      } else if(root.getRoot().equals(ConfigNodes.LAST_RUN_VERSION.getRoot())) {
         setNewProperty(root.getRoot(), getLastRunVersion(version));
       } else
-        setNewProperty(root.getRoot(), (config.get(root.getRoot().toLowerCase()) != null) ? config.get(root.getRoot().toLowerCase()) : root.getDefault());
+        setNewProperty(root.getRoot(), (config.get(root.getRoot().toLowerCase()) != null)? config.get(root.getRoot().toLowerCase()) : root.getDefault());
     }
 
     config = newConfig;
@@ -94,7 +94,7 @@ public class ConfigurationManager {
   }
 
   private static void setNewProperty(String root, Object value) {
-    if (value == null) {
+    if(value == null) {
       // System.out.print("value is null for " + root.toLowerCase());
       value = "";
     }
@@ -107,7 +107,7 @@ public class ConfigurationManager {
 
   private static String getString(String root, String def) {
     String data = config.getString(root.toLowerCase(), def);
-    if (data == null) {
+    if(data == null) {
       sendError(root.toLowerCase() + " from config.yml");
       return "";
     }
@@ -138,7 +138,7 @@ public class ConfigurationManager {
   public static double getDouble(ConfigNodes node) {
     try {
       return Double.parseDouble(config.getString(node.getRoot().toLowerCase(), node.getDefault()).trim());
-    } catch (NumberFormatException e) {
+    } catch(NumberFormatException e) {
       sendError(node.getRoot().toLowerCase() + " from config.yml");
       return 0.0;
     }
@@ -147,7 +147,7 @@ public class ConfigurationManager {
   public static int getInt(ConfigNodes node) {
     try {
       return Integer.parseInt(config.getString(node.getRoot().toLowerCase(), node.getDefault()).trim());
-    } catch (NumberFormatException e) {
+    } catch(NumberFormatException e) {
       sendError(node.getRoot().toLowerCase() + " from config.yml");
       return 0;
     }

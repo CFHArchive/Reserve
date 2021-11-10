@@ -10,21 +10,21 @@ import java.util.Map;
 
 /**
  * Created by creatorfromhell on 8/9/2017.
- *
+ * <p>
  * Reserve API
- *
+ * <p>
  * Copyright (C) 2021 creatorfromhell
- *
+ * <p>
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 3 of the License, or (at your option) any later version.
- *
+ * <p>
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- *
+ * <p>
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA, or see
@@ -77,11 +77,11 @@ public class Message {
   }
 
   public static String replaceColours(String message, boolean strip) {
-    for (Map.Entry<String, String> entry : colours.entrySet()) {
-      String replacement = (strip) ? "" : entry.getValue();
+    for(Map.Entry<String, String> entry : colours.entrySet()) {
+      String replacement = (strip)? "" : entry.getValue();
       message = message.replace(entry.getKey(), replacement);
     }
-    if (strip) {
+    if(strip) {
       return ChatColor.stripColor(message);
     }
     return ChatColor.translateAlternateColorCodes('&', message);
@@ -90,7 +90,7 @@ public class Message {
   public String grab(String world, CommandSender sender) {
     String message = this.node;
 
-    for (Map.Entry<String, String> entry : variables.entrySet()) {
+    for(Map.Entry<String, String> entry : variables.entrySet()) {
       message = message.replace(entry.getKey(), entry.getValue());
     }
     return message;
@@ -101,10 +101,10 @@ public class Message {
 
     String[] formatted = new String[message.length];
 
-    for (int i = 0; i < message.length; i++) {
+    for(int i = 0; i < message.length; i++) {
       String send = message[i];
-      if (!send.equals(this.node)) {
-        for (Map.Entry<String, String> entry : variables.entrySet()) {
+      if(!send.equals(this.node)) {
+        for(Map.Entry<String, String> entry : variables.entrySet()) {
           send = send.replace(entry.getKey(), entry.getValue());
         }
       }
@@ -115,13 +115,13 @@ public class Message {
   }
 
   public void translate(String world, CommandSender sender) {
-    if (sender == null) return;
+    if(sender == null) return;
 
     String[] message = new String[]{this.node};
-    for (String s : message) {
+    for(String s : message) {
       String send = s;
-      if (!send.equals(this.node)) {
-        for (Map.Entry<String, String> entry : variables.entrySet()) {
+      if(!send.equals(this.node)) {
+        for(Map.Entry<String, String> entry : variables.entrySet()) {
           send = send.replace(entry.getKey(), entry.getValue());
         }
       }

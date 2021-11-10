@@ -19,21 +19,21 @@ import java.util.Map;
 
 /**
  * Created by creatorfromhell on 8/9/2017.
- *
+ * <p>
  * Reserve API
- *
+ * <p>
  * Copyright (C) 2021 creatorfromhell
- *
+ * <p>
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 3 of the License, or (at your option) any later version.
- *
+ * <p>
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- *
+ * <p>
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA, or see
@@ -61,10 +61,10 @@ public class Reserve extends JavaPlugin {
   public void onEnable() {
     commandManager = new CommandManager();
 
-    if (!ConfigurationManager.loadSettings()) {
+    if(!ConfigurationManager.loadSettings()) {
       // Failed to load configuration. You decide what to do.
     }
-    if (Bukkit.getWorlds().size() >= 1) {
+    if(Bukkit.getWorlds().size() >= 1) {
       defaultWorld = Bukkit.getServer().getWorlds().get(0).getName();
     } else {
       defaultWorld = "world";
@@ -81,10 +81,10 @@ public class Reserve extends JavaPlugin {
   public void registerProvider(EconomyAPI provider) {
     getLogger().info("Economy Provider registered: " + provider.name());
     registeredEconomies.put(provider.name(), provider);
-    if (provider.enabled()) {
-      if (provider.force() || ecoProvider.equalsIgnoreCase("")) {
+    if(provider.enabled()) {
+      if(provider.force() || ecoProvider.equalsIgnoreCase("")) {
         ecoProvider = provider.name();
-        if (provider.vault() && getServer().getPluginManager().getPlugin("Vault") != null) {
+        if(provider.vault() && getServer().getPluginManager().getPlugin("Vault") != null) {
           vaultEconomy = new Economy_Vault(this);
           setupVault();
         }
@@ -129,8 +129,8 @@ public class Reserve extends JavaPlugin {
   @Override
   public boolean onCommand(CommandSender sender, Command command, String label, String[] arguments) {
     TNECommand ecoCommand = commandManager.Find(label);
-    if (ecoCommand != null) {
-      if (!ecoCommand.canExecute(sender)) {
+    if(ecoCommand != null) {
+      if(!ecoCommand.canExecute(sender)) {
         sender.sendMessage(ChatColor.RED + "I'm sorry, but you're not allowed to use that commands.");
         return false;
       }

@@ -18,9 +18,9 @@ import java.io.Writer;
 public class FileMgmt {
 
   public static void checkFolders(String[] folders) {
-    for (String folder : folders) {
+    for(String folder : folders) {
       File f = new File(folder);
-      if (!(f.exists() && f.isDirectory())) {
+      if(!(f.exists() && f.isDirectory())) {
         f.mkdirs();
       }
     }
@@ -31,10 +31,10 @@ public class FileMgmt {
   }
 
   public static File CheckYMLExists(File file) {
-    if (!file.exists()) {
+    if(!file.exists()) {
       try {
         file.createNewFile();
-      } catch (IOException e) {
+      } catch(IOException e) {
         e.printStackTrace();
       }
     }
@@ -48,7 +48,7 @@ public class FileMgmt {
    * @return Contents of file. String will be empty in case of any errors.
    */
   public static String convertFileToString(File file) {
-    if (file != null && file.exists() && file.canRead() && !file.isDirectory()) {
+    if(file != null && file.exists() && file.canRead() && !file.isDirectory()) {
       Writer writer = new StringWriter();
       InputStream is = null;
 
@@ -57,17 +57,17 @@ public class FileMgmt {
         is = new FileInputStream(file);
         Reader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
         int n;
-        while ((n = reader.read(buffer)) != -1) {
+        while((n = reader.read(buffer)) != -1) {
           writer.write(buffer, 0, n);
         }
         reader.close();
-      } catch (IOException e) {
+      } catch(IOException e) {
         System.out.println("Exception ");
       } finally {
-        if (is != null) {
+        if(is != null) {
           try {
             is.close();
-          } catch (IOException ignore) {
+          } catch(IOException ignore) {
           }
         }
       }
@@ -81,7 +81,7 @@ public class FileMgmt {
    * Writes the contents of a string to a file.
    *
    * @param source String to write.
-   * @param file File to write to.
+   * @param file   File to write to.
    */
   public static void stringToFile(String source, File file) {
     try {
@@ -94,7 +94,7 @@ public class FileMgmt {
       out.write(source);
       out.close();
 
-    } catch (IOException e) {
+    } catch(IOException e) {
       System.out.println("Exception ");
     }
   }
