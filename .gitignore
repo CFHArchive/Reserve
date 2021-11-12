@@ -16,3 +16,7 @@ hs_err_pid*
 target/
 
 settings.xml
+/API/API.iml
+/Bukkit/Bukkit.iml
+/dependency-reduced-pom.xml
+/Sponge/Sponge.iml
