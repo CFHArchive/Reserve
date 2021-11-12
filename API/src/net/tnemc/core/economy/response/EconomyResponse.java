@@ -1,6 +1,6 @@
 package net.tnemc.core.economy.response;
 
-import net.tnemc.core.general.response.PluginResponse;
+import net.tnemc.core.generic.response.PluginResponse;
 
 /**
  * Created by creatorfromhell on 8/9/2017.

@@ -1,4 +1,4 @@
-package net.tnemc.core.general.response;
+package net.tnemc.core.generic.response;
 
 /**
  * Created by creatorfromhell on 8/9/2017.

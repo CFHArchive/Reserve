@@ -1,8 +1,9 @@
-package net.tnemc.core.economy;
+package net.tnemc.core;
 
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 import net.tnemc.core.Reserve;
+import net.tnemc.core.old.EconomyAPI;
 import org.bukkit.OfflinePlayer;
 
 import java.math.BigDecimal;

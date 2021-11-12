@@ -1,4 +1,4 @@
-package net.tnemc.core.economy;
+package net.tnemc.core.old;
 
 import net.tnemc.core.economy.response.EconomyResponse;
 import net.tnemc.core.economy.response.GeneralResponse;
