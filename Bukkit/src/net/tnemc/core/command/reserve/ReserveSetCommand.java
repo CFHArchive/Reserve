@@ -65,11 +65,11 @@ public class ReserveSetCommand extends TNECommand {
       help(sender);
       return false;
     }
-    if(Reserve.instance().getRegisteredEconomies().containsKey(arguments[0])) {
+    /*if(Reserve.instance().getRegisteredEconomies().containsKey(arguments[0])) {
       Reserve.instance().setEconomy(arguments[0]);
       sender.sendMessage(ChatColor.WHITE + "Successfully set economy provider to " + arguments[0] + ".");
       return true;
-    }
+    }*/
     sender.sendMessage(ChatColor.RED + "No economy provider found with the name of " + arguments[0] + ".");
     return false;
   }

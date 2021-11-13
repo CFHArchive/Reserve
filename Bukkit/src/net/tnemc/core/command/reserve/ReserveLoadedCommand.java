@@ -62,10 +62,10 @@ public class ReserveLoadedCommand extends TNECommand {
   @Override
   public boolean execute(CommandSender sender, String command, String[] arguments) {
     StringBuilder economies = new StringBuilder();
-    for(String name : Reserve.instance().getRegisteredEconomies().keySet()) {
+    /*for(String name : Reserve.instance().getRegisteredEconomies().keySet()) {
       if(!economies.toString().equalsIgnoreCase("")) { economies.append(", "); }
       economies.append(name);
-    }
+    }*/
     sender.sendMessage("Economy Providers: " + economies);
     return true;
   }

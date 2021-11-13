@@ -4,8 +4,6 @@ import net.milkbowl.vault.economy.Economy;
 import net.tnemc.core.command.CommandManager;
 import net.tnemc.core.command.TNECommand;
 import net.tnemc.core.command.reserve.ReserveCommand;
-import net.tnemc.core.economy.EconomyAPI;
-import net.tnemc.core.economy.Economy_Vault;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -43,11 +41,11 @@ public class Reserve extends JavaPlugin {
 
   private static Reserve instance;
 
-  private Economy_Vault vaultEconomy;
+  //private Economy_Vault vaultEconomy;
 
   protected CommandManager commandManager;
 
-  private final LinkedHashMap<String, EconomyAPI> registeredEconomies = new LinkedHashMap<>();
+  //private final LinkedHashMap<String, EconomyAPI> registeredEconomies = new LinkedHashMap<>();
   private String ecoProvider = "";
 
   public String defaultWorld = "Default";
@@ -78,7 +76,7 @@ public class Reserve extends JavaPlugin {
     return instance;
   }
 
-  public void registerProvider(EconomyAPI provider) {
+  /*public void registerProvider(EconomyAPI provider) {
     getLogger().info("Economy Provider registered: " + provider.name());
     registeredEconomies.put(provider.name(), provider);
     if(provider.enabled()) {
@@ -90,18 +88,19 @@ public class Reserve extends JavaPlugin {
         }
       }
     }
-  }
+  }*/
 
-  public LinkedHashMap<String, EconomyAPI> getRegisteredEconomies() {
+  /*public LinkedHashMap<String, EconomyAPI> getRegisteredEconomies() {
     return registeredEconomies;
-  }
+  }*/
 
   public void setEconomy(String name) {
     ecoProvider = name;
   }
 
-  public EconomyAPI economy() {
-    return registeredEconomies.get(ecoProvider);
+  public Object economy() {
+    return null;
+    //return registeredEconomies.get(ecoProvider);
   }
 
   public boolean economyProvided() {
@@ -140,7 +139,7 @@ public class Reserve extends JavaPlugin {
   }
 
   private void setupVault() {
-    getServer().getServicesManager().register(Economy.class, vaultEconomy, this, ServicePriority.Highest);
+    //getServer().getServicesManager().register(Economy.class, vaultEconomy, this, ServicePriority.Highest);
     getLogger().info("Hooked into Vault");
   }
 }
