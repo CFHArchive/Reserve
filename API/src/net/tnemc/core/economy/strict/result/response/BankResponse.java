@@ -1,8 +1,7 @@
-package net.tnemc.core.economy.response;
-
+package net.tnemc.core.economy.strict.result.response;
 
 /**
- * Created by creatorfromhell on 8/9/2017.
+ * Created by creatorfromhell on 10/14/2021.
  * <p>
  * Reserve API
  * <p>
@@ -23,27 +22,14 @@ package net.tnemc.core.economy.response;
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA, or see
  * it at <https://www.gnu.org/licenses/lgpl-3.0.txt>.
  **/
-public enum AccountResponse implements EconomyResponse {
+public enum BankResponse implements EconomyResponse {
 
   /**
-   * The action was successfully completed, and during it an account was created.
+   * The action failed because the bank account doesn't exist.
+   *
+   * @since 1.0.0
    */
-  CREATED {
-    @Override
-    public boolean success() {
-      return true;
-    }
-
-    @Override
-    public String response() {
-      return "The specified account was created successfully.";
-    }
-  },
-
-  /**
-   * The action was successfully completed, and during it an account was created.
-   */
-  CREATION_FAILED {
+  INVALID_BANK {
     @Override
     public boolean success() {
       return false;
@@ -51,14 +37,16 @@ public enum AccountResponse implements EconomyResponse {
 
     @Override
     public String response() {
-      return "The specified account couldn't be created.";
+      return "The specified bank account doesn't exist.";
     }
   },
 
   /**
-   * The account that was attempted to be created already exists.
+   * The action failed because the accessor can't access the specified bank account.
+   *
+   * @since 1.0.0
    */
-  ALREADY_EXISTS {
+  INVALID_ACCESS {
     @Override
     public boolean success() {
       return false;
@@ -66,23 +54,7 @@ public enum AccountResponse implements EconomyResponse {
 
     @Override
     public String response() {
-      return "The specified account already exists.";
-    }
-  },
-
-  /**
-   * The account specified during a call doesn't exist.
-   */
-  DOESNT_EXIST {
-    @Override
-    public boolean success() {
-      return false;
-    }
-
-    @Override
-    public String response() {
-      return "The specified account doesn't exist.";
+      return "The specified accessor doesn't have access to this bank account.";
     }
   }
-
 }

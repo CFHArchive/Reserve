@@ -1,9 +1,7 @@
-package net.tnemc.core.economy.response;
-
-import net.tnemc.core.generic.response.PluginResponse;
+package net.tnemc.core.economy.strict.result.response;
 
 /**
- * Created by creatorfromhell on 8/9/2017.
+ * Created by creatorfromhell on 10/14/2021.
  * <p>
  * Reserve API
  * <p>
@@ -24,5 +22,33 @@ import net.tnemc.core.generic.response.PluginResponse;
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA, or see
  * it at <https://www.gnu.org/licenses/lgpl-3.0.txt>.
  **/
-public interface EconomyResponse extends PluginResponse {
+public class CustomResponse implements EconomyResponse {
+
+  private final boolean success;
+  private final String response;
+
+  /**
+   * This is a helper class for Reserve implementations to return custom responses during API calls
+   * that return an {@link EconomyResponse} object.
+   *
+   * @param success  Whether the action was performed successfully.
+   * @param response The message to send describing the response. Example: "Action failed because account
+   *                 doesn't exist"
+   *
+   * @since 1.0.0
+   */
+  public CustomResponse(final boolean success, final String response) {
+    this.success = success;
+    this.response = response;
+  }
+
+  @Override
+  public boolean success() {
+    return success;
+  }
+
+  @Override
+  public String response() {
+    return response;
+  }
 }

@@ -2,13 +2,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.tnemc</groupId>
     <artifactId>Reserve</artifactId>
-    <version>0.2.0-SNAPSHOT-1</version>
+    <version>1.0.0-SNAPSHOT-1</version>
     <name>Reserve</name>
     <packaging>pom</packaging>
 
     <modules>
         <module>API</module>
         <module>Bukkit</module>
+        <module>Sponge</module>
     </modules>
 
     <properties>

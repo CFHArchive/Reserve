@@ -1,7 +1,9 @@
-package net.tnemc.core.economy.response;
+package net.tnemc.core.economy.strict.result.response;
+
+import net.tnemc.core.generic.response.PluginResponse;
 
 /**
- * Created by creatorfromhell on 8/9/2017.
+ * Created by creatorfromhell on 10/14/2021.
  * <p>
  * Reserve API
  * <p>
@@ -22,35 +24,5 @@ package net.tnemc.core.economy.response;
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA, or see
  * it at <https://www.gnu.org/licenses/lgpl-3.0.txt>.
  **/
-public enum BankResponse implements EconomyResponse {
-
-  /**
-   * The action failed because the bank account doesn't exist.
-   */
-  INVALID_BANK {
-    @Override
-    public boolean success() {
-      return false;
-    }
-
-    @Override
-    public String response() {
-      return "The specified bank account doesn't exist.";
-    }
-  },
-
-  /**
-   * The action failed because the accessor can't access the specified bank account.
-   */
-  INVALID_ACCESS {
-    @Override
-    public boolean success() {
-      return false;
-    }
-
-    @Override
-    public String response() {
-      return "The specified accessor doesn't have access to this bank account.";
-    }
-  }
+public interface EconomyResponse extends PluginResponse {
 }

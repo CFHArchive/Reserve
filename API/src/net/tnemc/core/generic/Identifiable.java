@@ -7,16 +7,21 @@ import java.util.UUID;
  * identifying string.
  *
  * @author creatorfromhell
+ * @since 1.0.0
  */
 public interface Identifiable {
 
   /**
    * @return The unique identifier for this object.
+   *
+   * @since 1.0.0
    */
   String identifier();
 
   /**
    * @return The human-friendly identifier for this object. This is not unique.
+   *
+   * @since 1.0.0
    */
   String name();
 }

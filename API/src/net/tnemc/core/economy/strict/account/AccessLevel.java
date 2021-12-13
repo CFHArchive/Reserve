@@ -1,7 +1,6 @@
-package net.tnemc.core.generic.response;
-
+package net.tnemc.core.economy.strict.account;
 /**
- * Created by creatorfromhell on 8/9/2017.
+ * Created by creatorfromhell on 10/14/2021.
  * <p>
  * Reserve API
  * <p>
@@ -22,17 +21,33 @@ package net.tnemc.core.generic.response;
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA, or see
  * it at <https://www.gnu.org/licenses/lgpl-3.0.txt>.
  **/
-public interface PluginResponse {
+
+/**
+ * Represents the various levels of access that may be possed for an {@link Account}.
+ *
+ * @author creatorfromhell
+ * @since 1.0.0
+ */
+public enum AccessLevel {
 
   /**
-   * @return True if the associated action was performed correctly.
+   * This means the specified user is able to check holdings for the account.
+   *
+   * @since 1.0.0
    */
-  boolean success();
+  BALANCE,
 
   /**
-   * @return The string to return to the performer of the action.
+   * This means the specified user is able to withdraw holdings from the account.
+   *
+   * @since 1.0.0
    */
-  default String response() {
-    return "Default response string";
-  }
+  WITHDRAW,
+
+  /**
+   * This means the specified user is able to deposit holdings to this account.
+   * @since 1.0.0
+   */
+  DEPOSIT
+
 }

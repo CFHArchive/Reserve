@@ -1,7 +1,7 @@
-package net.tnemc.core.economy.response;
+package net.tnemc.core.economy.strict.result.response;
 
 /**
- * Created by creatorfromhell on 8/9/2017.
+ * Created by creatorfromhell on 10/14/2021.
  * <p>
  * Reserve API
  * <p>
@@ -22,27 +22,31 @@ package net.tnemc.core.economy.response;
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA, or see
  * it at <https://www.gnu.org/licenses/lgpl-3.0.txt>.
  **/
-public enum HoldingsResponse implements EconomyResponse {
+public enum GeneralResponse implements EconomyResponse {
 
   /**
-   * The action was unsuccessful due to the account going over the max supported holdings.
+   * The action was successfully performed on the account's holdings.
+   *
+   * @since 1.0.0
    */
-  MAX_HOLDINGS {
+  SUCCESS {
     @Override
     public boolean success() {
-      return false;
+      return true;
     }
 
     @Override
     public String response() {
-      return "The holdings change would put this account above the max allowed holdings.";
+      return "The action was successful.";
     }
   },
 
   /**
-   * The action was unsuccessful due to the account going below the minimum holdings.
+   * The access was unsuccessful.
+   *
+   * @since 1.0.0
    */
-  MIN_HOLDINGS {
+  FAILED {
     @Override
     public boolean success() {
       return false;
@@ -50,14 +54,16 @@ public enum HoldingsResponse implements EconomyResponse {
 
     @Override
     public String response() {
-      return "The holdings change would put this account below the minimum allowed holdings.";
+      return "The action was unsuccessful.";
     }
   },
 
   /**
-   * The action was unsuccessful due to the account not having enough funds.
+   * The action was unsuccessful due to the Reserve implementation not supporting it.
+   *
+   * @since 1.0.0
    */
-  INSUFFICIENT {
+  UNSUPPORTED {
     @Override
     public boolean success() {
       return false;
@@ -65,7 +71,7 @@ public enum HoldingsResponse implements EconomyResponse {
 
     @Override
     public String response() {
-      return "The specified account has insufficient funds.";
+      return "This action is not supported by this Reserve implementation.";
     }
   }
 }

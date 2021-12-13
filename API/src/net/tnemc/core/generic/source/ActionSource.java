@@ -1,5 +1,4 @@
-package net.tnemc.core.generic.response;
-
+package net.tnemc.core.generic.source;
 /**
  * Created by creatorfromhell on 8/9/2017.
  * <p>
@@ -22,17 +21,35 @@ package net.tnemc.core.generic.response;
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA, or see
  * it at <https://www.gnu.org/licenses/lgpl-3.0.txt>.
  **/
-public interface PluginResponse {
+/**
+ * Represents the source of an action that was performed. This could be anything from balance changes
+ * in the economy API to other API-related actions.
+ *
+ * @author creatorfromhell
+ * @since 1.0.0
+ */
+public interface ActionSource {
 
   /**
-   * @return True if the associated action was performed correctly.
+   *
+   * Used to get the name of the source of the action.
+   *
+   * Please note: There is no guarantee of uniqueness.
+   *
+   * @return The name of the source for a specific action. This could be user-friendly
+   * or not. This should be the name of the implementation that has caused this action to occur. For
+   * instance, a plugin name.
+   *
+   * @since 1.0.0
    */
-  boolean success();
+  String name();
 
   /**
-   * @return The string to return to the performer of the action.
+   * Used to get a description of the reason for why the action was performed.
+   *
+   * @return The reason for the action that was performed.
+   *
+   * @since 1.0.0
    */
-  default String response() {
-    return "Default response string";
-  }
+  String reason();
 }

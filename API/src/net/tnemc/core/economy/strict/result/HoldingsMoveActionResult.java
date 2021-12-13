@@ -1,10 +1,11 @@
-package net.tnemc.core.utils;
+package net.tnemc.core.economy.strict.result;
 
-import java.math.BigDecimal;
+import net.tnemc.core.economy.strict.account.Account;
+import net.tnemc.core.economy.strict.currency.Currency;
 
-
+import java.util.Set;
 /**
- * Created by creatorfromhell on 8/9/2017.
+ * Created by creatorfromhell on 10/14/2021.
  * <p>
  * Reserve API
  * <p>
@@ -25,40 +26,28 @@ import java.math.BigDecimal;
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA, or see
  * it at <https://www.gnu.org/licenses/lgpl-3.0.txt>.
  **/
-public class CostObject {
+
+/**
+ * Class that returns the result of an action performed on an {@link net.tnemc.core.economy.strict.account.Account}'s
+ * holdings. Unlike {@link HoldingsActionResult} this only applies to actions that involve moving
+ * holdings from one {@link net.tnemc.core.economy.strict.account.Account} to another.
+ *
+ * @author creatorfromhell
+ * @since 1.0.0
+ */
+public interface HoldingsMoveActionResult {
 
   /**
-   * The name of the currency to use for this cost object.
+   * @return The {@link Account} that received the holdings during the action.
+   *
+   * @since 1.0.0
    */
-  private String currency;
+  Account receivingAccount();
 
   /**
-   * The cost of this cost object.
+   * @return The {@link Currency} the holdings were received in.
+   *
+   * @since 1.0.0
    */
-  private BigDecimal cost;
-
-  /**
-   * @param currency The name of the currency to use for this cost object.
-   * @param cost     The cost of this cost object.
-   */
-  public CostObject(String currency, BigDecimal cost) {
-    this.currency = currency;
-    this.cost = cost;
-  }
-
-  public String getCurrency() {
-    return currency;
-  }
-
-  public void setCurrency(String currency) {
-    this.currency = currency;
-  }
-
-  public BigDecimal getCost() {
-    return cost;
-  }
-
-  public void setCost(BigDecimal cost) {
-    this.cost = cost;
-  }
+  Currency receivedCurrency();
 }

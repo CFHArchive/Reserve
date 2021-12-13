@@ -14,11 +14,6 @@ public enum ConfigNodes {
       "version.last_run_version",
       "",
       "# Please do not edit."
-  ),
-  HOOK_INTO_VAULT(
-      "vault-support",
-      "true",
-      "# Should Reserve hook into vault automatically (legacy support, however may cause issues)"
   );
 
 

@@ -1,7 +1,8 @@
-package net.tnemc.core.economy.response;
+package net.tnemc.core.economy.strict.result.response;
+
 
 /**
- * Created by creatorfromhell on 8/9/2017.
+ * Created by creatorfromhell on 10/14/2021.
  * <p>
  * Reserve API
  * <p>
@@ -22,12 +23,14 @@ package net.tnemc.core.economy.response;
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA, or see
  * it at <https://www.gnu.org/licenses/lgpl-3.0.txt>.
  **/
-public enum GeneralResponse implements EconomyResponse {
+public enum AccountResponse implements EconomyResponse {
 
   /**
-   * The action was successfully performed on the account's holdings.
+   * The action was successfully completed, and during it an account was created.
+   *
+   * @since 1.0.0
    */
-  SUCCESS {
+  CREATED {
     @Override
     public boolean success() {
       return true;
@@ -35,14 +38,16 @@ public enum GeneralResponse implements EconomyResponse {
 
     @Override
     public String response() {
-      return "The action was successful.";
+      return "The specified account was created successfully.";
     }
   },
 
   /**
-   * The access was unsuccessful.
+   * The action was successfully completed, and during it an account was created.
+   *
+   * @since 1.0.0
    */
-  FAILED {
+  CREATION_FAILED {
     @Override
     public boolean success() {
       return false;
@@ -50,14 +55,14 @@ public enum GeneralResponse implements EconomyResponse {
 
     @Override
     public String response() {
-      return "The action was unsuccessful.";
+      return "The specified account couldn't be created.";
     }
   },
 
   /**
-   * The action was unsuccessful due to the Reserve implementation not supporting it.
+   * The account that was attempted to be created already exists.
    */
-  UNSUPPORTED {
+  ALREADY_EXISTS {
     @Override
     public boolean success() {
       return false;
@@ -65,7 +70,38 @@ public enum GeneralResponse implements EconomyResponse {
 
     @Override
     public String response() {
-      return "This action is not supported by this Reserve implementation.";
+      return "The specified account already exists.";
+    }
+  },
+
+  /**
+   * The account specified during a call doesn't exist.
+   */
+  DELETED {
+    @Override
+    public boolean success() {
+      return true;
+    }
+
+    @Override
+    public String response() {
+      return "The account was deleted successfully";
+    }
+  },
+
+  /**
+   * The account specified during a call doesn't exist.
+   */
+  DOESNT_EXIST {
+    @Override
+    public boolean success() {
+      return false;
+    }
+
+    @Override
+    public String response() {
+      return "The specified account doesn't exist.";
     }
   }
+
 }
