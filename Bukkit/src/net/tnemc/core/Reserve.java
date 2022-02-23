@@ -61,11 +61,7 @@ public class Reserve extends JavaPlugin {
     if(!ConfigurationManager.loadSettings()) {
       // Failed to load configuration. You decide what to do.
     }
-    if(Bukkit.getWorlds().size() >= 1) {
-      defaultWorld = Bukkit.getServer().getWorlds().get(0).getName();
-    } else {
-      defaultWorld = "world";
-    }
+    defaultWorld = Bukkit.getServer().getWorlds().get(0).getName();
     registerCommand(new String[]{"reserve", "rsv"}, new ReserveCommand(this));
 
     new Metrics(this, 2586);
